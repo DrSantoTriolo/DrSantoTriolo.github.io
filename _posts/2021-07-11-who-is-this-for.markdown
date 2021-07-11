@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Who is this for?"
+date: 2021-07-11
+author: conger
+tags:
+  - 
+category: blog
+blog: true
+---
+
+I’m a guy in my late thirties with a wife, two kids and a job, trying to keep myself healthy and functional as I get older. I’ve come from a privileged background health wise, playing sports and had a lot of great teachers along the way. This website contains my notes on what I’m doing and why. I’m not a doctor, nor do I really know what I’m doing. I am curious, a little obsessive and intense, though I’m taking myself less seriously than I did in my twenties. This is mostly for me, but I am also writing it for a younger version of myself. Maybe that’s close to you.
+
+## A little more about me (health wise)
+
+I grew up in New Jersey as the oldest in a family of six. Always trying to play sports, I started playing football at age eight. Given the varied positions, my slow, uncoordinated but large self found a happy role on the offensive and defensive line, a place where I stayed for the duration of my football career. I continued playing through college as a defensive end, and was fortunate, stubborn and lucky enough to start every game of my college (and high school career). Through this journey, I learned how to lift weights and tried plenty of dieting strategies to gain weight over time. 
+
+By the end of college, I was 255 pounds (6'2") and the strongest and fastest (in a 40 at least) that I'll ever be. I tried to play professionally, skipping my graduation for a tryout, but wasn't good enough to make the cut. I decided to go to grad school the following year and lost thirty pounds that summer by not working out much and also not eating to failure. I walked on to the lacrosse team and played for a year, closing out my collegiate athletic career around 225.
+
+Without having a sport to obsess about, I poured my intensity into work. My first day of an internship, I finished my day to great pain in my legs, realizing it was the first time I sat in one place for about eight hours! Welcome to an engineering job! At the time, I'd dabble with workouts that came out of Alwyn Cosgrove's book or things I found on T-nation, but I didn't have any objectives. Then I moved west as part of my job and found CrossFit in 2008. I dove in whole heartedly (still without an objective) and within weeks I was counting my food in blocks and trying to decrease my time for Fran or a 500m row. The sort of varied exercises and the taste of intensity was exhilarating and I was able to leverage over a decade of strength training. I was too scared to ever try and compete in anything, but loved it. About the same time, I started rock climbing, mountain biking and hiking, though I still felt like hiking was a 'long approach to nowhere' (a la Chris Kalous). 
+
+After a brief but intense period of CrossFit, I started reading more on Mark Twight's Gym Jones website. The mix of CrossFit, climbing, intensity and elitism kept me interested, but my chosen hobbies (climbing, biking, skimo) pushed me towards my endurance energy system for the first time. I was drinking his flavor-aid. I started measuring my heart rate and tracking volume, but stubbornly did everything myself and documented things poorly. I spent far too much time with volume in a crappy zone 3 because long slow days felt lazy, but I did get volume and felt its benefit. In the grand scheme of things, I sucked at everything I did, but the forward progress fueled me.
+
+The volume allowed me to do things like ski Mount Shasta in a morning, hike 40-50 miles in a day, and then hike 200 miles of the John Muir Trail (starting from Toulumne, not the Valley) in a week. I enjoyed the feeling of pushing my body and having it respond. 
+
+Then we had our daughter, moved back east and I didn't have the time or mountains to play in. I bought a fancy road bike, did a little riding, but generally faded in fitness over the coming years. I did a little working out in the garage, but never had much consistency or structure. In turn, I felt listless, lacking objective and time. I didn't keep very consistent records, but my weight fluctuated from about 200 when I was biking/hiking a lot to 230 after Christmas at the in-laws. I learned that supersetting copious amounts of dessert with alcohol is a recipe for rapid weight gain. 
+
+I changed jobs from an engineering manager to technical pre-sales. With this came travel and expensed meals. I fell into the habit of eating and drinking too much on trips, then trying to recover at home. This short term debt/credit cycle was paired with a longer term yo-yo diet cycle that would occur every few months. I learned about bulletproof coffee and started dabbling with not eating breakfast. My workouts became more erratic and less frequent. I learned to love riding a bike on a trainer.
+
+We moved back out west and the travel continued, as well as my general lack of fitness. That brings me to today, where the only difference is I’m a little over a hundred day in to exercising every morning. I typically alternate a 45 minute zone 2 ride on my bike with some form of weight lifting.
