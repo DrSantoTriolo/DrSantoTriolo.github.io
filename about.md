@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+# Who is this for?
+
 I’m a guy in my late thirties with a wife, two kids and a job, trying to keep myself healthy and functional as I get older. I’ve come from a privileged background health wise, playing sports and had a lot of great teachers along the way. This website contains my notes on what I’m doing and why. I’m not a doctor, nor do I really know what I’m doing. I am curious, a little obsessive and intense, though I’m taking myself less seriously than I did in my twenties. This is mostly for me, but I am also writing it for a younger version of myself. Maybe that’s close to you.
 
 ## A little more about me (health wise)
@@ -23,3 +25,8 @@ Then we had our daughter, moved back east and I didn't have the time or mountain
 I changed jobs from an engineering manager to technical pre-sales. With this came travel and expensed meals. I fell into the habit of eating and drinking too much on trips, then trying to recover at home. This short term debt/credit cycle was paired with a longer term yo-yo diet cycle that would occur every few months. I learned about bulletproof coffee and started dabbling with not eating breakfast. My workouts became more erratic and less frequent. I learned to love riding a bike on a trainer.
 
 We moved back out west and the travel continued, as well as my general lack of fitness. That brings me to today, where the only difference is I’m a little over a hundred day in to exercising every morning. I typically alternate a 45 minute zone 2 ride on my bike with some form of weight lifting.
+
+## Contact me
+
+Email me at the link below  
+
