@@ -2,17 +2,71 @@
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<header class="hero">
+  <div class="hero-content">
+    <h1>Justine & Alex</h1>
+    <h2>Are Getting Married!</h2>
+    <p class="date-location">[TODO: Add date] • [TODO: Add location]</p>
+    <div class="countdown">
+      <p>Only <span id="countdown">X</span> days to go!</p>
+    </div>
+  </div>
+</header>
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+<main class="main-content">
+  <section class="quick-links">
+    <div class="link-card">
+      <h3>When & Where</h3>
+      <p>Find all the details about our big day</p>
+      <a href="/schedule/" class="button">View Schedule</a>
+    </div>
+    
+    <div class="link-card">
+      <h3>RSVP</h3>
+      <p>Let us know if you can make it</p>
+      <a href="/RSVP/" class="button">RSVP Now</a>
+    </div>
+    
+    <div class="link-card">
+      <h3>Travel Info</h3>
+      <p>Everything you need to plan your trip</p>
+      <a href="/travel/" class="button">Travel Details</a>
+    </div>
+  </section>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+  <section class="updates">
+    <h2>Latest Updates</h2>
+    <div class="posts">
+      {% for post in site.posts limit:3 %}
+        <article class="post-preview">
+          <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+          <p class="post-date">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <div class="post-excerpt">
+            {{ post.excerpt }}
+          </div>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More →</a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+<script>
+  // Countdown timer
+  const weddingDate = new Date('[TODO: Add wedding date in YYYY-MM-DD format]').getTime();
+  
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    
+    const countdownElement = document.getElementById('countdown');
+    if (countdownElement) {
+      countdownElement.textContent = days;
+    }
+  }
+  
+  // Update the countdown every day
+  updateCountdown();
+  setInterval(updateCountdown, 86400000);
+</script>
