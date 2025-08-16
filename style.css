@@ -1,16 +1,27 @@
 /*
 // IMPORTS
 */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap');
+// Remove Google Fonts import if you want to use only Lumios Typewriter 401
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap'); */
+
+/* Add custom font-face for Lumios Typewriter 401 */
+@font-face {
+  font-family: 'Lumios Typewriter 401';
+  src: url('/fonts/LumiosTypewriter401.woff2') format('woff2'),
+       url('/fonts/LumiosTypewriter401.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /*
 // VARIABLES
 */
 :root {
-  --primary-color: #2c3e50;
-  --accent-color: #e74c3c;
-  --light-bg: #f9f9f9;
-  --text-color: #333;
+  --primary-color: #1c4e9f; /* dark blue */
+  --accent-color: #1c4e9f;  /* use dark blue for accent as well, or pick another if needed */
+  --light-bg: #f5f0dd;      /* cream background */
+  --text-color: #000000;    /* black */
   --light-gray: #ecf0f1;
   --spacing-unit: 1.5rem;
 }
@@ -23,8 +34,8 @@ html {
 }
 
 body {
-  background: white;
-  font: 16px/1.6 'Montserrat', sans-serif;
+  background: var(--light-bg);
+  font: 16px/1.6 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
   color: var(--text-color);
   margin: 0;
   padding: 0;
@@ -40,7 +51,7 @@ body {
 // HEADER STYLES
 */
 .site-header {
-  background: white;
+  background: var(--light-bg);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
   width: 100%;
@@ -56,7 +67,7 @@ body {
 }
 
 .site-logo h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
   color: var(--primary-color);
   margin: 0;
   font-size: 1.8rem;
@@ -108,7 +119,7 @@ body {
 // HERO SECTION
 */
 .hero {
-  background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('/images/hero-bg.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(28, 78, 159, 0.8), rgba(28, 78, 159, 0.8)), url('/images/hero-bg.jpg') center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 12rem 2rem 8rem;
@@ -116,7 +127,7 @@ body {
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
   font-size: 4rem;
   margin: 0 0 1rem;
   color: white;
@@ -124,7 +135,7 @@ body {
 }
 
 .hero h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
   font-size: 2rem;
   margin: 0 0 2rem;
   font-weight: 400;
@@ -164,7 +175,7 @@ body {
 }
 
 .link-card {
-  background: white;
+  background: var(--light-bg);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -179,7 +190,7 @@ body {
 .link-card h3 {
   color: var(--primary-color);
   margin-top: 0;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
 }
 
 /*
@@ -202,7 +213,7 @@ body {
 }
 
 .footer-logo h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
   margin: 0 0 1rem;
 }
 
