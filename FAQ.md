@@ -14,17 +14,17 @@ permalink: /FAQ/
    [TODO: Add ceremony start time and recommended arrival time]
 
 3. **What's the dress code?**  
-   [TODO: Add dress code details]
+   The dress code is black-tie formal. For men, this means tuxedos or dark suits with ties. For women, this means floor-length gowns, formal cocktail dresses, or elegant dressy separates.
 
 ## The Fun Stuff
 4. **Will there be music?**  
    Yes, dumbass. We're not getting married in a library.
 
 5. **What kind of food will be served?**  
-   [TODO: Add catering details]
+   We'll be serving a cocktail hour with passed hors d'oeuvres followed by a plated, sit-down dinner. The menu is still being finalized, but we'll make sure there are delicious options for everyone.
 
 6. **Open bar?**  
-   [TODO: Add bar information]
+   Yes! We're happy to host an open bar throughout the reception. The bar will serve a selection of beer, wine, and signature cocktails.
 
 7. **What's the deal with parking?**  
    [TODO: Add parking information]

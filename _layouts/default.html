@@ -12,12 +12,19 @@
       <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ '/feed.xml' | relative_url }}">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon.png">
+    <link rel="icon" type="image/png" href="{{ '/images/favicon.png' | relative_url }}">
   </head>
 
   <body>
@@ -74,7 +81,7 @@
           <div class="footer-section">
             <h3>Contact Us</h3>
             <p>Questions? Email us at:<br>
-            <a href="mailto:justineandalex@example.com">justineandalex@example.com</a></p>
+            <a href="mailto:justine.and.alex.wedding@gmail.com">justine.and.alex.wedding@gmail.com</a></p>
           </div>
         </div>
       </div>
