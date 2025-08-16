@@ -53,12 +53,12 @@ layout: default
 
 <script>
   // Countdown timer
-  const weddingDate = new Date('2026-06-06').getTime();
+  const weddingDate = new Date('2026-06-06T00:00:00-04:00').getTime();
   
   function updateCountdown() {
     const now = new Date().getTime();
     const distance = weddingDate - now;
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const days = Math.max(0, Math.ceil(distance / (1000 * 60 * 60 * 24)));
     
     const countdownElement = document.getElementById('countdown');
     if (countdownElement) {
@@ -66,7 +66,7 @@ layout: default
     }
   }
   
-  // Update the countdown every day
+  // Update the countdown every second for accuracy
   updateCountdown();
-  setInterval(updateCountdown, 86400000);
+  setInterval(updateCountdown, 1000 * 60 * 60); // update every hour
 </script>

@@ -3,4 +3,4 @@ layout: post
 title: Save the date!
 ---
 
-![_config.yml]({{ site.baseurl }}/images/Save the date.png)
+![Save the date]({{ site.baseurl }}/images/Save%20the%20date.png)
