@@ -1,12 +1,12 @@
 # TODO List for Bilingual Website (French & English)
 
 ## 1. Content Translation
-- [ ] Translate all existing pages (index, about, FAQ, RSVP, save-the-date, schedule, travel, venue, etc.) into French.
-- [ ] Ensure all navigation links, buttons, and UI text are available in both languages.
-- [ ] Translate meta tags, SEO descriptions, and image alt texts.
+- [x] Translate all existing pages (index, about, FAQ, RSVP, save-the-date, schedule, travel, venue, etc.) into French.
+- [x] Ensure all navigation links, buttons, and UI text are available in both languages.
+- [x] Translate meta tags, SEO descriptions, and image alt texts.
 
 ## 2. Language Toggle Feature
-- [ ] Add a visible, easy-to-use language toggle (EN/FR) at the top of every page.
+- [x] Add a visible, easy-to-use language toggle (EN/FR) at the top of every page.
 - [ ] Make sure the toggle is accessible and works on mobile and desktop.
 - [ ] Remember the user's language preference (cookie/localStorage or URL parameter).
 
