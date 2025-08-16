@@ -1,14 +1,12 @@
 /*
 // IMPORTS
 */
-// Remove Google Fonts import if you want to use only Lumios Typewriter 401
-/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap'); */
 
-/* Add custom font-face for Lumios Typewriter 401 */
+
+/* Add custom font-face for AFL Font Pespaye Nonmetric */
 @font-face {
-  font-family: 'Lumios Typewriter 401';
-  src: url('/fonts/LumiosTypewriter401.woff2') format('woff2'),
-       url('/fonts/LumiosTypewriter401.woff') format('woff');
+  font-family: 'AFL Pespaye';
+  src: url('/fonts/AFL-Font-pespaye-nonmetric/aflfont.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -21,7 +19,7 @@
   --primary-color: #1c4e9f; /* dark blue */
   --accent-color: #1c4e9f;  /* use dark blue for accent as well, or pick another if needed */
   --light-bg: #f5f0dd;      /* cream background */
-  --text-color: #000000;    /* black */
+  --text-color: #36454F;    /* black */
   --light-gray: #ecf0f1;
   --spacing-unit: 1.5rem;
 }
@@ -35,7 +33,7 @@ html {
 
 body {
   background: var(--light-bg);
-  font: 16px/1.6 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
+  font: 16px/1.6 'AFL Pespaye', monospace;
   color: var(--text-color);
   margin: 0;
   padding: 0;
@@ -67,7 +65,7 @@ body {
 }
 
 .site-logo h1 {
-  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
+  font-family: 'AFL Pespaye', monospace;
   color: var(--primary-color);
   margin: 0;
   font-size: 1.8rem;
@@ -127,7 +125,7 @@ body {
 }
 
 .hero h1 {
-  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
+  font-family: 'AFL Pespaye', monospace;
   font-size: 4rem;
   margin: 0 0 1rem;
   color: white;
@@ -135,7 +133,7 @@ body {
 }
 
 .hero h2 {
-  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
+  font-family: 'AFL Pespaye', monospace;
   font-size: 2rem;
   margin: 0 0 2rem;
   font-weight: 400;
@@ -190,7 +188,35 @@ body {
 .link-card h3 {
   color: var(--primary-color);
   margin-top: 0;
-  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
+  font-family: 'AFL Pespaye', monospace;
+}
+
+/*
+// BLOG POST STYLES
+*/
+.post {
+  max-width: 700px;
+  margin: 4rem auto;
+  background: var(--light-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.post h1 {
+  text-align: center;
+}
+
+.post .entry {
+  text-align: left;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .post {
+    padding: 1.5rem 0.5rem;
+  }
 }
 
 /*
@@ -213,7 +239,7 @@ body {
 }
 
 .footer-logo h2 {
-  font-family: 'Lumios Typewriter 401', 'Courier New', Courier, monospace;
+  font-family: 'AFL Pespaye', monospace;
   margin: 0 0 1rem;
 }
 
