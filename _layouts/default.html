@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,19 @@
           <a href="{{ site.baseurl }}/" class="site-logo">
             <h1>{{ site.name }}</h1>
           </a>
-          
+
+          <!-- Language Toggle -->
+          <div class="lang-toggle" style="margin-left:2rem;">
+            {% assign current_url = page.url %}
+            {% if page.lang == 'fr' %}
+              <a href="{{ current_url | replace_first:'/fr','' }}" class="lang-btn">EN</a>
+              <span class="lang-btn active">FR</span>
+            {% else %}
+              <span class="lang-btn active">EN</span>
+              <a href="/fr{{ current_url }}" class="lang-btn">FR</a>
+            {% endif %}
+          </div>
+
           <nav class="main-nav">
             <ul>
               <li><a href="{{ site.baseurl }}/" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
