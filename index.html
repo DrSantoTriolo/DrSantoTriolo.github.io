@@ -37,16 +37,12 @@ layout: default
   <section class="updates">
     <h2>Latest Updates</h2>
     <div class="posts">
-      {% for post in site.posts limit:3 %}
-        <article class="post-preview">
-          <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-          <p class="post-date">{{ post.date | date: "%B %-d, %Y" }}</p>
-          <div class="post-excerpt">
-            {{ post.excerpt }}
-          </div>
-          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More →</a>
-        </article>
-      {% endfor %}
+      <article class="post-preview">
+        <h3><a href="/save-the-date/">Save the date!</a></h3>
+        <div class="post-excerpt">
+          <img src="/images/Save%20the%20date.png" alt="Save the date" style="max-width:100%;height:auto;" />
+        </div>
+      </article>
     </div>
   </section>
 </main>

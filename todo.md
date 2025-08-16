@@ -1,26 +1,42 @@
-# Front-End Engineer Todo List
+# TODO List for Bilingual Website (French & English)
 
-## Global Issues
+## 1. Content Translation
+- [ ] Translate all existing pages (index, about, FAQ, RSVP, save-the-date, schedule, travel, venue, etc.) into French.
+- [ ] Ensure all navigation links, buttons, and UI text are available in both languages.
+- [ ] Translate meta tags, SEO descriptions, and image alt texts.
 
-- [x] Fix 404 errors: Resolve multiple failed resource loads showing in console across all pages
-- [x] Fix image paths: Broken image on save the date post (shows "_config.yml" filename instead of image)
-- [x] Update page titles: Venue page shows "About" title instead of proper page title
+## 2. Language Toggle Feature
+- [ ] Add a visible, easy-to-use language toggle (EN/FR) at the top of every page.
+- [ ] Make sure the toggle is accessible and works on mobile and desktop.
+- [ ] Remember the user's language preference (cookie/localStorage or URL parameter).
 
-## Homepage (https://justineandalex.github.io/)
+## 3. Site Structure & Routing
+- [ ] Decide on bilingual structure: separate folders (e.g., /en/, /fr/) or dynamic content switching.
+- [ ] Update navigation to link to the correct language version of each page.
+- [ ] Ensure URLs are SEO-friendly for both languages.
 
-- [x] Fix broken image display: Save the date image in "Latest Updates" section not rendering properly
-- [x] Update countdown script: Ensure countdown to "June 6, 2026" is accurate and updates properly
+## 4. Layout & Templates
+- [ ] Update layout files to support language switching (e.g., _layouts/default.html).
+- [ ] Use includes/partials for repeated elements (header, footer, nav) with language support.
 
-## Venue Page (https://justineandalex.github.io/venue/)
+## 5. Assets & Media
+- [ ] Translate any text in images or graphics, or provide language-specific versions.
+- [ ] Ensure fonts and styles support French characters (accents, etc.).
 
-- [x] Fix page title tag: Change from "About" to "Venue" in HTML head
+## 6. Testing & QA
+- [ ] Test all pages in both languages for completeness and accuracy.
+- [ ] Check for layout issues caused by longer/shorter text in French.
+- [ ] Test language toggle on all devices and browsers.
 
-## RSVP Page (https://justineandalex.github.io/RSVP/)
+## 7. Optional Enhancements
+- [ ] Add hreflang tags for SEO.
+- [ ] Provide a fallback if a page is missing in one language.
+- [ ] Consider using a translation plugin or Jekyll multilingual plugin for easier management.
 
-- [x] Fix Google Forms console errors: Multiple filesystem errors related to Google Docs persistence
-- [x] Improve iframe responsiveness: Ensure Google Form displays properly on all device sizes
+---
 
-## Mobile Responsiveness (All Pages)
-
-- [x] Test mobile menu functionality: Verify "Toggle mobile menu" button works properly
-- [x] Check responsive design: Ensure all pages display correctly on mobile devices
+**Next Steps:**
+- Prioritize translation of key pages (home, RSVP, schedule).
+- Design and implement the language toggle.
+- Update navigation and templates for bilingual support.
+- Translate and test all content.
