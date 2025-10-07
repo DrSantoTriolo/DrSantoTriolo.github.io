@@ -1,86 +1,48 @@
+import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Section } from '../layout/Section';
 
-const Companies = () => {
-  interface Company {
-    name: string;
-    role: string;
-    period: string;
-    logo: string;
-    website: string | null;
-    invertInLightMode?: boolean;
-  }
+import { Section } from '@/layout/Section';
 
-  const companies: Company[] = [
-    {
-      name: 'xmap.ai',
-      role: 'Co-Founder & CTO',
-      period: '2023-Present',
-      logo: '/images/companies/xmap-ai.png',
-      website: 'https://xmap.ai',
-    },
-    {
-      name: 'Mercari',
-      role: 'LLM/AI Team',
-      period: '2019-Present',
-      logo: '/images/companies/mercari.jpg',
-      website: 'https://mercari.co.jp',
-    },
-    {
-      name: 'Rakuten',
-      role: 'Mobile Architect',
-      period: '2016-2018',
-      logo: '/images/companies/rakuten.png',
-      website: 'https://rakuten.co.jp',
-    },
-    {
-      name: 'Royal Cyber',
-      role: 'Mobile Team Lead',
-      period: '2015-2016',
-      logo: '/images/companies/royalcyber.jpeg',
-      website: 'https://royalcyber.com',
-    },
-    {
-      name: 'Erly Stage Studios',
-      role: 'CTO',
-      period: '2013-2015',
-      logo: '/images/companies/erly-stage-studios.png',
-      website: 'https://erlystagestudios.com',
-    },
-    {
-      name: 'Sagedom',
-      role: 'Android Developer',
-      period: '2016',
-      logo: '/images/companies/sagedom.png',
-      website: 'https://www.linkedin.com/company/sagedom',
-    },
-    {
-      name: '10Pearls',
-      role: 'Software Engineer',
-      period: '2012',
-      logo: '/images/companies/10pearls.svg',
-      website: 'https://10pearls.com',
-      invertInLightMode: true,
-    },
-    {
-      name: 'Wavetec',
-      role: 'System Engineer',
-      period: '2012-2012',
-      logo: '/images/companies/wavetec.png',
-      website: 'https://wavetec.com',
-    },
-  ];
+interface Company {
+  name: string;
+  role: string;
+  period: string;
+  logo: string;
+  website: string | null;
+  invertInLightMode?: boolean;
+}
 
-  const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(companies.length).fill(false));
+interface CompaniesProps {
+  companies: Company[];
+  title?: string;
+  subtitle?: string;
+  gridCols?: string;
+  showAnimations?: boolean;
+}
+
+const Companies: FC<CompaniesProps> = ({
+  companies,
+  title = "Companies I've Worked With",
+  subtitle = 'A journey through my career spanning startups, enterprises, and everything in between',
+  gridCols = 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4',
+  showAnimations = true,
+}) => {
+
+  const [visibleItems, setVisibleItems] = useState<boolean[]>(
+    new Array(companies.length).fill(false),
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleItems(prev => {
+            const index = parseInt(
+              entry.target.getAttribute('data-index') || '0',
+              10,
+            );
+            setVisibleItems((prev) => {
               const newVisible = [...prev];
               newVisible[index] = true;
               return newVisible;
@@ -88,34 +50,34 @@ const Companies = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '50px' }
+      { threshold: 0.1, rootMargin: '50px' },
     );
 
     const elements = document.querySelectorAll('.company-card');
-    elements.forEach(el => observer.observe(el));
+    elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
-
-  const getGridCols = () => {
-    // Better responsive grid for centering with 8 companies
-    return 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4';
-  };
+  }, [companies.length]);
 
   return (
-    <div id="companies-section" className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div
+      id="companies-section"
+      className="bg-gray-50 transition-colors duration-300 dark:bg-gray-900"
+    >
       <Section yPadding="py-12">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Companies I&apos;ve Worked With
+        <div className="mb-12 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
+            {title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            A journey through my career spanning startups, enterprises, and everything in between
+          <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+            {subtitle}
           </p>
         </div>
 
         <div className="flex justify-center px-4">
-          <div className={`grid ${getGridCols()} gap-6 md:gap-8 lg:gap-10 max-w-5xl w-full justify-items-center place-items-center`}>
+          <div
+            className={`grid ${gridCols} w-full max-w-5xl place-items-center justify-items-center gap-6 md:gap-8 lg:gap-10`}
+          >
             {companies.map((company, index) => {
               const CompanyCard = company.website ? 'a' : 'div';
               const cardProps = company.website
@@ -195,16 +157,29 @@ const Companies = () => {
         </div>
 
         {/* Floating animation elements */}
-        <div className="relative mt-20 overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-6xl opacity-10 animate-spin-slow">⚙️</div>
+        {showAnimations && (
+          <div className="relative mt-20 overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-spin-slow text-6xl opacity-10">⚙️</div>
+            </div>
+            <div
+              className="absolute left-10 top-10 animate-bounce text-4xl opacity-20"
+              style={{ animationDelay: '1s' }}
+            >
+              💻
+            </div>
+            <div
+              className="absolute bottom-10 right-10 animate-bounce text-4xl opacity-20"
+              style={{ animationDelay: '2s' }}
+            >
+              🚀
+            </div>
           </div>
-          <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce" style={{ animationDelay: '1s' }}>💻</div>
-          <div className="absolute bottom-10 right-10 text-4xl opacity-20 animate-bounce" style={{ animationDelay: '2s' }}>🚀</div>
-        </div>
+        )}
       </Section>
     </div>
   );
 };
 
 export default Companies;
+export type { Company, CompaniesProps };
