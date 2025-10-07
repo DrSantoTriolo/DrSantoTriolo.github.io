@@ -1,8 +1,8 @@
+@import './hero-styles.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import './hero-styles.css';
 
 html {
   scroll-behavior: smooth;
@@ -18,14 +18,34 @@ html {
   }
 }
 
-@keyframes fade-in-up {
+@keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -33,8 +53,19 @@ html {
   animation: spin-slow 20s linear infinite;
 }
 
+/* Simple fade - smoothest, no flicker */
 .animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+/* Alternative: subtle scale - smooth grow effect */
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+/* Alternative: slide from left - directional reveal */
+.animate-slide-in {
+  animation: slide-in 0.4s ease-out forwards;
 }
 
 /* Company logo animations */

@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import { Section } from '@/layout/Section';
@@ -29,36 +28,6 @@ const Companies: FC<CompaniesProps> = ({
   showAnimations = true,
 }) => {
 
-  const [visibleItems, setVisibleItems] = useState<boolean[]>(
-    new Array(companies.length).fill(false),
-  );
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(
-              entry.target.getAttribute('data-index') || '0',
-              10,
-            );
-            setVisibleItems((prev) => {
-              const newVisible = [...prev];
-              newVisible[index] = true;
-              return newVisible;
-            });
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '50px' },
-    );
-
-    const elements = document.querySelectorAll('.company-card');
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [companies.length]);
-
   return (
     <div
       id="companies-section"
@@ -78,7 +47,7 @@ const Companies: FC<CompaniesProps> = ({
           <div
             className={`grid ${gridCols} w-full max-w-5xl place-items-center justify-items-center gap-6 md:gap-8 lg:gap-10`}
           >
-            {companies.map((company, index) => {
+            {companies.map((company) => {
               const CompanyCard = company.website ? 'a' : 'div';
               const cardProps = company.website
                 ? {
@@ -93,34 +62,33 @@ const Companies: FC<CompaniesProps> = ({
                 <CompanyCard
                   key={company.name}
                   {...cardProps}
-                  className={`company-card group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 ${
-                    visibleItems[index] ? 'animate-fade-in-up' : 'opacity-0'
-                  } ${cardProps.className || ''}`}
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                  }}
-                  data-index={index}
+                  className={`company-card group relative transform rounded-xl bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl dark:bg-gray-800 ${
+                    cardProps.className || ''
+                  }`}
                 >
                   <div className="flex flex-col items-center text-center space-y-4">
-                    <div className="w-20 h-16 flex items-center justify-center bg-white dark:bg-gray-700 rounded-lg p-3 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                    <div className="flex h-16 w-20 items-center justify-center rounded-lg bg-white p-3 shadow-sm transition-transform duration-300 group-hover:scale-110 dark:bg-gray-700">
                       <Image
                         src={company.logo}
                         alt={`${company.name} logo`}
                         width={80}
                         height={64}
-                        className={`max-w-full max-h-full object-contain ${
-                          company.invertInLightMode 
-                            ? 'filter invert dark:invert-0 dark:brightness-90' 
-                            : 'filter dark:brightness-90'
+                        className={`max-h-full max-w-full object-contain transition-none ${
+                          company.invertInLightMode
+                            ? 'invert dark:invert-0 dark:brightness-90'
+                            : 'dark:brightness-90'
                         }`}
+                        loading="eager"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.style.display = 'none';
-                          const fallback = target.parentElement?.querySelector('.logo-fallback') as HTMLElement;
+                          const fallback = target.parentElement?.querySelector(
+                            '.logo-fallback',
+                          ) as HTMLElement;
                           if (fallback) fallback.style.display = 'flex';
                         }}
                       />
-                      <div className="logo-fallback hidden w-full h-full items-center justify-center text-2xl font-bold text-gray-600 dark:text-gray-300">
+                      <div className="logo-fallback hidden h-full w-full items-center justify-center text-2xl font-bold text-gray-600 dark:text-gray-300">
                         {company.name.charAt(0).toUpperCase()}
                       </div>
                     </div>
