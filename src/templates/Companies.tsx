@@ -1,122 +1,53 @@
-import { useEffect, useState } from 'react';
+import type { FC } from 'react';
 import Image from 'next/image';
-import { Section } from '../layout/Section';
 
-const Companies = () => {
-  interface Company {
-    name: string;
-    role: string;
-    period: string;
-    logo: string;
-    website: string | null;
-    invertInLightMode?: boolean;
-  }
+import { Section } from '@/layout/Section';
 
-  const companies: Company[] = [
-    {
-      name: 'xmap.ai',
-      role: 'Co-Founder & CTO',
-      period: '2023-Present',
-      logo: '/images/companies/xmap-ai.png',
-      website: 'https://xmap.ai',
-    },
-    {
-      name: 'Mercari',
-      role: 'LLM/AI Team',
-      period: '2019-Present',
-      logo: '/images/companies/mercari.jpg',
-      website: 'https://mercari.co.jp',
-    },
-    {
-      name: 'Rakuten',
-      role: 'Mobile Architect',
-      period: '2016-2018',
-      logo: '/images/companies/rakuten.png',
-      website: 'https://rakuten.co.jp',
-    },
-    {
-      name: 'Royal Cyber',
-      role: 'Mobile Team Lead',
-      period: '2015-2016',
-      logo: '/images/companies/royalcyber.jpeg',
-      website: 'https://royalcyber.com',
-    },
-    {
-      name: 'Erly Stage Studios',
-      role: 'CTO',
-      period: '2013-2015',
-      logo: '/images/companies/erly-stage-studios.png',
-      website: 'https://erlystagestudios.com',
-    },
-    {
-      name: 'Sagedom',
-      role: 'Android Developer',
-      period: '2016',
-      logo: '/images/companies/sagedom.png',
-      website: 'https://www.linkedin.com/company/sagedom',
-    },
-    {
-      name: '10Pearls',
-      role: 'Software Engineer',
-      period: '2012',
-      logo: '/images/companies/10pearls.svg',
-      website: 'https://10pearls.com',
-      invertInLightMode: true,
-    },
-    {
-      name: 'Wavetec',
-      role: 'System Engineer',
-      period: '2012-2012',
-      logo: '/images/companies/wavetec.png',
-      website: 'https://wavetec.com',
-    },
-  ];
+interface Company {
+  name: string;
+  role: string;
+  period: string;
+  logo: string;
+  website: string | null;
+  invertInLightMode?: boolean;
+}
 
-  const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(companies.length).fill(false));
+interface CompaniesProps {
+  companies: Company[];
+  title?: string;
+  subtitle?: string;
+  gridCols?: string;
+  showAnimations?: boolean;
+}
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleItems(prev => {
-              const newVisible = [...prev];
-              newVisible[index] = true;
-              return newVisible;
-            });
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '50px' }
-    );
-
-    const elements = document.querySelectorAll('.company-card');
-    elements.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const getGridCols = () => {
-    // Better responsive grid for centering with 8 companies
-    return 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4';
-  };
+const Companies: FC<CompaniesProps> = ({
+  companies,
+  title = "Companies I've Worked With",
+  subtitle = 'A journey through my career spanning startups, enterprises, and everything in between',
+  gridCols = 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4',
+  showAnimations = true,
+}) => {
 
   return (
-    <div id="companies-section" className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div
+      id="companies-section"
+      className="bg-gray-50 transition-colors duration-300 dark:bg-gray-900"
+    >
       <Section yPadding="py-12">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Companies I&apos;ve Worked With
+        <div className="mb-12 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
+            {title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            A journey through my career spanning startups, enterprises, and everything in between
+          <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+            {subtitle}
           </p>
         </div>
 
         <div className="flex justify-center px-4">
-          <div className={`grid ${getGridCols()} gap-6 md:gap-8 lg:gap-10 max-w-5xl w-full justify-items-center place-items-center`}>
-            {companies.map((company, index) => {
+          <div
+            className={`grid ${gridCols} w-full max-w-5xl place-items-center justify-items-center gap-6 md:gap-8 lg:gap-10`}
+          >
+            {companies.map((company) => {
               const CompanyCard = company.website ? 'a' : 'div';
               const cardProps = company.website
                 ? {
@@ -131,34 +62,33 @@ const Companies = () => {
                 <CompanyCard
                   key={company.name}
                   {...cardProps}
-                  className={`company-card group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 ${
-                    visibleItems[index] ? 'animate-fade-in-up' : 'opacity-0'
-                  } ${cardProps.className || ''}`}
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                  }}
-                  data-index={index}
+                  className={`company-card group relative transform rounded-xl bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl dark:bg-gray-800 ${
+                    cardProps.className || ''
+                  }`}
                 >
                   <div className="flex flex-col items-center text-center space-y-4">
-                    <div className="w-20 h-16 flex items-center justify-center bg-white dark:bg-gray-700 rounded-lg p-3 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                    <div className="flex h-16 w-20 items-center justify-center rounded-lg bg-white p-3 shadow-sm transition-transform duration-300 group-hover:scale-110 dark:bg-gray-700">
                       <Image
                         src={company.logo}
                         alt={`${company.name} logo`}
                         width={80}
                         height={64}
-                        className={`max-w-full max-h-full object-contain ${
-                          company.invertInLightMode 
-                            ? 'filter invert dark:invert-0 dark:brightness-90' 
-                            : 'filter dark:brightness-90'
+                        className={`max-h-full max-w-full object-contain transition-none ${
+                          company.invertInLightMode
+                            ? 'invert dark:invert-0 dark:brightness-90'
+                            : 'dark:brightness-90'
                         }`}
+                        loading="eager"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.style.display = 'none';
-                          const fallback = target.parentElement?.querySelector('.logo-fallback') as HTMLElement;
+                          const fallback = target.parentElement?.querySelector(
+                            '.logo-fallback',
+                          ) as HTMLElement;
                           if (fallback) fallback.style.display = 'flex';
                         }}
                       />
-                      <div className="logo-fallback hidden w-full h-full items-center justify-center text-2xl font-bold text-gray-600 dark:text-gray-300">
+                      <div className="logo-fallback hidden h-full w-full items-center justify-center text-2xl font-bold text-gray-600 dark:text-gray-300">
                         {company.name.charAt(0).toUpperCase()}
                       </div>
                     </div>
@@ -195,16 +125,29 @@ const Companies = () => {
         </div>
 
         {/* Floating animation elements */}
-        <div className="relative mt-20 overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-6xl opacity-10 animate-spin-slow">⚙️</div>
+        {showAnimations && (
+          <div className="relative mt-20 overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-spin-slow text-6xl opacity-10">⚙️</div>
+            </div>
+            <div
+              className="absolute left-10 top-10 animate-bounce text-4xl opacity-20"
+              style={{ animationDelay: '1s' }}
+            >
+              💻
+            </div>
+            <div
+              className="absolute bottom-10 right-10 animate-bounce text-4xl opacity-20"
+              style={{ animationDelay: '2s' }}
+            >
+              🚀
+            </div>
           </div>
-          <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce" style={{ animationDelay: '1s' }}>💻</div>
-          <div className="absolute bottom-10 right-10 text-4xl opacity-20 animate-bounce" style={{ animationDelay: '2s' }}>🚀</div>
-        </div>
+        )}
       </Section>
     </div>
   );
 };
 
 export default Companies;
+export type { Company, CompaniesProps };
