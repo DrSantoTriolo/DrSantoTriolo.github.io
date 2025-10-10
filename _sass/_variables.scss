@@ -3,21 +3,28 @@
 // VARIABLES
 //
 
-// Colors
-$blue: #4183C4;
+// Colors (modernized)
+$blue: #2563eb; // Modernes Blau
+$blueAccent: #60a5fa;
+$purple: #7c3aed;
+$green: #10b981;
+$yellow: #facc15;
+$red: #ef4444;
 
 // Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
+$black: #181a1b;
+$darkerGray: #23272f;
+$darkGray: #374151;
+$gray: #6b7280;
+$lightGray: #f3f4f6;
 $white: #fff;
 
-// Font stacks
-$helvetica: Helvetica, Arial, sans-serif;
-$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$georgia: Georgia, serif;
+// Font stacks (modernized)
+$sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+$serif: 'Georgia', serif;
+$mono: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+
+// Mobile breakpoints
 
 // Mobile breakpoints
 @mixin mobile {
