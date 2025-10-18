@@ -4,10 +4,6 @@ title: Public Choice Theory
 category: [Feed]
 ---
 
-# Public Choice Theory
-
-## 1 Introduction: Politics without Romance
-
 Public choice theory applies the tools of economic reasoning to collective decision‑making. James Buchanan described it as the study of “politics without romance” because it replaces the heroic view of government with an analysis grounded in individual incentives. Instead of assuming benevolent public officials, public choice models voters, politicians and bureaucrats as people with ordinary preferences who respond to the costs and benefits they face. Because individuals are the ultimate decision‑makers, public choice scholars treat the state not as an organic entity but as an arena where people bargain, vote and trade to advance their aims. This perspective helps explain why democracies often produce policies that differ from the public interest and why efforts to correct market failures can be hijacked by self‑interested actors.
 
 ### Methodological foundations
