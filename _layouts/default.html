@@ -1,53 +1,109 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-
-    {% include meta.html %}
-
-    <link rel="icon" type="image/png" href="/favicon.png">
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
-
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
-
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/library">Library</a>
-          </nav>
-        </header>
-      </div>
-    </div>
-
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
-
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
-    {% include analytics.html %}
-  </body>
+ <head>
+ <title>{% if page.title %}{{ page.title }} – {% endif %}
+{{ site.name }} – {{ site.description }}</title>
+ {% include meta.html %}
+ <link rel="icon" type="image/png" href="/favicon.png">
+ <!--[if lt IE 9]>
+ <script src="http://html5shiv.googlecode.com/svn/trunk/
+html5.js"></script>
+ <![endif]-->
+ <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/
+style.css" />
+ <link rel="alternate" type="application/rss+xml" 
+title="{{ site.name }} - {{ site.description }}" 
+href="{{ site.baseurl }}/feed.xml" />
+ <!-- Created with Jekyll Now - http://github.com/barryclark/
+jekyll-now -->
+ <style>
+  body {
+   background-color: #ffffff;
+   color: #333333;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .clean-list-container {
+   max-width: 540px;
+   margin: 60px auto;
+   padding: 0 20px;
+  }
+  .clean-list-title {
+   text-align: center;
+   font-size: 2.5em;
+   font-weight: 300;
+   color: #000000;
+   margin-bottom: 40px;
+  }
+  .clean-list-box {
+   border: 1px solid #e0e0e0;
+   border-radius: 12px;
+   padding: 30px;
+   background-color: #ffffff;
+  }
+  .post-item {
+   margin-bottom: 40px;
+   padding-bottom: 40px;
+   border-bottom: 1px solid #e0e0e0;
+  }
+  .post-item:last-child {
+   border-bottom: none;
+   margin-bottom: 0;
+   padding-bottom: 0;
+  }
+  .post-date {
+   font-size: 0.9em;
+   color: #999999;
+   margin-bottom: 8px;
+  }
+  .post-title {
+   font-size: 1.5em;
+   font-weight: 600;
+   color: #000000;
+   margin: 8px 0 12px 0;
+   text-decoration: none;
+  }
+  .post-title a {
+   color: #000000;
+   text-decoration: none;
+  }
+  .post-title a:hover {
+   color: #5d9cec;
+  }
+  .post-excerpt {
+   color: #666666;
+   line-height: 1.6;
+   font-size: 0.95em;
+  }
+  .wrapper-masthead, .wrapper-footer {
+   display: none;
+  }
+ </style>
+ </head>
+ <body>
+ <div class="clean-list-container">
+  <h1 class="clean-list-title">Clean list</h1>
+  <div class="clean-list-box">
+   {% for post in site.posts limit:10 %}
+   <div class="post-item">
+    <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+    <h2 class="post-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+    <div class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</div>
+   </div>
+   {% endfor %}
+  </div>
+ </div>
+ 
+ <div id="main" role="main" class="container" style="display:none;">
+  {{ content }}
+ </div>
+ 
+ <div class="wrapper-footer">
+  <div class="container">
+   <footer class="footer">
+    {% include svg-icons.html %}
+   </footer>
+  </div>
+ </div>
+ {% include analytics.html %}
+ </body>
 </html>
