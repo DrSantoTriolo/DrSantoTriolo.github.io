@@ -32,6 +32,14 @@ body {
   width: 100%;
 }
 
+#main.container {
+  max-width: 1200px;
+  width: 100%;
+  padding-left: clamp(20px, 8vw, 120px);
+  padding-right: clamp(20px, 8vw, 120px);
+  box-sizing: border-box;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Times New Roman", Times, serif;
 	color: $darkerGray;
@@ -257,6 +265,8 @@ nav {
 .posts-list {
   display: grid;
   gap: 40px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .post-preview {
