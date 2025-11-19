@@ -1,120 +1,207 @@
-> March, 2016: If you're on an old version of Jekyll Now and run into a) build warnings or b) syntax highlighting issues caused by [Jekyll 3 and GitHub Pages updates](https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0), just :sparkles:[update your _config.yml](https://github.com/barryclark/jekyll-now/pull/445/files):sparkles: and you'll be set!
+# Personal Minimal Blog
 
-# Jekyll Now
+A clean, minimal personal blog perfect for technical writing, debugging stories, and tutorials. Built with Jekyll and optimized for GitHub Pages.
 
-**Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
+## Features
 
-**Jekyll Now** makes it easier to create your Jekyll blog, by eliminating a lot of the up front setup.
-
-- You don't need to touch the command line
-- You don't need to install/configure ruby, rvm/rbenv, ruby gems :relaxed:
-- You don't need to install runtime dependencies like markdown processors, Pygments, etc
-- If you're on Windows, this will make setting up Jekyll a lot easier
-- It's easy to try out, you can just delete your forked repository if you don't like it
-
-In a few minutes you'll be set up with a minimal, responsive blog like the one below giving you more time to spend on writing epic blog posts!
-
-![Jekyll Now Theme Screenshot](/images/jekyll-now-theme-screenshot.jpg "Jekyll Now Theme Screenshot")
+- **Minimal Design**: Clean, Substack-inspired aesthetic focused on readability
+- **Responsive**: Works beautifully on all devices
+- **Code Highlighting**: Syntax highlighting for code snippets
+- **Comments**: Disqus integration ready
+- **RSS Feed**: Auto-generated feed for subscribers
+- **SEO Optimized**: Meta tags and sitemap included
 
 ## Quick Start
 
-### Step 1) Fork Jekyll Now to your User Repository
+### 1. Customize Your Site
 
-Fork this repo, then rename the repository to yourgithubusername.github.io.
+Edit `_config.yml` with your information:
 
-Your Jekyll blog will often be viewable immediately at <https://yourgithubusername.github.io> (if it's not, you can often force it to build by completing step 2)
+```yaml
+name: Your Name
+description: Technical writing, debugging, and tutorials
+url: https://yourusername.github.io
+```
 
-![Step 1](/images/step1.gif "Step 1")
+### 2. Update Social Links
 
-### Step 2) Customize and view your site
+In `_config.yml`, update the `footer-links` section:
 
-Enter your site name, description, avatar and many other options by editing the _config.yml file. You can easily turn on Google Analytics tracking, Disqus commenting and social icons here too.
+```yaml
+footer-links:
+  email: your.email@example.com
+  github: yourusername
+  twitter: yourusername
+  linkedin: yourusername
+```
 
-Making a change to _config.yml (or any file in your repository) will force GitHub Pages to rebuild your site with jekyll. Your rebuilt site will be viewable a few seconds later at <https://yourgithubusername.github.io> - if not, give it ten minutes as GitHub suggests and it'll appear soon
+### 3. Add Your Avatar (Optional)
 
-> There are 3 different ways that you can make changes to your blog's files:
+Uncomment and update the avatar line in `_config.yml`:
 
-> 1. Edit files within your new username.github.io repository in the browser at GitHub.com (shown below).
-> 2. Use a third party GitHub content editor, like [Prose by Development Seed](http://prose.io). It's optimized for use with Jekyll making markdown editing, writing drafts, and uploading images really easy.
-> 3. Clone down your repository and make updates locally, then push them to your GitHub repository.
+```yaml
+avatar: https://github.com/yourusername.png
+```
 
-![_config.yml](/images/config.png "_config.yml")
+### 4. Customize About & Projects Pages
 
-### Step 3) Publish your first blog post
+- Edit `about.md` to tell your story
+- Edit `projects.md` to showcase your work
 
-Edit `/_posts/2014-3-3-Hello-World.md` to publish your first blog post. This [Markdown Cheatsheet](http://www.jekyllnow.com/Markdown-Style-Guide/) might come in handy.
+### 5. Write Your First Post
 
-![First Post](/images/first-post.png "First Post")
+Create a new file in `_posts/` with the format: `YYYY-MM-DD-title.md`
 
-> You can add additional posts in the browser on GitHub.com too! Just hit the + icon in `/_posts/` to create new content. Just make sure to include the [front-matter](http://jekyllrb.com/docs/frontmatter/) block at the top of each new blog post and make sure the post's filename is in this format: year-month-day-title.md
+```markdown
+---
+layout: post
+title: My First Post
+---
 
-## Local Development
+Your content here...
+```
 
-1. Install Jekyll and plug-ins in one fell swoop. `gem install github-pages` This mirrors the plug-ins used by GitHub Pages on your local machine including Jekyll, Sass, etc.
-2. Clone down your fork `git clone https://github.com/yourusername/yourusername.github.io.git`
-3. Serve the site and watch for markup/sass changes `jekyll serve`
-4. View your website at http://127.0.0.1:4000/
-5. Commit any changes and push everything to the master branch of your GitHub user repository. GitHub Pages will then rebuild and serve your website.
+## Adding Comments with Disqus
 
-## Moar!
+1. Go to [disqus.com](https://disqus.com) and create an account
+2. Click "Get Started" and choose "I want to install Disqus on my site"
+3. Fill in your site details to create a new site
+4. Copy your **Disqus shortname** (found in your site settings)
+5. Add it to `_config.yml`:
 
-I've created a more detailed walkthrough, [**Build A Blog With Jekyll And GitHub Pages**](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/) over at the Smashing Magazine website. Check it out if you'd like a more detailed walkthrough and some background on Jekyll. :metal:
+```yaml
+disqus: your-disqus-shortname
+```
 
-It covers:
+Comments will now appear at the bottom of all blog posts!
 
-- A more detailed walkthrough of setting up your Jekyll blog
-- Common issues that you might encounter while using Jekyll
-- Importing from Wordpress, using your own domain name, and blogging in your favorite editor
-- Theming in Jekyll, with Liquid templating examples
-- A quick look at Jekyll 2.0’s new features, including Sass/Coffeescript support and Collections
+## Publishing to GitHub Pages
 
-## Jekyll Now Features
+1. Make sure you're on your feature branch:
+   ```bash
+   git status
+   ```
 
-✓ Command-line free _fork-first workflow_, using GitHub.com to create, customize and post to your blog  
-✓ Fully responsive and mobile optimized base theme (**[Theme Demo](http://jekyllnow.com)**)  
-✓ Sass/Coffeescript support using Jekyll 2.0  
-✓ Free hosting on your GitHub Pages user site  
-✓ Markdown blogging  
-✓ Syntax highlighting  
-✓ Disqus commenting  
-✓ Google Analytics integration  
-✓ SVG social icons for your footer  
-✓ 3 http requests, including your avatar  
+2. Add and commit your changes:
+   ```bash
+   git add .
+   git commit -m "Update personal blog"
+   ```
 
-✘ No installing dependencies
-✘ No need to set up local development  
-✘ No configuring plugins  
-✘ No need to spend time on theming  
-✘ More time to code other things ... wait ✓!  
+3. Push to GitHub:
+   ```bash
+   git push -u origin your-branch-name
+   ```
 
-## Questions?
+4. Create a pull request and merge to your main branch
 
-[Open an Issue](https://github.com/barryclark/jekyll-now/issues/new) and let's chat!
+5. Your site will be live at: `https://yourusername.github.io`
 
-## Other forkable themes
+## Writing Tips
 
-You can use the [Quick Start](https://github.com/barryclark/jekyll-now#quick-start) workflow with other themes that are set up to be forked too! Here are some of my favorites:
+### Code Blocks
 
-- [Hyde](https://github.com/poole/hyde) by MDO
-- [Lanyon](https://github.com/poole/lanyon) by MDO
-- [mojombo.github.io](https://github.com/mojombo/mojombo.github.io) by Tom Preston-Werner
-- [Left](https://github.com/holman/left) by Zach Holman
-- [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) by Michael Rose
-- [Skinny Bones](https://github.com/mmistakes/skinny-bones-jekyll) by Michael Rose
+Use triple backticks with language specification:
 
-## Credits
+\`\`\`javascript
+const example = "code";
+\`\`\`
 
-- [Jekyll](https://github.com/jekyll/jekyll) - Thanks to its creators, contributors and maintainers.
-- [SVG icons](https://github.com/neilorangepeel/Free-Social-Icons) - Thanks, Neil Orange Peel. They're beautiful.
-- [Solarized Light Pygments](https://gist.github.com/edwardhotchkiss/2005058) - Thanks, Edward.
-- [Joel Glovier](http://joelglovier.com/writing/) - Great Jekyll articles. I used Joel's feed.xml in this repository.
-- [David Furnes](https://github.com/dfurnes), [Jon Uy](https://github.com/jonuy), [Luke Patton](https://github.com/lkpttn) - Thanks for the design/code reviews.
-- [Bart Kiers](https://github.com/bkiers), [Florian Simon](https://github.com/vermluh), [Henry Stanley](https://github.com/henryaj), [Hun Jae Lee](https://github.com/hunjaelee), [Javier Cejudo](https://github.com/javiercejudo), [Peter Etelej](https://github.com/etelej), [Ben Abbott](https://github.com/jaminscript), [Ray Nicholus](https://github.com/rnicholus), [Erin Grand](https://github.com/eringrand), [Léo Colombaro](https://github.com/LeoColomb), [Dean Attali](https://github.com/daattali), [Clayton Errington](https://github.com/cjerrington), [Colton Fitzgerald](https://github.com/coltonfitzgerald), [Trace Mayer](https://github.com/sunnankar) - Thanks for your [fantastic contributions](https://github.com/barryclark/jekyll-now/commits/master) to the project!
+### Inline Code
 
-## Contributing
+Use single backticks: \`inline code\`
 
-Issues and Pull Requests are greatly appreciated. If you've never contributed to an open source project before I'm more than happy to walk you through how to create a pull request.
+### Images
 
-You can start by [opening an issue](https://github.com/barryclark/jekyll-now/issues/new) describing the problem that you're looking to resolve and we'll go from there.
+```markdown
+![Alt text](/images/image.png)
+```
 
-I want to keep Jekyll Now as minimal as possible. Every line of code should be one that's useful to 90% of the people using it. Please bear that in mind when submitting feature requests. If it's not something that most people will use, it probably won't get merged. :guardsman:
+### Links
+
+```markdown
+[Link text](https://example.com)
+```
+
+## Customization
+
+### Colors
+
+Edit `_sass/_variables.scss` to change colors:
+
+```scss
+$blue: #4183C4;
+$black: #000;
+$darkGray: #333;
+```
+
+### Fonts
+
+Fonts are defined in `_sass/_variables.scss`:
+
+```scss
+$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$georgia: Georgia, serif;
+```
+
+### Layout Width
+
+Adjust in `style.scss`:
+
+```scss
+.container {
+  max-width: 680px; // Change this value
+}
+```
+
+## Local Development (Optional)
+
+To preview locally:
+
+1. Install Ruby and Jekyll:
+   ```bash
+   gem install jekyll bundler
+   ```
+
+2. Install dependencies:
+   ```bash
+   bundle install
+   ```
+
+3. Run locally:
+   ```bash
+   jekyll serve
+   ```
+
+4. View at: `http://localhost:4000`
+
+## File Structure
+
+```
+.
+├── _config.yml          # Site configuration
+├── _layouts/            # Page templates
+│   ├── default.html     # Base template
+│   ├── post.html        # Blog post template
+│   └── page.html        # Page template
+├── _posts/              # Your blog posts (add new posts here)
+├── _sass/               # SCSS partials
+├── about.md             # About page
+├── projects.md          # Projects page
+├── index.html           # Homepage
+└── style.scss           # Main stylesheet
+```
+
+## Support
+
+- [Jekyll Documentation](https://jekyllrb.com/docs/)
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- [Markdown Guide](https://www.markdownguide.org/)
+
+## License
+
+MIT License - feel free to use and modify as you wish!
+
+---
+
+**Happy blogging!** 🚀
