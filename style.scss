@@ -271,6 +271,105 @@ nav {
   }
 }
 
+//
+// .email-subscription
+//
+
+.email-subscription {
+  margin: 50px 0;
+  padding: 40px 0;
+  border-top: 1px solid $lightGray;
+  border-bottom: 1px solid $lightGray;
+
+  .subscription-container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: $darkerGray;
+  }
+
+  .subscription-description {
+    margin: 0 0 25px;
+    color: $gray;
+    font-size: 16px;
+  }
+
+  form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-family: $helvetica;
+    border: 1px solid $lightGray;
+    border-radius: 3px;
+    background: $white;
+    color: $darkGray;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $blue;
+    }
+
+    &::placeholder {
+      color: $gray;
+    }
+
+    @include mobile {
+      min-width: 100%;
+    }
+  }
+
+  input[type="submit"] {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-family: $helveticaNeue;
+    font-weight: bold;
+    color: $white;
+    background: $blue;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: darken($blue, 10%);
+    }
+
+    &:active {
+      background: darken($blue, 15%);
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  .config-note {
+    width: 100%;
+    margin: 10px 0 0;
+    color: $gray;
+    font-size: 14px;
+  }
+}
+
 .wrapper-footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
