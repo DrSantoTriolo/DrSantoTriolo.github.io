@@ -39,6 +39,19 @@ disqus:
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics:
 
+# Newsletter/Email subscription settings
+# Set enabled to true to show the subscription form
+newsletter:
+  enabled: true
+  heading: "Subscribe to updates"
+  description: "Get occasional updates on new ideas, essays, and projects."
+  # Choose service: "buttondown", "custom", or leave blank for a placeholder
+  service: "buttondown"
+  # For Buttondown: enter your username (the part after buttondown.email/)
+  buttondown_username: "yourusername"
+  # For custom service: enter your form action URL
+  # form_action: "https://your-service.com/subscribe"
+
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
 url: http://semi-healthy.blog
