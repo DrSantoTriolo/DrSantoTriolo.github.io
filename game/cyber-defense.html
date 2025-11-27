@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Defense - Internet Safety Game</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      overflow: hidden;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      font-family: 'Arial', sans-serif;
+    }
+    canvas {
+      display: block;
+      background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 100%);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.3);
+      margin: 0 auto;
+    }
+    #gameInfo {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      z-index: 10;
+    }
+    #gameInfo h1 {
+      color: #00ff88;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00ff88;
+    }
+    #gameInfo button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #00ff88;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    #gameInfo button:hover {
+      background: #00cc6a;
+      transform: scale(1.05);
+    }
+    .hidden { display: none; }
+
+    /* Touch Controls */
+    #touchControls {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      display: none;
+      z-index: 100;
+    }
+    @media (hover: none) and (pointer: coarse) {
+      #touchControls { display: flex; }
+    }
+    .touch-button {
+      flex: 1;
+      background: rgba(0, 255, 136, 0.3);
+      border: 3px solid rgba(0, 255, 136, 0.8);
+      border-radius: 10px;
+      margin: 10px;
+      font-size: 40px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 255, 136, 1);
+      transition: all 0.1s;
+    }
+    .touch-button:active {
+      background: rgba(0, 255, 136, 0.6);
+      transform: scale(0.95);
+    }
+    #shootButton {
+      background: rgba(255, 255, 0, 0.3);
+      border-color: rgba(255, 255, 0, 0.8);
+      text-shadow: 0 0 10px rgba(255, 255, 0, 1);
+    }
+    #shootButton:active {
+      background: rgba(255, 255, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+<div id="gameInfo">
+  <h1>🛡️ Cyber Defense</h1>
+  <p><strong>Mission:</strong> Protect the internet!</p>
+  <p>🎯 <strong>Collect</strong> green items (good security practices)</p>
+  <p>💥 <strong>Shoot</strong> red items (scams and threats)</p>
+  <p><br><strong>Desktop:</strong> ⬅️ ➡️ Move | SPACE Shoot</p>
+  <p><strong>Mobile:</strong> Use on-screen buttons</p>
+  <button onclick="startGame()">Start Game</button>
+</div>
+<canvas id="gameCanvas"></canvas>
+
+<!-- Touch Controls (visible on mobile/tablets) -->
+<div id="touchControls">
+  <div id="leftButton" class="touch-button">⬅️</div>
+  <div id="shootButton" class="touch-button">🔫</div>
+  <div id="rightButton" class="touch-button">➡️</div>
+</div>
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let gameStarted = false;
+let player = {
+  x: canvas.width / 2 - 25,
+  y: canvas.height - 80,
+  width: 50,
+  height: 50,
+  speed: 7,
+  color: "#00ff88"
+};
+
+let keys = {};
+let bullets = [];
+let fallingObjects = [];
+let particles = [];
+let score = 0;
+let lives = 5;
+let level = 1;
+let messageQueue = [];
+let currentMessage = null;
+let messageTimer = 0;
+
+// Good items (collect them!)
+const goodItems = [
+  { name: "🔒 HTTPS", tip: "Always check for HTTPS in URLs!", points: 15, color: "#00ff88" },
+  { name: "🔐 2FA", tip: "Two-Factor Authentication adds extra security!", points: 15, color: "#00ff88" },
+  { name: "🔑 Strong Password", tip: "Use unique, complex passwords for each account!", points: 15, color: "#00ff88" },
+  { name: "🛡️ Antivirus", tip: "Keep your antivirus updated!", points: 15, color: "#00ff88" },
+  { name: "📚 Security Training", tip: "Stay educated about cyber threats!", points: 15, color: "#00ff88" },
+  { name: "✅ Verified", tip: "Look for verification badges on social media!", points: 15, color: "#00ff88" },
+  { name: "🔄 Update", tip: "Always install security updates promptly!", points: 15, color: "#00ff88" }
+];
+
+// Bad items (shoot them!)
+const badItems = [
+  { name: "📧 Phishing", warning: "Don't click suspicious email links!", points: 10, color: "#ff3366" },
+  { name: "🦠 Virus", warning: "Malware can steal your data!", points: 10, color: "#ff3366" },
+  { name: "💳 Scam", warning: "Never share card details via email!", points: 10, color: "#ff3366" },
+  { name: "🔗 Fake Link", warning: "Hover over links before clicking!", points: 10, color: "#ff3366" },
+  { name: "📞 Vishing", warning: "Banks won't call asking for passwords!", points: 10, color: "#ff3366" },
+  { name: "🎣 Social Engineering", warning: "Verify requests for sensitive info!", points: 10, color: "#ff3366" },
+  { name: "💰 Nigerian Prince", warning: "If it's too good to be true, it is!", points: 10, color: "#ff3366" },
+  { name: "🔓 Unsecured WiFi", warning: "Public WiFi can expose your data!", points: 10, color: "#ff3366" }
+];
+
+function showMessage(text, isGood) {
+  messageQueue.push({ text, isGood, timer: 120 });
+}
+
+function createObject() {
+  if (!gameStarted) return;
+
+  const isGood = Math.random() > 0.5;
+  const items = isGood ? goodItems : badItems;
+  const item = items[Math.floor(Math.random() * items.length)];
+
+  fallingObjects.push({
+    x: Math.random() * (canvas.width - 60) + 30,
+    y: -40,
+    width: 40,
+    height: 40,
+    speed: 1.5 + (level * 0.3),
+    isGood: isGood,
+    item: item,
+    rotation: Math.random() * Math.PI * 2
+  });
+}
+
+function createBullet() {
+  bullets.push({
+    x: player.x + player.width / 2 - 3,
+    y: player.y,
+    width: 6,
+    height: 15,
+    speed: 10
+  });
+}
+
+function createParticles(x, y, color, count = 8) {
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: x,
+      y: y,
+      vx: (Math.random() - 0.5) * 6,
+      vy: (Math.random() - 0.5) * 6,
+      life: 30,
+      color: color,
+      size: Math.random() * 4 + 2
+    });
+  }
+}
+
+function drawPlayer() {
+  // Draw shield glow
+  ctx.shadowBlur = 20;
+  ctx.shadowColor = player.color;
+
+  // Draw player (shield icon)
+  ctx.fillStyle = player.color;
+  ctx.beginPath();
+  ctx.moveTo(player.x + player.width / 2, player.y);
+  ctx.lineTo(player.x, player.y + player.height * 0.3);
+  ctx.lineTo(player.x, player.y + player.height * 0.7);
+  ctx.quadraticCurveTo(
+    player.x + player.width / 2, player.y + player.height,
+    player.x + player.width, player.y + player.height * 0.7
+  );
+  ctx.lineTo(player.x + player.width, player.y + player.height * 0.3);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.shadowBlur = 0;
+}
+
+function drawBullets() {
+  ctx.fillStyle = "#ffff00";
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = "#ffff00";
+  for (let bullet of bullets) {
+    ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+  }
+  ctx.shadowBlur = 0;
+}
+
+function drawObjects() {
+  for (let obj of fallingObjects) {
+    ctx.save();
+    ctx.translate(obj.x + obj.width / 2, obj.y + obj.height / 2);
+    ctx.rotate(obj.rotation);
+
+    // Draw glow
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = obj.item.color;
+
+    // Draw background circle
+    ctx.fillStyle = obj.item.color;
+    ctx.beginPath();
+    ctx.arc(0, 0, obj.width / 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Draw emoji/text
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = "white";
+    ctx.font = "24px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(obj.item.name.split(' ')[0], 0, 0);
+
+    ctx.restore();
+  }
+}
+
+function drawParticles() {
+  for (let p of particles) {
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.life / 30;
+    ctx.fillRect(p.x, p.y, p.size, p.size);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function updateBullets() {
+  for (let i = bullets.length - 1; i >= 0; i--) {
+    bullets[i].y -= bullets[i].speed;
+    if (bullets[i].y < 0) bullets.splice(i, 1);
+  }
+}
+
+function updateObjects() {
+  for (let i = fallingObjects.length - 1; i >= 0; i--) {
+    let obj = fallingObjects[i];
+    obj.y += obj.speed;
+    obj.rotation += 0.02;
+
+    // Check collision with bullets
+    for (let j = bullets.length - 1; j >= 0; j--) {
+      let bullet = bullets[j];
+      if (
+        bullet.x < obj.x + obj.width &&
+        bullet.x + bullet.width > obj.x &&
+        bullet.y < obj.y + obj.height &&
+        bullet.y + bullet.height > obj.y
+      ) {
+        bullets.splice(j, 1);
+
+        if (obj.isGood) {
+          // Shot a good item - penalty!
+          lives--;
+          showMessage("❌ Don't shoot security tools!", false);
+          createParticles(obj.x + obj.width / 2, obj.y + obj.height / 2, "#ff3366", 12);
+        } else {
+          // Shot a bad item - good!
+          score += obj.item.points;
+          showMessage("✅ " + obj.item.warning, true);
+          createParticles(obj.x + obj.width / 2, obj.y + obj.height / 2, "#ffff00", 12);
+        }
+        fallingObjects.splice(i, 1);
+        break;
+      }
+    }
+
+    // Check collision with player
+    if (obj &&
+        obj.y + obj.height >= player.y &&
+        obj.x < player.x + player.width &&
+        obj.x + obj.width > player.x) {
+
+      if (obj.isGood) {
+        // Collected good item - reward!
+        score += obj.item.points;
+        showMessage("💚 " + obj.item.tip, true);
+        createParticles(obj.x + obj.width / 2, obj.y + obj.height / 2, "#00ff88", 12);
+      } else {
+        // Collected bad item - penalty!
+        lives--;
+        showMessage("💔 " + obj.item.warning, false);
+        createParticles(obj.x + obj.width / 2, obj.y + obj.height / 2, "#ff3366", 12);
+      }
+      fallingObjects.splice(i, 1);
+    }
+
+    // Fell off screen
+    if (obj && obj.y > canvas.height) {
+      if (!obj.isGood) {
+        // Missed a bad item
+        lives--;
+        showMessage("⚠️ Threat escaped!", false);
+      }
+      fallingObjects.splice(i, 1);
+    }
+  }
+
+  // Level up
+  if (score >= level * 100) {
+    level++;
+    showMessage("🎊 Level " + level + " - Threats increasing!", true);
+  }
+}
+
+function updateParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    particles[i].x += particles[i].vx;
+    particles[i].y += particles[i].vy;
+    particles[i].life--;
+    if (particles[i].life <= 0) particles.splice(i, 1);
+  }
+}
+
+function drawUI() {
+  // Score and stats
+  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+  ctx.fillRect(10, 10, 250, 100);
+
+  ctx.fillStyle = "#00ff88";
+  ctx.font = "24px Arial";
+  ctx.fillText("Score: " + score, 20, 40);
+
+  // Hearts for lives
+  ctx.fillStyle = "#ff3366";
+  ctx.font = "20px Arial";
+  let heartsText = "❤️".repeat(Math.max(0, lives));
+  ctx.fillText("Lives: " + heartsText, 20, 70);
+
+  ctx.fillStyle = "#ffff00";
+  ctx.fillText("Level: " + level, 20, 100);
+
+  // Display messages
+  if (messageQueue.length > 0 && !currentMessage) {
+    currentMessage = messageQueue.shift();
+  }
+
+  if (currentMessage) {
+    currentMessage.timer--;
+    const alpha = Math.min(1, currentMessage.timer / 30);
+
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = currentMessage.isGood ? "rgba(0, 255, 136, 0.9)" : "rgba(255, 51, 102, 0.9)";
+    ctx.fillRect(canvas.width / 2 - 250, 120, 500, 60);
+
+    ctx.fillStyle = "white";
+    ctx.font = "18px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(currentMessage.text, canvas.width / 2, 155);
+    ctx.textAlign = "left";
+    ctx.globalAlpha = 1;
+
+    if (currentMessage.timer <= 0) currentMessage = null;
+  }
+
+  // Game over
+  if (lives <= 0) {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#ff3366";
+    ctx.font = "60px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 50);
+
+    ctx.fillStyle = "white";
+    ctx.font = "30px Arial";
+    ctx.fillText("Final Score: " + score, canvas.width / 2, canvas.height / 2 + 20);
+    ctx.fillText("Tap/Click to play again", canvas.width / 2, canvas.height / 2 + 70);
+    ctx.textAlign = "left";
+
+    // Add click/touch to restart
+    canvas.style.cursor = "pointer";
+  }
+}
+
+function handlePlayerMovement() {
+  if (keys["ArrowLeft"] && player.x > 0) player.x -= player.speed;
+  if (keys["ArrowRight"] && player.x + player.width < canvas.width) player.x += player.speed;
+}
+
+function gameLoop() {
+  if (!gameStarted) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw stars background
+  ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+  for (let i = 0; i < 50; i++) {
+    const x = (i * 137.5) % canvas.width;
+    const y = (i * 217.3 + Date.now() * 0.05) % canvas.height;
+    ctx.fillRect(x, y, 2, 2);
+  }
+
+  drawParticles();
+  drawPlayer();
+  drawBullets();
+  drawObjects();
+  drawUI();
+
+  if (lives > 0) {
+    updateBullets();
+    updateObjects();
+    updateParticles();
+    handlePlayerMovement();
+  }
+
+  requestAnimationFrame(gameLoop);
+}
+
+// Keyboard controls
+window.addEventListener("keydown", (e) => {
+  if (!gameStarted) return;
+  keys[e.key] = true;
+  if (e.code === "Space" && lives > 0) {
+    e.preventDefault();
+    createBullet();
+  }
+});
+
+window.addEventListener("keyup", (e) => {
+  keys[e.key] = false;
+});
+
+// Touch controls
+const leftButton = document.getElementById("leftButton");
+const rightButton = document.getElementById("rightButton");
+const shootButton = document.getElementById("shootButton");
+
+// Prevent default touch behaviors
+[leftButton, rightButton, shootButton].forEach(button => {
+  button.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+  });
+});
+
+// Left button
+leftButton.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  if (gameStarted) keys["ArrowLeft"] = true;
+});
+leftButton.addEventListener("touchend", (e) => {
+  e.preventDefault();
+  keys["ArrowLeft"] = false;
+});
+leftButton.addEventListener("touchcancel", (e) => {
+  keys["ArrowLeft"] = false;
+});
+
+// Right button
+rightButton.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  if (gameStarted) keys["ArrowRight"] = true;
+});
+rightButton.addEventListener("touchend", (e) => {
+  e.preventDefault();
+  keys["ArrowRight"] = false;
+});
+rightButton.addEventListener("touchcancel", (e) => {
+  keys["ArrowRight"] = false;
+});
+
+// Shoot button
+shootButton.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  if (gameStarted && lives > 0) {
+    createBullet();
+  }
+});
+
+// Also support touch/swipe on the canvas for movement
+let touchStartX = null;
+canvas.addEventListener("touchstart", (e) => {
+  if (!gameStarted || e.touches.length === 0) return;
+  touchStartX = e.touches[0].clientX;
+});
+
+canvas.addEventListener("touchmove", (e) => {
+  if (!gameStarted || touchStartX === null || e.touches.length === 0) return;
+  e.preventDefault();
+
+  const touchX = e.touches[0].clientX;
+  const deltaX = touchX - touchStartX;
+
+  // Move player based on touch position
+  if (Math.abs(deltaX) > 5) {
+    const targetX = player.x + deltaX * 0.5;
+    if (targetX >= 0 && targetX + player.width <= canvas.width) {
+      player.x = targetX;
+    }
+  }
+
+  touchStartX = touchX;
+});
+
+canvas.addEventListener("touchend", (e) => {
+  // Restart game on game over
+  if (lives <= 0) {
+    e.preventDefault();
+    location.reload();
+    return;
+  }
+  touchStartX = null;
+});
+
+// Tap to shoot on canvas
+canvas.addEventListener("touchstart", (e) => {
+  if (!gameStarted || lives <= 0) return;
+  // Only shoot if it's a quick tap (not a drag)
+  setTimeout(() => {
+    if (touchStartX !== null && Math.abs(e.touches[0].clientX - touchStartX) < 10) {
+      createBullet();
+    }
+  }, 100);
+});
+
+// Restart game on game over (desktop)
+canvas.addEventListener("click", () => {
+  if (lives <= 0) {
+    location.reload();
+  }
+});
+
+function startGame() {
+  gameStarted = true;
+  document.getElementById("gameInfo").classList.add("hidden");
+  setInterval(createObject, 1500);
+  showMessage("🛡️ Defend against cyber threats!", true);
+  gameLoop();
+}
+</script>
+</body>
+</html>

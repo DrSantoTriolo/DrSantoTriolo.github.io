@@ -29,6 +29,7 @@
           <nav>
             <a href="{{ site.baseurl }}/">Blog</a>
             <a href="{{ site.baseurl }}/about">About</a>
+            <a href="{{ site.baseurl }}/game">Game</a>
           </nav>
         </header>
       </div>
@@ -47,5 +48,17 @@
     </div>
 
     {% include analytics.html %}
+<!--     <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll(".accordion-item");
+
+    items.forEach(item => {
+      const title = item.querySelector(".accordion-title");
+      title.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+  });
+</script> -->
   </body>
 </html>

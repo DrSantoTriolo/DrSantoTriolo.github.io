@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games - Benefit's Collection</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .subtitle {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2em;
+      margin-bottom: 50px;
+    }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .game-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .game-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+    .game-icon {
+      font-size: 4em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .game-title {
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .game-description {
+      color: #666;
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .game-features {
+      list-style: none;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid #f0f0f0;
+    }
+    .game-features li {
+      color: #555;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .game-features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+    .play-button {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      margin-top: 20px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .play-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    .new-badge {
+      display: inline-block;
+      background: #ff6b6b;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.7em;
+      margin-left: 10px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .back-link a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 25px;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .back-link a:hover {
+      background: white;
+      color: #667eea;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎮 Game Collection</h1>
+    <p class="subtitle">Fun games with educational value</p>
+
+    <div class="games-grid">
+      <!-- Cyber Defense Game -->
+      <div class="game-card">
+        <div class="game-icon">🛡️</div>
+        <h2 class="game-title">
+          Cyber Defense
+          <span class="new-badge">NEW</span>
+        </h2>
+        <p class="game-description">
+          Learn about internet safety while defending against cyber threats!
+          Shoot scams and collect security best practices.
+        </p>
+        <ul class="game-features">
+          <li>Learn about phishing and scams</li>
+          <li>Understand security best practices</li>
+          <li>Fun shooting mechanics</li>
+          <li>Educational tips throughout gameplay</li>
+        </ul>
+        <a href="cyber-defense.html" class="play-button">🎯 Play Now</a>
+      </div>
+
+      <!-- Cyber Incident Response Simulator -->
+      <div class="game-card">
+        <div class="game-icon">🎯</div>
+        <h2 class="game-title">Cyber Incident Response Simulator</h2>
+        <p class="game-description">
+          Make critical decisions in realistic cybersecurity scenarios. Handle ransomware attacks,
+          phishing incidents, data breaches, and more. Learn through interactive tabletop simulation.
+        </p>
+        <ul class="game-features">
+          <li>6 realistic cybersecurity scenarios</li>
+          <li>Multiple choice decision-making</li>
+          <li>Educational feedback for each choice</li>
+          <li>Score-based performance rating</li>
+        </ul>
+        <a href="falling-game.html" class="play-button">🎮 Play Now</a>
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="/">← Back to Main Site</a>
+    </div>
+  </div>
+</body>
+</html>
