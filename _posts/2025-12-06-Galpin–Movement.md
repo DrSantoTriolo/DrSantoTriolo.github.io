@@ -33,11 +33,8 @@ Supplements should not be used to mask deficiencies in foundational behaviors. T
 * **Total Daily Protein:** 140 grams (Target: 1g per lb body weight).  
 * **Workout-Window Carbohydrates:** 70 grams (Post-workout specific allocation).  
   * *Note:* Remaining daily carbs depend on total energy expenditure.  
-  * *Mechanism:* High-intensity exercise drains muscle glycogen. Eating carbs post-workout utilizes GLUT-4 transporters to refill muscle energy without spiking insulin-driven fat storage as heavily.
-
-### **The "Hypersensitivity" Window**
-
-The period immediately following exercise is one where the body is "hypersensitized to nutrients." It is critical to rehydrate, replenish muscle glycogen, and rebuild tissue quickly after exercise to maximize recovery.
+  * *Mechanism:* High-intensity exercise drains muscle glycogen. Eating carbs post-workout utilizes GLUT-4 transporters to refill muscle energy without spiking insulin-driven fat storage as heavily.  
+* **The "Hypersensitivity" Window:** The period immediately following exercise is one where the body is "hypersensitized to nutrients." It is critical to rehydrate, replenish muscle glycogen, and rebuild tissue quickly after exercise to maximize recovery.
 
 ---
 
