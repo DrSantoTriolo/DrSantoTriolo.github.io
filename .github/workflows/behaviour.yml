@@ -25,6 +25,7 @@ jobs:
       - name: Run Behaviour Study Task
         env:
           OPENAI_API_KEY_NEWSLETTERS: ${{ secrets.OPENAI_API_KEY_NEWSLETTERS }}
+          XAI_API_KEY_NEWSLETTERS: ${{ secrets.XAI_API_KEY_NEWSLETTERS }}
         run: python main.py --task behaviour_analysis
 
       - name: Commit and Push changes
