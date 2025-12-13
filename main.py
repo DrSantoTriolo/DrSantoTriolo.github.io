@@ -58,20 +58,30 @@ async def main():
     
     parser = argparse.ArgumentParser(description="Run generation tasks")
     parser.add_argument("--dry-run", action="store_true", help="Print plan without calling APIs")
+    parser.add_argument("--task", type=str, help="Run a specific task by name")
     args = parser.parse_args()
 
     try:
         config = load_config()
-        tasks = config.get("tasks", {})
+        all_tasks = config.get("tasks", {})
         
-        if not tasks:
+        if not all_tasks:
             logger.warning("No tasks found in config/tasks.yaml")
             return
+
+        # Determine which tasks to run
+        if args.task:
+            if args.task not in all_tasks:
+                logger.error(f"Task '{args.task}' not found in configuration. Available tasks: {list(all_tasks.keys())}")
+                return
+            tasks_to_run = {args.task: all_tasks[args.task]}
+        else:
+            tasks_to_run = all_tasks
 
         # Create tasks for parallel execution
         coroutines = [
             process_task(name, data, args.dry_run) 
-            for name, data in tasks.items()
+            for name, data in tasks_to_run.items()
         ]
         
         await asyncio.gather(*coroutines)
