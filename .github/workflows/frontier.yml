@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Frontier Labs Task
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_NEWSLETTERS }}
+          OPENAI_API_KEY_NEWSLETTERS: ${{ secrets.OPENAI_API_KEY_NEWSLETTERS }}
         run: python main.py --task frontier_labs
 
       - name: Commit and Push changes
