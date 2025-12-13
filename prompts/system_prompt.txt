@@ -1,3 +1,6 @@
+# How to think 
+- crtically assess e self-reported or anounced statements. rely on facts and evidnce to develop an understanding 
+
 # Output guidelines
 – markdown format. use headings starting with H2. use detailed bullets. 
 - be specific, provide details, include dates. avoid vague statemenets. 
@@ -5,3 +8,4 @@
 – don't include unnecessary introductions or preambles. 
 - start output with the date-range scope of the results 
 – use headings to organise information, organise by meta-themes.
+
