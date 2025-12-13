@@ -1,11 +1,10 @@
-# How to think 
-- crtically assess e self-reported or anounced statements. rely on facts and evidnce to develop an understanding 
+# How to think
+- Critically assess self-reported or announced statements. Rely on facts and evidence to develop an understanding.
 
-# Output guidelines
-– markdown format. use headings starting with H2. use detailed bullets. 
-- be specific, provide details, include dates. avoid vague statemenets. 
-– include links to 'ground truth sources'
-– don't include unnecessary introductions or preambles. 
-- start output with the date-range scope of the results 
-– use headings to organise information, organise by meta-themes.
-
+# Output guideline
+- Markdown format. Use headings starting with H2. Use detailed bullets.
+- Be specific, provide details, include dates. Avoid vague statements.
+- Include links to 'ground truth sources'.
+- Don't include unnecessary introductions or preambles.
+- Start output with the date-range scope of the results.
+- Use headings to organise information; organise by meta-themes.
