@@ -1,186 +1,83 @@
-import os
-import sys
+import asyncio
 import argparse
-from datetime import datetime
-from openai import OpenAI
-from dotenv import load_dotenv
+import os
+import logging
+from src.utils import load_config, setup_logging, read_file, save_file
+from src.client_factory import ClientFactory
+from src.generator import ContentGenerator
+from src.models import TaskConfig
 
-# Load environment variables from .env file
-load_dotenv()
+logger = logging.getLogger(__name__)
 
-# --- Configuration ---
-
-# Central API Key retrieval
-# This looks for an environment variable named 'OPENAI_API_KEY'
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-SYSTEM_PROMPT_FILE_PATH = "prompts/system_prompt"
-OUTPUT_DIR = "_roll"
-
-# List of tasks to execute with specific model configurations
-TASKS = {
-    "frontier": {
-        "prompt_file": "prompts/frontier_labs.txt",
-        "title_prefix": "Frontier Labs",
-        "filename_suffix": "News",
-        "tags": ["technology", "news"],
-        "model_config": {
-            "model": "gpt-5.2",
-            "text": {
-                "format": {"type": "text"},
-                "verbosity": "medium"
-            },
-            "reasoning": {
-                "effort": "high",
-                "summary": "auto"
-            },
-            "tools": [
-                {
-                    "type": "web_search",
-                    "user_location": {"type": "approximate"},
-                    "search_context_size": "medium"
-                }
-            ],
-            "store": True,
-            "include": ["reasoning.encrypted_content", "web_search_call.action.sources"]
-        }
-    },
-    "behaviour": {
-        "prompt_file": "prompts/behaviour_study",
-        "title_prefix": "Behaviour Study",
-        "filename_suffix": "Behaviour",
-        "tags": ["psychology", "study"],
-        "model_config": {
-            "model": "gpt-5.2-light", 
-            "text": {
-                "format": {"type": "text"},
-                "verbosity": "verbose" 
-            },
-            "reasoning": {
-                "effort": "medium", 
-                "summary": "auto"
-            },
-            "tools": [],
-            "store": False,
-            "include": []
-        }
-    }
-}
-
-AUTHOR = "modelname"
-
-# ---------------------
-
-def get_client():
-    """Returns a configured OpenAI client."""
-    if not OPENAI_API_KEY:
-        print("Error: OPENAI_API_KEY environment variable is missing.")
-        # We exit here because without a key, we can't do anything.
-        sys.exit(1)
-    return OpenAI(api_key=OPENAI_API_KEY)
-
-def load_prompt(filepath):
-    """Reads the prompt content from a specific file."""
+async def process_task(task_name, task_data, dry_run=False):
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            return f.read().strip()
-    except FileNotFoundError:
-        print(f"Error: Prompt file not found at {filepath}")
-        return None
+        logger.info(f"Processing task: {task_name}")
+        
+        # Validate task config
+        config = TaskConfig(**task_data)
+        
+        # Read prompts
+        prompt_text = read_file(config.prompt_file)
+        system_prompt = read_file(config.system_prompt_file)
+        
+        if dry_run:
+            logger.info(f"[Dry Run] Would generate content for {task_name} using {config.provider}/{config.model}")
+            logger.info(f"[Dry Run] System Prompt: {system_prompt[:50]}...")
+            logger.info(f"[Dry Run] User Prompt: {prompt_text[:50]}...")
+            return
 
-def generate_content(client, prompt_text, system_prompt_text, config):
-    """Sends request to OpenAI API using the specific configuration."""
-    try:
-        # Construct the arguments dynamically from the config
-        response = client.responses.create(
-            input=[
-                {"role": "system", "content": system_prompt_text},
-                {"role": "user", "content": prompt_text}
-            ],
-            **config
-        )
-        return response.output
-    except Exception as e:
-        print(f"Error calling OpenAI API: {e}")
-        return None
-
-def save_markdown_file(content_body, title_prefix, filename_suffix, tags):
-    """Constructs frontmatter and saves the file."""
-    if not content_body:
-        return
-
-    now = datetime.now()
-    date_str = now.strftime("%Y-%m-%d")
-    filename = f"{date_str}-{filename_suffix}.md"
-    filepath = os.path.join(OUTPUT_DIR, filename)
-
-    tags_str = ", ".join(tags)
-    tags_yaml_format = f"[{tags_str}]"
-
-    frontmatter = f"""---
-title: "{title_prefix} for {date_str}"
-date: {date_str}
-tags: {tags_yaml_format}
-author: "{AUTHOR}"
----
-
-"""
-
-    full_content = frontmatter + content_body
-
-    # Ensure output directory exists
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-    try:
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(full_content)
-        print(f"Success: Generated {filepath}")
-    except Exception as e:
-        print(f"Error writing file {filepath}: {e}")
-
-def run_task(client, system_prompt_text, task_key):
-    task = TASKS.get(task_key)
-    if not task:
-        print(f"Error: Task '{task_key}' not found.")
-        return
-
-    print(f"\nProcessing task: {task['title_prefix']}...")
-    prompt_path = task['prompt_file']
-    prompt_text = load_prompt(prompt_path)
-    
-    if prompt_text:
-        llm_response = generate_content(client, prompt_text, system_prompt_text, task['model_config'])
-        if llm_response:
-            save_markdown_file(
-                llm_response, 
-                task['title_prefix'], 
-                task['filename_suffix'], 
-                task['tags']
+        # Initialize client and generator
+        client = ClientFactory.get_client(config.provider)
+        generator = ContentGenerator(client)
+        
+        # Generate content
+        # Run in executor because client calls are synchronous
+        loop = asyncio.get_running_loop()
+        content = await loop.run_in_executor(
+            None, 
+            lambda: generator.generate_content(
+                provider=config.provider,
+                model=config.model,
+                prompt_text=prompt_text,
+                system_prompt=system_prompt,
+                reasoning_effort=config.reasoning_effort,
+                verbosity=config.verbosity
             )
-        else:
-            print(f"Failed to generate content for {prompt_path}")
-    else:
-        print(f"Skipping task due to missing prompt file: {prompt_path}")
+        )
+        
+        # Save output
+        output_path = os.path.join("_roll", f"{task_name}.md")
+        save_file(output_path, content)
+        logger.info(f"Task {task_name} completed. Output saved to {output_path}")
 
-def main():
-    parser = argparse.ArgumentParser(description="Generate content using OpenAI API.")
-    parser.add_argument("--task", type=str, choices=TASKS.keys(), help="Specific task to run (frontier or behaviour)")
+    except Exception as e:
+        logger.error(f"Failed to process task {task_name}: {e}")
+
+async def main():
+    setup_logging()
+    
+    parser = argparse.ArgumentParser(description="Run generation tasks")
+    parser.add_argument("--dry-run", action="store_true", help="Print plan without calling APIs")
     args = parser.parse_args()
 
-    print("Starting Generator...")
-    
-    client = get_client()
-    system_prompt_text = load_prompt(SYSTEM_PROMPT_FILE_PATH)
-    if not system_prompt_text:
-        print("System prompt missing. Exiting.")
-        return
+    try:
+        config = load_config()
+        tasks = config.get("tasks", {})
+        
+        if not tasks:
+            logger.warning("No tasks found in config/tasks.yaml")
+            return
 
-    if args.task:
-        run_task(client, system_prompt_text, args.task)
-    else:
-        # Run all tasks if no specific task is requested
-        for key in TASKS:
-            run_task(client, system_prompt_text, key)
+        # Create tasks for parallel execution
+        coroutines = [
+            process_task(name, data, args.dry_run) 
+            for name, data in tasks.items()
+        ]
+        
+        await asyncio.gather(*coroutines)
+        
+    except Exception as e:
+        logger.error(f"Application error: {e}")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

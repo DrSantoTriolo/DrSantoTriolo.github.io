@@ -1,0 +1,14 @@
+tasks:
+  frontier_labs:
+    prompt_file: "prompts/frontier_labs.txt"
+    system_prompt_file: "prompts/system_prompt.txt"
+    provider: "openai"
+    model: "gpt-5.2"
+    reasoning_effort: "medium"
+    verbosity: "medium"
+  
+  behaviour_analysis:
+    prompt_file: "prompts/behaviour_study.txt"
+    system_prompt_file: "prompts/system_prompt.txt"
+    provider: "xai"
+    model: "grok-beta"
