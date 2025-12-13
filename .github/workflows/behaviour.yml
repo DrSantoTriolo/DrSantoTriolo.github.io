@@ -25,7 +25,7 @@ jobs:
       - name: Run Behaviour Study Task
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_NEWSLETTERS }}
-        run: python main.py --task behaviour
+        run: python main.py --task behaviour_analysis
 
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
