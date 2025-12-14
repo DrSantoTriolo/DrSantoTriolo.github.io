@@ -44,6 +44,15 @@ class ContentGenerator:
                             ]
                         }
                     ],
+                    tools=[
+                        {
+                            "type": "web_search",
+                            "user_location": {
+                                "type": "approximate"
+                            },
+                            "search_context_size": "high"
+                        }
+                    ],
                     text={
                         "format": {
                             "type": "text"
