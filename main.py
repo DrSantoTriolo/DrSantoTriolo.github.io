@@ -2,6 +2,7 @@ import asyncio
 import argparse
 import os
 import logging
+from datetime import datetime
 from src.utils import load_config, setup_logging, read_file, save_file
 from src.client_factory import ClientFactory
 from src.generator import ContentGenerator
@@ -45,8 +46,9 @@ async def process_task(task_name, task_data, dry_run=False):
             )
         )
         
-        # Save output
-        output_path = os.path.join("_roll", f"{task_name}.md")
+        # Save output with date prefix
+        date_prefix = datetime.now().strftime("%Y-%m-%d")
+        output_path = os.path.join("_roll", f"{date_prefix}-{task_name}.md")
         save_file(output_path, content)
         logger.info(f"Task {task_name} completed. Output saved to {output_path}")
 
