@@ -16,17 +16,44 @@ class ContentGenerator:
             # Condition A: OpenAI GPT-5.2 (Responses API)
             if provider == "openai" and "gpt-5.2" in model:
                 logger.info(f"Using OpenAI Responses API for model {model}")
-                
+
                 # Extract specific GPT-5.2 parameters from kwargs
                 reasoning_effort = kwargs.get("reasoning_effort", "medium")
+                reasoning_summary = kwargs.get("reasoning_summary", "auto")
                 verbosity = kwargs.get("verbosity", "medium")
 
                 response = self.client.responses.create(
                     model=model,
-                    instructions=system_prompt,
-                    input=prompt_text,
-                    reasoning={"effort": reasoning_effort},
-                    text={"verbosity": verbosity}
+                    input=[
+                        {
+                            "role": "developer",
+                            "content": [
+                                {
+                                    "type": "input_text",
+                                    "text": system_prompt
+                                }
+                            ]
+                        },
+                        {
+                            "role": "user",
+                            "content": [
+                                {
+                                    "type": "input_text",
+                                    "text": prompt_text
+                                }
+                            ]
+                        }
+                    ],
+                    text={
+                        "format": {
+                            "type": "text"
+                        },
+                        "verbosity": verbosity
+                    },
+                    reasoning={
+                        "effort": reasoning_effort,
+                        "summary": reasoning_summary
+                    }
                 )
 
                 # Fix for the parsing bug: Iterate properly
