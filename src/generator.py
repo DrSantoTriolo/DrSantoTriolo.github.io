@@ -20,14 +20,11 @@ class ContentGenerator:
                 # Extract specific GPT-5.2 parameters from kwargs
                 reasoning_effort = kwargs.get("reasoning_effort", "medium")
                 verbosity = kwargs.get("verbosity", "medium")
-                
-                # Construct the input string (system prompt + user prompt)
-                # The Responses API uses a single 'input' field usually, or we can prepend system prompt
-                full_input = f"{system_prompt}\n\n{prompt_text}"
 
                 response = self.client.responses.create(
                     model=model,
-                    input=full_input,
+                    instructions=system_prompt,
+                    input=prompt_text,
                     reasoning={"effort": reasoning_effort},
                     text={"verbosity": verbosity}
                 )
