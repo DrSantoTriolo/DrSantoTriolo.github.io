@@ -46,9 +46,9 @@ async def process_task(task_name, task_data, dry_run=False):
             )
         )
         
-        # Save output with date prefix
-        date_prefix = datetime.now().strftime("%Y-%m-%d")
-        output_path = os.path.join("_roll", f"{date_prefix}-{task_name}.md")
+        # Save output with timestamp prefix
+        timestamp_prefix = datetime.now().strftime("%Y-%m-%d-%H%M")
+        output_path = os.path.join("_roll", f"{timestamp_prefix}-{task_name}.md")
         save_file(output_path, content)
         logger.info(f"Task {task_name} completed. Output saved to {output_path}")
 
