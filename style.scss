@@ -252,6 +252,20 @@ nav {
 // .main
 //
 
+.page-wrapper {
+  display: flex;
+  min-height: calc(100vh - 150px);
+}
+
+.left-column {
+  width: 200px;
+  border-right: 1px solid #000;
+  flex-shrink: 0;
+
+  @include mobile {
+    width: 60px;
+  }
+}
 
 .home {
   padding: 20px 0 40px;
