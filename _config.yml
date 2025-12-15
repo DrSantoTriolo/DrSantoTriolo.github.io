@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: KeynesWord
+name:
 
 # Short bio or description (displayed in the header)
-description: Market Musings
+description:
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/05802/05802.github.io/master/images/Avatar%20-%20Dice%2C%20Canvas.png
