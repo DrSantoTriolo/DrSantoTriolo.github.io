@@ -1,0 +1,22 @@
+---
+layout: default
+title: News
+---
+
+<section class="home">
+  <h1 class="home-title">News</h1>
+  <p class="news-feed-link"><a href="{{ site.baseurl }}/news-feed.xml">RSS Feed</a></p>
+  <div class="posts-list">
+    {% assign news_items = site.roll | where_exp: "item", "item.published != false" | sort: 'date' | reverse %}
+    {% for item in news_items %}
+    <article class="post-preview">
+      <header>
+        <h2 class="post-preview-title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h2>
+        <p class="post-preview-meta">{{ item.date | date: "%B %-d, %Y" }}</p>
+      </header>
+      <p class="post-preview-excerpt">{{ item.excerpt | strip_html | truncatewords: 40 }}</p>
+      <a class="post-preview-readmore" href="{{ item.url | relative_url }}">Read more →</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
