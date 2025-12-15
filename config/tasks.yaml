@@ -6,7 +6,7 @@ tasks:
     model: "gpt-5.2"
     reasoning_effort: "high"
     verbosity: "medium"
-    title: "Frontier Labs Weekly Digest"
+    title: "Frontier Labs"
 
   behaviour_analysis:
     prompt_file: "prompts/behaviour_study.txt"
