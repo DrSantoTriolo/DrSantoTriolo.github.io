@@ -23,7 +23,7 @@ class ClientFactory:
             
             return OpenAI(
                 api_key=api_key,
-                base_url="https://api.x.ai/v1"
+                base_url="https://api.x.ai/v1",
                 timeout=720.0
             )
         
