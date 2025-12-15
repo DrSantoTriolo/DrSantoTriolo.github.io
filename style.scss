@@ -267,6 +267,45 @@ nav {
   }
 }
 
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+
+  a {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    color: $darkerGray;
+    text-decoration: none;
+    margin-bottom: 15px;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  @include mobile {
+    padding: 10px 5px;
+
+    a {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.news-feed-link {
+  margin-bottom: 20px;
+  font-size: 14px;
+
+  a {
+    color: $gray;
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
 .home {
   padding: 20px 0 40px;
 }

@@ -1,4 +1,10 @@
-## Date-range scope: **Dec 8–14, 2025** (inclusive; “last 7 days” relative to **Sun, Dec 14, 2025**)
+---
+layout: news
+title: "Frontier Labs Weekly Digest: Dec 8–14, 2025"
+date: 2025-12-14
+---
+
+## Date-range scope: **Dec 8–14, 2025** (inclusive; "last 7 days" relative to **Sun, Dec 14, 2025**)
 
 ## Projects stopped / paused / materially scaled back
 

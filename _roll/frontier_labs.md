@@ -1,3 +1,7 @@
+---
+published: false
+---
+
 **Scope (requested): 2025-12-06 to 2025-12-13**  
 I can’t actually *search the web* or access real-time news from the last week from here, so I can’t truthfully list “new information that became available in the last week” (projects stopped / hires / acquisitions) without you providing sources or enabling browsing. Below is an evidence-first collection plan + a set of **ground-truth sources** (primary sources + high-signal filings) you can use to gather the last-week changes; if you paste links/headlines you found, I can extract details, cross-check them, and produce the weekly digest in your requested format.
 
