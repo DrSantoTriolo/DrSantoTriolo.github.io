@@ -48,22 +48,29 @@ async def process_task(task_name, task_data, dry_run=False):
         
         # Save output with timestamp prefix and Jekyll front matter
         now = datetime.now()
-        timestamp_prefix = now.strftime("%Y%m%d%H%M")
+        
+        # Standard format for the FILENAME (ensures RSS feed works)
+        file_timestamp = now.strftime("%Y-%m-%d-%H%M")
+        
+        # Special format for the URL/PERMALINK (your requested format)
+        url_timestamp = now.strftime("%Y%m%d%H%M")
+        
         date_str = now.strftime("%Y-%m-%d")
 
         # Generate title with date range
         title = config.title or task_name.replace("_", " ").title()
 
-        # Create Jekyll front matter
+        # Create Jekyll front matter with permalink
         front_matter = f"""---
 layout: news
 title: "{title}"
 date: {date_str}
+permalink: /news/{url_timestamp}_{task_name}/
 ---
 
 """
 
-        output_path = os.path.join("_roll", f"{timestamp_prefix}_{task_name}.md")
+        output_path = os.path.join("_roll", f"{file_timestamp}-{task_name}.md")
         save_file(output_path, front_matter + content)
         logger.info(f"Task {task_name} completed. Output saved to {output_path}")
 
