@@ -50,9 +50,11 @@ async def process_task(task_name, task_data, dry_run=False):
         now = datetime.now()
         
         # Standard format for the FILENAME (ensures RSS feed works)
+        # Format: YYYY-MM-DD-HHMM
         file_timestamp = now.strftime("%Y-%m-%d-%H%M")
         
-        # Special format for the URL/PERMALINK (your requested format)
+        # Special format for the URL/PERMALINK (Unique ID)
+        # Format: yyyymmddhhmm (e.g., 202512141430)
         url_timestamp = now.strftime("%Y%m%d%H%M")
         
         date_str = now.strftime("%Y-%m-%d")
@@ -61,6 +63,7 @@ async def process_task(task_name, task_data, dry_run=False):
         title = config.title or task_name.replace("_", " ").title()
 
         # Create Jekyll front matter with permalink
+        # The permalink ensures the URL is unique using the date and time
         front_matter = f"""---
 layout: news
 title: "{title}"
