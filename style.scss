@@ -35,6 +35,7 @@ body {
 #main.container {
   max-width: 1200px;
   width: 100%;
+  margin: 0 4vw 0 0;
   padding-left: clamp(20px, 8vw, 120px);
   padding-right: clamp(20px, 8vw, 120px);
   box-sizing: border-box;
