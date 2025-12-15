@@ -277,7 +277,9 @@ nav {
     font-size: 18px;
     color: $darkerGray;
     text-decoration: none;
+    margin-left: 0;
     margin-bottom: 15px;
+    display: block;
 
     &:hover {
       color: $blue;
