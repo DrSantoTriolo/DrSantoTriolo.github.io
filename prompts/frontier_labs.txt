@@ -1,9 +1,8 @@
+Search for and collect recent information about the decisions made by large organisations working on frontier AI models.
 
-Search for and collect recent information about the decisions made my large organistions working on frontier AI models. 
+Time frame: focus on the new information that has become available in the past 4 days.
 
-Time frame: focus on the new information that has become available in the 4 days. 
-
-# Topics 
-– any projects have been stopped,
-– any notable hires 
-– Aquisitions (tell me what  the focus, approach and any competive advantages of the aquired company, and any other unique details) 
+# Topics
+– any projects that have been stopped
+– any notable hires
+– Acquisitions (tell me what the focus, approach and any competitive advantages of the acquired company are, and any other unique details)
