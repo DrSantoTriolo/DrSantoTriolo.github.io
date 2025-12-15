@@ -1,5 +1,5 @@
 import logging
-from tenacity import retry, stop_after_attempt, wait_exponential
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 logger = logging.getLogger(__name__)
 
@@ -7,7 +7,7 @@ class ContentGenerator:
     def __init__(self, client):
         self.client = client
 
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
+    @retry(stop=stop_after_attempt(4), wait=wait_random_exponential(multiplier=1, min=4, max=60))
     def generate_content(self, provider, model, prompt_text, system_prompt, **kwargs):
         """
         Generates content based on the provider (OpenAI vs xAI) and model.

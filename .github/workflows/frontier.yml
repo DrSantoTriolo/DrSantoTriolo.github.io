@@ -2,8 +2,10 @@ name: Frontier Labs Generation
 
 on:
   schedule:
-    # Runs at 08:00 UTC every Monday
-    - cron: '0 8 * * 1'
+    # Runs at 02:00 UTC every Tuesday and Saturday
+    # NOTE: When adding new scheduled workflows, stagger start times with 10 minute gaps
+    # to avoid resource contention and API rate limits (e.g., 02:00, 02:10, 02:20, etc.)
+    - cron: '0 2 * * 2,6'
   workflow_dispatch:
 
 jobs:

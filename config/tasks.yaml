@@ -4,7 +4,7 @@ tasks:
     system_prompt_file: "prompts/system_prompt.txt"
     provider: "openai"
     model: "gpt-5.2"
-    reasoning_effort: "medium"
+    reasoning_effort: "high"
     verbosity: "medium"
   
   behaviour_analysis:
