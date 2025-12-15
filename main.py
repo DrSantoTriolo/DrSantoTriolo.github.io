@@ -48,7 +48,7 @@ async def process_task(task_name, task_data, dry_run=False):
         
         # Save output with timestamp prefix and Jekyll front matter
         now = datetime.now()
-        timestamp_prefix = now.strftime("%Y-%m-%d-%H%M")
+        timestamp_prefix = now.strftime("%Y%m%d%H%M")
         date_str = now.strftime("%Y-%m-%d")
 
         # Generate title with date range
@@ -63,7 +63,7 @@ date: {date_str}
 
 """
 
-        output_path = os.path.join("_roll", f"{timestamp_prefix}-{task_name}.md")
+        output_path = os.path.join("_roll", f"{timestamp_prefix}_{task_name}.md")
         save_file(output_path, front_matter + content)
         logger.info(f"Task {task_name} completed. Output saved to {output_path}")
 
