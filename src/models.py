@@ -8,3 +8,4 @@ class TaskConfig(BaseModel):
     model: str
     reasoning_effort: Optional[str] = "medium"
     verbosity: Optional[str] = "medium"
+    title: Optional[str] = None  # Title for Jekyll front matter

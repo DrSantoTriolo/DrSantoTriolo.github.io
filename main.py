@@ -46,10 +46,25 @@ async def process_task(task_name, task_data, dry_run=False):
             )
         )
         
-        # Save output with timestamp prefix
-        timestamp_prefix = datetime.now().strftime("%Y-%m-%d-%H%M")
+        # Save output with timestamp prefix and Jekyll front matter
+        now = datetime.now()
+        timestamp_prefix = now.strftime("%Y-%m-%d-%H%M")
+        date_str = now.strftime("%Y-%m-%d")
+
+        # Generate title with date range
+        title = config.title or task_name.replace("_", " ").title()
+
+        # Create Jekyll front matter
+        front_matter = f"""---
+layout: news
+title: "{title}"
+date: {date_str}
+---
+
+"""
+
         output_path = os.path.join("_roll", f"{timestamp_prefix}-{task_name}.md")
-        save_file(output_path, content)
+        save_file(output_path, front_matter + content)
         logger.info(f"Task {task_name} completed. Output saved to {output_path}")
 
     except Exception as e:
