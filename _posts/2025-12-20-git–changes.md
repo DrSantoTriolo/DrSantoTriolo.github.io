@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2025-12-20-git–changea.md"
+title: "2025-12-20-git–changes.md"
 category: [Feed]
 ---
 
