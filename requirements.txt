@@ -1,5 +1,4 @@
 openai>=1.60.0
 pyyaml
 python-dotenv
-tenacity
 pydantic

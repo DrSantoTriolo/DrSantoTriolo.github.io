@@ -12,7 +12,7 @@ class ClientFactory:
             api_key = os.getenv("OPENAI_API_KEY_NEWSLETTERS")
             if not api_key:
                 raise ValueError("OPENAI_API_KEY_NEWSLETTERS not found in environment variables")
-            return OpenAI(api_key=api_key, timeout=720.0)
+            return OpenAI(api_key=api_key, timeout=720.0, max_retries=0)
         
         elif provider == "xai":
             api_key = os.getenv("XAI_API_KEY_NEWSLETTERS")
@@ -24,7 +24,8 @@ class ClientFactory:
             return OpenAI(
                 api_key=api_key,
                 base_url="https://api.x.ai/v1",
-                timeout=720.0
+                timeout=720.0,
+                max_retries=0
             )
         
         else:
