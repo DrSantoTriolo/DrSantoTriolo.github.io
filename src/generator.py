@@ -21,7 +21,9 @@ class ContentGenerator:
                 reasoning_summary = kwargs.get("reasoning_summary", "auto")
                 verbosity = kwargs.get("verbosity", "medium")
 
-                response = self.client.responses.create(
+                # Enable streaming to prevent network infrastructure timeouts
+                # This keeps the connection active by sending data chunks
+                stream = self.client.responses.create(
                     model=model,
                     input=[
                         {
@@ -61,17 +63,15 @@ class ContentGenerator:
                     reasoning={
                         "effort": reasoning_effort,
                         "summary": reasoning_summary
-                    }
+                    },
+                    stream=True
                 )
 
-                # Fix for the parsing bug: Iterate properly
+                # Collect streamed content chunks from delta events
                 content_parts = []
-                if hasattr(response, 'output'):
-                    for item in response.output:
-                        if item.type == "message":
-                            for content in item.content:
-                                if content.type == "output_text":
-                                    content_parts.append(content.text)
+                for event in stream:
+                    if event.type == "response.output_text.delta":
+                        content_parts.append(event.delta)
                 return "".join(content_parts)
 
             # Condition B: xAI / Legacy Models (Chat Completions API)
