@@ -76,18 +76,28 @@ class ContentGenerator:
             # Condition B: xAI / Legacy Models (Chat Completions API)
             else:
                 logger.info(f"Using Chat Completions API for provider {provider}, model {model}")
-                
+
                 messages = [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt_text}
                 ]
-                
-                response = self.client.chat.completions.create(
+
+                # Enable streaming to prevent network infrastructure timeouts
+                # This keeps the connection active by sending data chunks
+                stream = self.client.chat.completions.create(
                     model=model,
-                    messages=messages
+                    messages=messages,
+                    stream=True,
+                    timeout=600
                 )
-                
-                return response.choices[0].message.content
+
+                # Collect streamed content chunks
+                content_parts = []
+                for chunk in stream:
+                    if chunk.choices and chunk.choices[0].delta.content:
+                        content_parts.append(chunk.choices[0].delta.content)
+
+                return "".join(content_parts)
 
         except Exception as e:
             logger.error(f"Error generating content: {e}")
