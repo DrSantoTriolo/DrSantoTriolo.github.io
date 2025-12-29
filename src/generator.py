@@ -88,7 +88,7 @@ class ContentGenerator:
                     model=model,
                     messages=messages,
                     stream=True,
-                    timeout=600
+                    timeout=960
                 )
 
                 # Collect streamed content chunks
