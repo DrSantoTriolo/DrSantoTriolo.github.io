@@ -1,4 +1,5 @@
 import logging
+import traceback
 
 logger = logging.getLogger(__name__)
 
@@ -101,4 +102,5 @@ class ContentGenerator:
 
         except Exception as e:
             logger.error(f"Error generating content: {e}")
+            logger.error(traceback.format_exc())  # Log full traceback to identify ReadTimeout, ConnectTimeout, or APIError
             raise
