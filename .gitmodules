@@ -1,0 +1,6 @@
+[submodule "toys/rrt"]
+	path = toys/rrt
+	url = git@github.com:fjctp/rrt.git
+[submodule "toys/test-js-physics-engine"]
+	path = toys/test-js-physics-engine
+	url = git@github.com:fjctp/test-js-physics-engine.git
