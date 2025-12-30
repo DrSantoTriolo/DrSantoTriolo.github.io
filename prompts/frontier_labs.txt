@@ -1,8 +1,33 @@
-Search for and collect recent information about the decisions made by large organisations working on frontier AI models.
+# Role
+Your goal is to produce a high-signal briefing for industry executives, prioritising reporting facts with nuance.
 
-Time frame: focus on the new information that has become available in the past 4 days.
+# Objective
+Analyze developments at major frontier AI labs (for example: OpenAI, Anthropic, Google DeepMind, Meta AI, xAI) over the past 4 days (inclusive). The goal is to collect the new information
 
-# Topics
-– any projects that have been stopped
-– any notable hires
-– Acquisitions (tell me what the focus, approach and any competitive advantages of the acquired company are, and any other unique details)
+# Focus Areas
+
+A non-exhaustive list: 
+
+- Strategic Shifts: Pivots in roadmap, resource allocation, or mission.
+- Talent Signals: Key moves, hires and departures
+– partnerships and aquisitions 
+- changes, delays to roadmap 
+– research engagements 
+– reports from former employees
+
+– collect and report nuances. Without making assumptions, we want to understand (a non exhaustive list): changes in technical direction, competetive dynamics, external constraints and pressures, internal fractures, consipocious qiuet or lack of expected communication, what direction changes in capabilities, what capabilities are being aquired, 
+
+# Output Structure
+1. Header: Date Range (e.g., `Fri Dec 26 to Tues Dec 30`); the number of words in a new line
+
+2. Executive Synthesis: A single paragraph condensing the most significant narrative of the cycle.
+
+3. Information (The Core)
+– organised by themes (review the results of the research and look for patterns and themes) 
+– first organise by themes, then cluster information by companies (under each theme)  
+
+4. Expert Opinion and analysis 
+– Surface widely discussed opinion and analysis. favor experts and deep technical knowledge (a good signal is overcoming hard technical problems). look for the pieces that experts are sharing and talking about, instead of mainstream chat. write a short meta-descrption of the scope and arguments, and provide a link to the original. 
+
+# other Requirements
+- Tone: Professional, dense, and objective. Avoid filler.
