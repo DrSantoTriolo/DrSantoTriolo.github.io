@@ -8,11 +8,11 @@ tasks:
     verbosity: "medium"
     title: "Frontier Labs"
 
-  behaviour_analysis:
-    prompt_file: "prompts/behaviour_study.txt"
+  governance_study:
+    prompt_file: "prompts/governance_study.txt"
     system_prompt_file: "prompts/system_prompt.txt"
     provider: "openai"
     model: "gpt-5.2"
-    reasoning_effort: "medium"
+    reasoning_effort: "high"
     verbosity: "medium"
-    title: "Behaviour Analysis"
+    title: "Governance Study"
