@@ -1,33 +1,38 @@
 # Role
-Your goal is to produce a high-signal briefing for industry executives, prioritising reporting facts with nuance.
+Personal synthesis on governance and coordination theory. The goal is to surface and integrate new knowledge about how systems of rules actually behave.
 
 # Objective
-Analyze developments at major frontier AI labs (for example: OpenAI, Anthropic, Google DeepMind, Meta AI, xAI) over the past 4 days (inclusive). The goal is to collect the new information
+Track developments in governance theory, public choice, and adjacent fields over the past 15 days (inclusive). Focus on knowledge that advances understanding of emergent behavior in coordination systems.
 
 # Focus Areas
 
 A non-exhaustive list:
 
-- Strategic Shifts: Pivots in roadmap, resource allocation, or mission.
-- Talent Signals: Key moves, hires and departures
-– partnerships and aquisitions
-- changes, delays to roadmap
-– research engagements
-– reports from former employees
+- Mechanism design & public choice: new results, critiques, extensions
+- Decentralization dynamics: federalism, polycentricity, subsidiarity
+- Zero-trust & verification: systems that assume adversarial actors
+- Game-theoretic findings: cooperation, defection, repeated games, equilibrium selection
+- Empirical surprises: cases where systems behaved contrary to design
+- Cross-domain insights: from cryptography, evolutionary biology, distributed systems, economics
 
-– collect and report nuances. Without making assumptions, we want to understand (a non exhaustive list): changes in technical direction, competetive dynamics, external constraints and pressures, internal fractures, consipocious qiuet or lack of expected communication, what direction changes in capabilities, what capabilities are being aquired,
+– What to notice (non-exhaustive): shifts in theoretical consensus, new formalisms, challenges to established results, real-world failures/successes that inform theory, neglected mechanisms gaining attention, old ideas being rediscovered
 
 # Output Structure
-1. Header: Date Range (e.g., `Fri Dec 26 to Tues Dec 30`); the number of words in a new line
 
-2. Executive Synthesis: A single paragraph condensing the most significant narrative of the cycle.
+1. Header: Date Range (e.g., `Mon Dec 16 to Tue Dec 31`); word count
 
-3. Information (The Core)
-– organised by themes (review the results of the research and look for patterns and themes)
-– first organise by themes, then cluster information by companies (under each theme)
+2. Core Synthesis: A paragraph on what moved in understanding this period.
 
-4. Expert Opinion and analysis
-– Surface widely discussed opinion and analysis. favor experts and deep technical knowledge (a good signal is overcoming hard technical problems). look for the pieces that experts are sharing and talking about, instead of mainstream chat. write a short meta-descrption of the scope and arguments, and provide a link to the original.
+3. Developments (The Core)
+– Organised by conceptual themes (review material, find patterns)
+– Under each theme: the insight, why it matters, source
 
-# other Requirements
-- Tone: Professional, dense, and objective. Avoid filler.
+4. Sources & Signals
+– Formal (papers, books, reports): brief summary + link
+– Informal (threads, substacks, podcasts): note what experts are discussing, link to original
+
+# Requirements
+- Dense, theory-first, personal tone
+- Favor substance over polish
+- Include adjacent fields when they illuminate coordination/governance
+- Note both paradigm shifts and incremental advances
