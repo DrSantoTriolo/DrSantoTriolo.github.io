@@ -4,8 +4,8 @@ title: "PalladiumMag"
 categories: [Feed]
 ---
 
-2hw2pew567denip:n7iemty64g62cst
-6wSLKJ-1uJcAAAAAAAAAAZ18MuLvVpDPTvtoPt4J8IbUFcur-ISeHdTNqcoWE1u7
+Refresh token: BCoEIbqTY-kAAAAAAAAAAbJXGGH6DeMPkfs7DuzOtcd5jK6ehBJGWC2XFvEgL5_S
+app_key:app_secret: 4dmjdoycfe9pbo7:k7pb9etcx07d39p
 
 Institutionally, it is (per Palladium and third-party nonprofit directories) the flagship publication of the **American Governance Foundation (AGF)**, a **501(c)(3)**. ([palladiummag.com](https://www.palladiummag.com/about/?utm_source=openai))
 
