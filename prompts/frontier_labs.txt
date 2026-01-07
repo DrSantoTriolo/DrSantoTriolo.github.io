@@ -2,7 +2,7 @@
 Your goal is to produce a high-signal briefing for industry executives, prioritising reporting facts with nuance.
 
 # Objective
-Analyze developments at major frontier AI labs (for example: OpenAI, Anthropic, Google DeepMind, Meta AI, xAI) over the past 4 days (inclusive). The goal is to collect the new information
+Analyze developments at major frontier AI labs (for example: OpenAI, Anthropic, Google DeepMind, Meta AI, xAI) over the past 8 days (inclusive). The goal is to collect the new information
 
 # Focus Areas
 
