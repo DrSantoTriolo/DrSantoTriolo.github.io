@@ -18,11 +18,8 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
     <div className="min-h-screen">
       <div className="hero-pattern py-32 md:py-48 px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl text-display mb-8 text-foreground">
-            {t.names.split(' & ')[0]}.
-          </h1>
           <h1 className="text-6xl md:text-8xl lg:text-9xl text-display mb-16 text-foreground">
-            {t.names.split(' & ')[1]}.
+            {t.names}
           </h1>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-12 text-sm uppercase tracking-[0.2em]">
