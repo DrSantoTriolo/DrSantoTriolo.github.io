@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
     {% include meta.html %}
@@ -12,14 +13,18 @@
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
   </head>
 
   <body>
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+
+          {% if site.avatar %}
+          <a href="{{ site.baseurl }}/" class="site-avatar">
+            <img src="{{ site.avatar }}" alt="{{ site.name }}" width="150" height="150" style="border-radius:50%; object-fit:cover;" />
+          </a>
+          {% endif %}
 
           <div class="site-info">
             <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
@@ -27,9 +32,10 @@
           </div>
 
           <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
+            <a href="{{ site.baseurl }}/publications/">Publications</a>
+            <a href="{{ site.baseurl }}/contact/">Contact</a>
           </nav>
+
         </header>
       </div>
     </div>
@@ -41,7 +47,30 @@
     <div class="wrapper-footer">
       <div class="container">
         <footer class="footer">
+
+          {% comment %}
+            Footer social icons: Google Scholar, ArXiv, LinkedIn
+          {% endcomment %}
+          {% if site.footer-links %}
+            {% if site.footer-links.googlescholar %}
+              <a href="https://scholar.google.com/citations?user={{ site.footer-links.googlescholar }}" target="_blank" rel="noopener">
+                <!-- SVG Google Scholar here -->
+              </a>
+            {% endif %}
+            {% if site.footer-links.orcid %}
+              <a href="https://orcid.org/{{ site.footer-links.orcid }}" target="_blank" rel="noopener">
+                <!-- SVG ORCID here -->
+              </a>
+            {% endif %}
+            {% if site.footer-links.linkedin %}
+              <a href="https://www.linkedin.com/in/{{ site.footer-links.linkedin }}" target="_blank" rel="noopener">
+                <!-- SVG LinkedIn here -->
+              </a>
+            {% endif %}
+          {% endif %}
+
           {% include svg-icons.html %}
+
         </footer>
       </div>
     </div>
