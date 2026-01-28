@@ -1,10 +1,12 @@
 ---
 layout: default
+title: Posts
+permalink: /posts/
 ---
 
 <div class="homepage-layout">
   <div class="homepage-main">
-    <h4>Recent Posts</h4>
+    <h4>All Posts</h4>
 
     <div class="posts">
       {% for post in site.posts %}

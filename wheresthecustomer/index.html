@@ -1,0 +1,621 @@
+---
+layout: none
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Where's the Customer</title>
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel: rgba(18,26,39,.86);
+      --text:#e8eefc;
+      --muted:#a7b3cc;
+      --stroke: rgba(232,238,252,.18);
+      --land: rgba(232,238,252,.10);
+      --landHover: rgba(232,238,252,.16);
+      --good: rgba(76,209,153,.72);
+      --bad: rgba(255, 99, 99, .72);
+    }
+    html, body { height:100%; }
+    body {
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow:hidden;
+    }
+    .wrap{
+      height:100vh;
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    header{
+      padding:12px 16px;
+      background:var(--panel);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .headerRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    h1{
+      margin:0;
+      font-size:22px;
+      line-height:1.1;
+      letter-spacing:.2px;
+    }
+    .meta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:8px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:13px;
+      user-select:none;
+    }
+    .score{ font-weight:900; color:var(--text); }
+
+    main{ position:relative; }
+    #map { width:100%; height:100%; }
+    svg { width:100%; height:100%; display:block; }
+
+    .country{
+      fill: var(--land);
+      stroke: var(--stroke);
+      stroke-width: .6;
+      cursor: crosshair;
+      transition: fill 140ms ease;
+    }
+    .country:hover{ fill: var(--landHover); }
+    .locked .country{ cursor: default; }
+    .locked .country:hover{ fill: var(--land); }
+
+    .flash-good { animation: flashGood 520ms ease-out 1; fill: var(--good) !important; }
+    .flash-bad  { animation: flashBad  520ms ease-out 1; fill: var(--bad)  !important; }
+
+    @keyframes flashGood{
+      0%{ filter:none; }
+      35%{ filter: drop-shadow(0 0 10px rgba(76,209,153,.35)); }
+      100%{ filter:none; }
+    }
+    @keyframes flashBad{
+      0%{ filter:none; }
+      35%{ filter: drop-shadow(0 0 10px rgba(255,99,99,.35)); }
+      100%{ filter:none; }
+    }
+
+    footer{
+      padding:14px 16px;
+      background:var(--panel);
+      backdrop-filter: blur(8px);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .promptRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .prompt{ font-size:18px; font-weight:900; letter-spacing:.6px; }
+    .sub{ color:var(--muted); font-size:13px; margin-top:2px; max-width:min(72ch, 92vw); }
+    button{
+      border:0;
+      border-radius:12px;
+      padding:10px 14px;
+      font-weight:900;
+      background:rgba(255,255,255,.12);
+      color:var(--text);
+      cursor:pointer;
+    }
+    button:hover{ background:rgba(255,255,255,.16); }
+    button:disabled{ opacity:.45; cursor:default; }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      display:none;
+      place-items:center;
+      background:rgba(0,0,0,.55);
+      padding:16px;
+    }
+    .overlay.show{ display:grid; }
+    .card{
+      width:min(560px, 94vw);
+      background:rgba(18,26,39,.96);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      padding:16px;
+      box-shadow: 0 12px 42px rgba(0,0,0,.48);
+    }
+    .card h2{ margin:0 0 8px; }
+    .card p{ margin:0 0 12px; color:var(--muted); line-height:1.35; }
+    .row{ display:flex; gap:10px; justify-content:flex-end; align-items:center; flex-wrap:wrap; }
+    .tiny{ font-size:12px; color:var(--muted); margin-top:8px; }
+
+    .dot{
+      position:absolute;
+      width:10px; height:10px;
+      margin-left:-5px; margin-top:-5px;
+      border-radius:999px;
+      pointer-events:none;
+      background: rgba(255,255,255,.8);
+      opacity:.0;
+      transform: scale(.6);
+      transition: opacity 140ms ease, transform 140ms ease;
+    }
+    .dot.show{ opacity:.85; transform: scale(1); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="headerRow">
+        <div>
+          <h1>🎄🌍🤔 Where's the Customer? 🎄🌍🤔</h1>
+          <div class="meta">
+            <div class="pill" id="roundPill">Round —/20</div>
+            <div class="pill" id="statusPill">Loading…</div>
+          </div>
+        </div>
+        <div class="pill score" id="scorePill">Score: 0/20</div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div id="map" aria-label="World map"></div>
+      <div class="dot" id="clickDot"></div>
+
+      <div class="overlay show" id="setupOverlay" role="dialog" aria-modal="true">
+        <div class="card">
+          <h2>Ready?</h2>
+          <p id="setupText">Loading your CSV from GitHub…</p>
+          <div class="row" style="margin-top:12px;">
+            <button id="startBtn" disabled>Start 20 rounds</button>
+          </div>
+          <div class="tiny" id="setupHint"></div>
+        </div>
+      </div>
+
+      <div class="overlay" id="endOverlay" role="dialog" aria-modal="true">
+        <div class="card">
+          <h2 id="endTitle">All done!</h2>
+          <p id="endBody"></p>
+          <div class="row">
+            <button id="playAgainBtn">Play again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="promptRow">
+        <div>
+          <div class="prompt" id="prompt">—</div>
+          <div class="sub" id="subprompt">—</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button id="nextBtn" disabled>Next</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
+  <script>
+    // =============================
+    // CONFIG: put your CSV here
+    // =============================
+    // For a Jekyll subdirectory, keeping CSV alongside index.html:
+    const CSV_URL = "./countries.csv";
+    // Or use raw GitHub:
+    // const CSV_URL = "https://raw.githubusercontent.com/YOUR-USER/YOUR-REPO/main/path/to/countries.csv";
+
+    // =============================
+    // Game settings
+    // =============================
+    const ROUNDS = 20;
+    const EXCLUDE = new Set(["US","GB"]);
+
+    // Forgiveness tuning (in screen pixels)
+    const FORGIVENESS_MIN = 10;
+    const FORGIVENESS_MAX = 26;
+    const FORGIVENESS_MULTIPLIER = 1.10; // +10% tolerance
+
+    const TOPO_URL = "https://cdn.jsdelivr.net/npm/visionscarto-world-atlas@1/world/110m.json";
+
+    // alpha2 -> alpha3 + name (we display code only, but show answer text with name)
+    const RESTCOUNTRIES = (codes) =>
+      `https://restcountries.com/v3.1/alpha?codes=${encodeURIComponent(codes.join(","))}&fields=cca2,cca3,name`;
+
+    // -----------------------------
+    // State
+    // -----------------------------
+    const state = {
+      svg: null,
+      features: [],
+      byA3: new Map(),        // a3 -> { el, centroid:[x,y], radius:number }
+      pool: [],               // [{a2,a3,name}]
+      deck: [],               // 20 unique picks
+      round: 0,
+      score: 0,
+      locked: true,
+      current: null,
+      readyToStart: false,
+      feedback: "",
+    };
+
+    // -----------------------------
+    // Elements
+    // -----------------------------
+    const el = {
+      map: document.getElementById("map"),
+      clickDot: document.getElementById("clickDot"),
+      roundPill: document.getElementById("roundPill"),
+      statusPill: document.getElementById("statusPill"),
+      scorePill: document.getElementById("scorePill"),
+      prompt: document.getElementById("prompt"),
+      subprompt: document.getElementById("subprompt"),
+      nextBtn: document.getElementById("nextBtn"),
+      setupOverlay: document.getElementById("setupOverlay"),
+      setupText: document.getElementById("setupText"),
+      setupHint: document.getElementById("setupHint"),
+      startBtn: document.getElementById("startBtn"),
+      endOverlay: document.getElementById("endOverlay"),
+      endBody: document.getElementById("endBody"),
+      playAgainBtn: document.getElementById("playAgainBtn"),
+    };
+
+    // -----------------------------
+    // Utilities
+    // -----------------------------
+    const clamp = (min, v, max) => Math.max(min, Math.min(max, v));
+
+    function shuffleInPlace(arr){
+      for (let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function parseCSVForAlpha2(text){
+      const tokens = text.toUpperCase().match(/\b[A-Z]{2}\b/g) || [];
+      const seen = new Set();
+      const out = [];
+      for (const t of tokens){
+        if (EXCLUDE.has(t)) continue;
+        if (seen.has(t)) continue;
+        seen.add(t);
+        out.push(t);
+      }
+      return out;
+    }
+
+    function setUI(){
+      el.roundPill.textContent = `Round ${state.current ? (state.round + 1) : "—"}/${ROUNDS}`;
+      el.scorePill.textContent = `Score: ${state.score}/${ROUNDS}`;
+
+      if (!state.current){
+        el.prompt.textContent = "—";
+        el.subprompt.textContent = state.readyToStart
+          ? "Press Start to begin."
+          : "Loading codes…";
+      } else {
+        // show ONLY the code to make it harder
+        el.prompt.textContent = state.current.a2;
+        el.subprompt.textContent = state.locked
+          ? state.feedback
+          : "Click where you think that country is.";
+      }
+
+      el.nextBtn.disabled = !state.locked || !state.current;
+      el.statusPill.textContent = state.current
+        ? (state.locked ? "Locked — click Next" : "Click the map")
+        : (state.readyToStart ? "Ready" : "Loading…");
+
+      document.body.classList.toggle("locked", state.locked);
+    }
+
+    function clearFlashes(){
+      state.svg?.selectAll("path.country")
+        .classed("flash-good", false)
+        .classed("flash-bad", false);
+    }
+
+    function showClickDot(x, y){
+      el.clickDot.style.left = x + "px";
+      el.clickDot.style.top = y + "px";
+      el.clickDot.classList.add("show");
+      setTimeout(() => el.clickDot.classList.remove("show"), 260);
+    }
+
+    function endGame(){
+      el.endBody.textContent = `Final score: ${state.score} / ${ROUNDS}.`;
+      el.endOverlay.classList.add("show");
+      state.current = null;
+      state.locked = true;
+      setUI();
+    }
+
+    // -----------------------------
+    // Rendering map
+    // -----------------------------
+    async function renderMap(){
+      const world = await fetch(TOPO_URL).then(r => r.json());
+      const features = topojson.feature(world, world.objects.countries).features;
+      state.features = features;
+
+      const width = el.map.clientWidth;
+      const height = el.map.clientHeight;
+
+      const svg = d3.select("#map").append("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("role", "img")
+        .attr("aria-label", "Unlabelled world map");
+
+      const projection = d3.geoNaturalEarth1()
+        .fitSize([width, height], { type:"FeatureCollection", features });
+
+      const geoPath = d3.geoPath(projection);
+
+      svg.append("g")
+        .selectAll("path")
+        .data(features)
+        .join("path")
+          .attr("class", "country")
+          .attr("d", geoPath)
+          .attr("data-a3", d => (d?.properties?.a3 || d?.properties?.A3 || "").toUpperCase())
+          .on("click", (event) => onCountryPathClick(event, geoPath));
+
+      svg.selectAll("path.country").each(function(d){
+        const a3 = (this.getAttribute("data-a3") || "").toUpperCase();
+        if (!a3) return;
+
+        const centroid = geoPath.centroid(d);
+        const area = geoPath.area(d);
+
+        const raw = 900 / Math.sqrt(area + 25);
+        const radius = clamp(FORGIVENESS_MIN, raw, FORGIVENESS_MAX) * FORGIVENESS_MULTIPLIER;
+
+        state.byA3.set(a3, { el: this, centroid, radius });
+      });
+
+      // Ocean clicks
+      svg.on("click", (event) => onSvgClick(event));
+
+      state.svg = svg;
+    }
+
+    // -----------------------------
+    // CSV -> alpha2/alpha3/name pool
+    // -----------------------------
+    async function loadPoolFromCSVUrl(){
+      el.setupText.textContent = "Loading your CSV from GitHub…";
+      el.setupHint.textContent = `Source: ${CSV_URL}`;
+      el.startBtn.disabled = true;
+      state.readyToStart = false;
+      setUI();
+
+      let csvText;
+      try {
+        const res = await fetch(CSV_URL, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+        csvText = await res.text();
+      } catch (e) {
+        el.setupText.textContent = "Couldn’t load the CSV.";
+        el.setupHint.textContent = `Check CSV_URL and that it’s publicly accessible. (${String(e)})`;
+        return;
+      }
+
+      const codes = parseCSVForAlpha2(csvText);
+      if (codes.length === 0){
+        el.setupText.textContent = "No valid two-letter codes found in the CSV.";
+        el.setupHint.textContent = "Make sure the file contains tokens like FR, DE, JP (US/GB are ignored).";
+        return;
+      }
+
+      let data;
+      try {
+        const res = await fetch(RESTCOUNTRIES(codes));
+        if (!res.ok) throw new Error(`Metadata fetch failed: ${res.status}`);
+        data = await res.json();
+      } catch (e) {
+        el.setupText.textContent = "Loaded CSV but couldn’t map codes to countries (metadata fetch failed).";
+        el.setupHint.textContent = String(e);
+        return;
+      }
+
+      const mapped = [];
+      for (const c of data){
+        const a2 = (c?.cca2 || "").toUpperCase();
+        const a3 = (c?.cca3 || "").toUpperCase();
+        const name = c?.name?.common || "";
+        if (!a2 || !a3 || !name) continue;
+        if (EXCLUDE.has(a2)) continue;
+        if (!state.byA3.has(a3)) continue; // only keep things on the map
+        mapped.push({ a2, a3, name });
+      }
+
+      // De-dupe by a3
+      const uniq = [];
+      const seen = new Set();
+      for (const m of mapped){
+        if (seen.has(m.a3)) continue;
+        seen.add(m.a3);
+        uniq.push(m);
+      }
+
+      state.pool = uniq;
+      state.readyToStart = state.pool.length >= ROUNDS;
+      el.startBtn.disabled = !state.readyToStart;
+
+      if (!state.readyToStart){
+        el.setupText.textContent = "Not enough unique countries for 20 rounds (no repeats).";
+        el.setupHint.textContent = `Usable countries found: ${state.pool.length}. Need at least ${ROUNDS}.`;
+      } else {
+        el.setupText.textContent = "Ready!";
+        el.setupHint.textContent = `Loaded ${state.pool.length} countries. Source: ${CSV_URL}`;
+      }
+
+      setUI();
+    }
+
+    // -----------------------------
+    // Game flow
+    // -----------------------------
+    function startGame(){
+      const candidates = state.pool.slice();
+      shuffleInPlace(candidates);
+
+      state.deck = candidates.slice(0, ROUNDS); // 20 unique
+      state.round = 0;
+      state.score = 0;
+      state.current = state.deck[0];
+      state.feedback = "";
+      state.locked = false;
+
+      clearFlashes();
+      el.setupOverlay.classList.remove("show");
+      el.endOverlay.classList.remove("show");
+      setUI();
+    }
+
+    function nextRound(){
+      state.round += 1;
+      if (state.round >= ROUNDS){
+        endGame();
+        return;
+      }
+      state.current = state.deck[state.round];
+      state.feedback = "";
+      state.locked = false;
+      clearFlashes();
+      setUI();
+    }
+
+    function markResult(isCorrect, clickedA3){
+      state.locked = true;
+
+      const correctA3 = state.current.a3;
+      const clicked = clickedA3 ? state.byA3.get(clickedA3) : null;
+      const correct = state.byA3.get(correctA3);
+
+      if (isCorrect){
+        state.score += 1;
+        state.feedback = `Correct — the answer was ${state.current.a2} (${state.current.name}).`;
+        (clicked?.el || correct?.el)?.classList.add("flash-good");
+      } else {
+        state.feedback = `Sorry — the correct answer was ${state.current.a2} (${state.current.name}).`;
+        (clicked?.el || correct?.el)?.classList.add("flash-bad");
+      }
+
+      setUI();
+    }
+
+    // -----------------------------
+    // Click handling + forgiveness
+    // -----------------------------
+    function getSvgPoint(event){
+      const svgNode = state.svg.node();
+      const pt = svgNode.createSVGPoint();
+      pt.x = event.clientX;
+      pt.y = event.clientY;
+      const svgP = pt.matrixTransform(svgNode.getScreenCTM().inverse());
+      return [svgP.x, svgP.y];
+    }
+
+    function onCountryPathClick(event){
+      if (!state.current || state.locked) return;
+      event.stopPropagation();
+
+      const clickedA3 = (event.currentTarget.getAttribute("data-a3") || "").toUpperCase();
+      const correctA3 = state.current.a3;
+
+      const [x, y] = getSvgPoint(event);
+      showClickDot(x, y);
+
+      if (clickedA3 === correctA3){
+        markResult(true, clickedA3);
+        return;
+      }
+
+      const correct = state.byA3.get(correctA3);
+      if (correct){
+        const dx = x - correct.centroid[0];
+        const dy = y - correct.centroid[1];
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist <= correct.radius){
+          markResult(true, correctA3); // near miss counts
+          return;
+        }
+      }
+
+      markResult(false, clickedA3 || null);
+    }
+
+    function onSvgClick(event){
+      if (!state.current || state.locked) return;
+
+      const [x, y] = getSvgPoint(event);
+      showClickDot(x, y);
+
+      const correctA3 = state.current.a3;
+      const correct = state.byA3.get(correctA3);
+      if (correct){
+        const dx = x - correct.centroid[0];
+        const dy = y - correct.centroid[1];
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist <= correct.radius){
+          markResult(true, correctA3);
+          return;
+        }
+      }
+
+      markResult(false, null);
+    }
+
+    // -----------------------------
+    // Buttons
+    // -----------------------------
+    el.startBtn.addEventListener("click", startGame);
+    el.nextBtn.addEventListener("click", () => {
+      if (!state.locked) return;
+      nextRound();
+    });
+    el.playAgainBtn.addEventListener("click", () => {
+      el.endOverlay.classList.remove("show");
+      el.setupOverlay.classList.add("show");
+      state.current = null;
+      state.locked = true;
+      setUI();
+    });
+
+    // -----------------------------
+    // Boot
+    // -----------------------------
+    (async function boot(){
+      await renderMap();
+      state.current = null;
+      state.locked = true;
+      setUI();
+      await loadPoolFromCSVUrl();
+    })();
+  </script>
+</body>
+</html>
