@@ -149,11 +149,11 @@ export function InteractiveMap({ center = [37, -82], zoom = 5 }: InteractiveMapP
                 <CarouselContent>
                   {selectedLocation.photos.map((photo, index) => (
                     <CarouselItem key={index}>
-                      <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                      <div className="relative overflow-hidden rounded-xl flex items-center justify-center bg-gray-50">
                         <img
                           src={photo}
                           alt={`${selectedLocation.name} - Photo ${index + 1}`}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                          className="max-w-full max-h-[200px] object-contain transition-transform duration-500 hover:scale-105"
                         />
                       </div>
                     </CarouselItem>
