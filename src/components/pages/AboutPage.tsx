@@ -1,5 +1,6 @@
 import { Envelope, Heart } from '@phosphor-icons/react';
 import { translations, Language } from '@/lib/translations';
+import { InteractiveMap } from '@/components/InteractiveMap';
 
 interface AboutPageProps {
   language: Language;
@@ -18,9 +19,18 @@ export function AboutPage({ language }: AboutPageProps) {
       </div>
 
       <div className="elegant-border pt-16 pb-16 mb-20">
-        <p className="text-lg md:text-xl leading-relaxed text-foreground/80 text-center max-w-3xl mx-auto font-light">
-          {t.story}
-        </p>
+        <div className="text-lg md:text-xl leading-relaxed text-foreground/80 text-center max-w-3xl mx-auto font-light space-y-6">
+          {t.story.split('\n\n').map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-20">
+        <h2 className="text-3xl md:text-4xl text-display text-center mb-8 text-foreground">
+          Our Journey Together
+        </h2>
+        <InteractiveMap />
       </div>
 
       <div className="text-center">

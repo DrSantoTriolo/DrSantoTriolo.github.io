@@ -24,8 +24,7 @@ export function Header({ language, onLanguageChange, currentPage, onNavigate }: 
     { key: 'rsvp', label: t.rsvp },
     { key: 'faq', label: t.faq },
     { key: 'travel', label: t.travel },
-    { key: 'venue', label: t.venue },
-    { key: 'saveTheDate', label: t.saveTheDate }
+    { key: 'venue', label: t.venue }
   ];
 
   const handleNavClick = (page: string) => {

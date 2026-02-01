@@ -24,20 +24,22 @@ export const weddingConfig = {
     nameFr: "Centre Communautaire Fritz",
     fullName: "Fritz Community Centre",
     fullNameFr: "Centre Communautaire Fritz",
-    address: "45 Rue Lakeshore Rd, Baie-D'Urfé, QC H9X 1P7",
+    address: "20477 Rue Lakeshore, Baie-d'Urfé, QC H9X 1R3",
     city: "Baie-D'Urfé",
     province: "QC"
   },
   schedule: {
-    ceremony: "4:00 PM",
-    ceremonyFr: "16h00",
-    cocktail: "5:00 PM",
-    cocktailFr: "17h00",
-    dinner: "6:30 PM",
-    dinnerFr: "18h30",
+    arrival: "3:00 PM",
+    arrivalFr: "15h00",
+    ceremony: "3:30 PM",
+    ceremonyFr: "15h30",
+    cocktail: "4:15 PM",
+    cocktailFr: "16h15",
+    dinner: "6:00 PM",
+    dinnerFr: "18h00",
     dancing: "8:30 PM",
     dancingFr: "20h30",
-    end: "11:00 PM",
-    endFr: "23h00"
+    end: "12:00 AM",
+    endFr: "00h00"
   }
 } as const;

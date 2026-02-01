@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useKV } from '@github/spark/hooks';
 import { Toaster } from '@/components/ui/sonner';
 import { Header } from '@/components/Header';
@@ -9,15 +9,35 @@ import { RSVPPage } from '@/components/pages/RSVPPage';
 import { FAQPage } from '@/components/pages/FAQPage';
 import { TravelPage } from '@/components/pages/TravelPage';
 import { VenuePage } from '@/components/pages/VenuePage';
-import { SaveTheDatePage } from '@/components/pages/SaveTheDatePage';
 import { Language } from '@/lib/translations';
 import { weddingConfig } from '@/lib/config';
 
 function App() {
   const [language, setLanguage] = useKV<Language>('language', 'en');
   const [currentPage, setCurrentPage] = useState('home');
+  const [isRetro, setIsRetro] = useState(false);
+  const [showExplosion, setShowExplosion] = useState(false);
+  const [showDino, setShowDino] = useState(false);
 
   const currentLanguage: Language = language || 'en';
+
+  const handleDiscoBallClick = () => {
+    setShowExplosion(true);
+    setTimeout(() => {
+      setIsRetro(true);
+      setShowExplosion(false);
+      // Show dinosaur 2 seconds after explosion
+      setTimeout(() => {
+        setShowDino(true);
+      }, 2000);
+      
+      // Reset after 10 seconds
+      setTimeout(() => {
+        setIsRetro(false);
+        setShowDino(false);
+      }, 10000);
+    }, 1500);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -35,21 +55,39 @@ function App() {
         return <TravelPage language={currentLanguage} />;
       case 'venue':
         return <VenuePage language={currentLanguage} />;
-      case 'saveTheDate':
-        return <SaveTheDatePage language={currentLanguage} />;
       default:
         return <HomePage language={currentLanguage} onNavigate={setCurrentPage} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className={`min-h-screen ${isRetro ? 'retro-theme' : 'bg-background'}`}>
+      {showExplosion && (
+        <div className="explosion-container">
+          <div className="explosion"></div>
+        </div>
+      )}
+      {showDino && (
+        <div className="dino-container">
+          <div className="trex">
+            <span className="party-hat">🎉</span>
+            🦖
+          </div>
+        </div>
+      )}
       <Header
         language={currentLanguage}
         onLanguageChange={setLanguage}
         currentPage={currentPage}
         onNavigate={setCurrentPage}
       />
+      <button 
+        onClick={handleDiscoBallClick}
+        className="disco-ball-button"
+        aria-label="Activate disco mode"
+      >
+        🪩
+      </button>
       <main className="pb-12">
         {renderPage()}
       </main>

@@ -10,14 +10,23 @@ export function VenuePage({ language }: VenuePageProps) {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-24 md:py-32">
-      <div className="text-center mb-20">
+      <div className="text-center mb-12">
         <MapTrifold className="w-12 h-12 mx-auto mb-8 text-accent" weight="thin" />
         <h1 className="text-5xl md:text-7xl text-display mb-6 text-foreground">
           {t.title}
         </h1>
       </div>
 
-      <div className="elegant-border pt-16 pb-16 mb-16">
+      {/* Venue Photo - subtle, black and white */}
+      <div className="mb-20 overflow-hidden rounded-lg">
+        <img
+          src="/images/fritz.jpg"
+          alt={t.name}
+          className="w-full h-48 md:h-64 object-cover grayscale opacity-80"
+        />
+      </div>
+
+      <div className="pt-8 pb-16 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl text-display mb-4 text-foreground">
             {t.name}
@@ -31,9 +40,9 @@ export function VenuePage({ language }: VenuePageProps) {
         </div>
       </div>
 
-      <div className="aspect-video bg-muted border border-border overflow-hidden">
+      <div className="aspect-video bg-muted border border-border overflow-hidden relative group">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2792.8!2d-73.9167!3d45.4167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI1JzAwLjEiTiA3M8KwNTUnMDAuMSJX!5e0!3m2!1sen!2sca!4v1234567890"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Fritz+Community+Center,Baie-d'Urfé,QC,Canada&zoom=15"
           width="100%"
           height="100%"
           style={{ border: 0 }}
@@ -42,6 +51,17 @@ export function VenuePage({ language }: VenuePageProps) {
           referrerPolicy="no-referrer-when-downgrade"
           title={t.name}
         />
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=20477+Rue+Lakeshore,+Baie-d'Urfé,+QC+H9X+1R3"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 flex items-center justify-center bg-black/0 hover:bg-black/10 transition-colors cursor-pointer"
+          aria-label={language === 'fr' ? 'Ouvrir dans Google Maps' : 'Open in Google Maps'}
+        >
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-foreground shadow-lg">
+            {language === 'fr' ? 'Ouvrir dans Google Maps' : 'Open in Google Maps'}
+          </span>
+        </a>
       </div>
     </div>
   );

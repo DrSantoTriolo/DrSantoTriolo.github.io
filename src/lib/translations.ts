@@ -28,12 +28,20 @@ export const translations = {
     },
     about: {
       title: "Our story",
-      story: "Justine and Alex's journey began with a chance meeting that would change their lives forever. From that first conversation, they knew they had found something special. Through adventures big and small, late-night talks, and quiet moments together, their bond deepened into a love that brought out the best in each other. Now, they're ready to celebrate the beginning of their forever with the people who mean the most to them.",
+      story: `Alex and Justine had their first date at Dieu du Ciel in Montréal on February 22, 2020, two weeks before the world shut down. Excellent timing, in retrospect. Instead of ghosting or panicking, they did the reasonable thing and quarantined together, rotating between apartments, cooking elaborate meals to simulate restaurants, and accidentally turning Alex into a hockey fan. (Go Habs Go.)
+
+The next few years were a blur of road trips, family introductions, holidays, and stays in Florida, Norfolk, Washington, Outerbanks, and Montréal. There were cottages, mushroom foraging, weddings, Thanksgiving traditions, and one oven fire that forced us to migrate the turkey onto a BBQ. Everyone survived.
+
+In March 2023, they moved into an apartment in Little Italy. Four days later, at a party with friends and family, Alex proposed, using a Habs hockey puck, because of course. Since then, there have been more trips, a new nephew, birthdays, holidays, and a continued tradition of celebrating anniversaries by remembering that first perfectly inconvenient date.
+
+They are getting married in the summer of 2026, after a year long delay, planning a small, intimate wedding in Montréal with their favorite people, good wine, and very good food. The rest is still being figured out, but this part feels pretty settled. For the next few years, Alex and Justine hope to travel some more, and to potentially invite a small kitten in their household.`,
       contact: "Contact",
       email: weddingConfig.couple.email
     },
     schedule: {
       title: "Wedding day schedule",
+      arrival: "Arrival",
+      arrivalTime: weddingConfig.schedule.arrival,
       ceremony: "Ceremony",
       ceremonyTime: weddingConfig.schedule.ceremony,
       cocktail: "Cocktail hour",
@@ -43,7 +51,8 @@ export const translations = {
       dancing: "Dancing",
       dancingTime: weddingConfig.schedule.dancing,
       end: "Event ends",
-      endTime: weddingConfig.schedule.end
+      endTime: weddingConfig.schedule.end,
+      timingNote: "All times are subject to change except arrival time, which is set. We are also working to push the departure time to be a bit later."
     },
     rsvp: {
       title: "RSVP",
@@ -132,6 +141,8 @@ export const translations = {
     },
     schedule: {
       title: "Horaire du Mariage",
+      arrival: "Arrivée",
+      arrivalTime: weddingConfig.schedule.arrivalFr,
       ceremony: "Cérémonie",
       ceremonyTime: weddingConfig.schedule.ceremonyFr,
       cocktail: "Cocktail",
@@ -141,7 +152,8 @@ export const translations = {
       dancing: "Danse",
       dancingTime: weddingConfig.schedule.dancingFr,
       end: "Fin de l'Événement",
-      endTime: weddingConfig.schedule.endFr
+      endTime: weddingConfig.schedule.endFr,
+      timingNote: "Tous les horaires sont sujets à changement sauf l'heure d'arrivée, qui est fixe. Nous travaillons également à repousser un peu l'heure de départ."
     },
     rsvp: {
       title: "RSVP",

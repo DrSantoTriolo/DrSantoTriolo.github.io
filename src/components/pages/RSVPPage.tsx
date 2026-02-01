@@ -25,15 +25,18 @@ export function RSVPPage({ language }: RSVPPageProps) {
           {t.description}
         </p>
         
-        <div className="aspect-video bg-muted border border-border flex items-center justify-center">
-          <div className="text-center p-8">
-            <EnvelopeSimple className="w-12 h-12 mx-auto mb-4 text-muted-foreground" weight="thin" />
-            <p className="text-sm text-muted-foreground max-w-md">
-              {language === 'en' 
-                ? 'Google Form will be embedded here. Replace the iframe source with your actual Google Form URL.'
-                : 'Le formulaire Google sera intégré ici. Remplacez la source de l\'iframe par l\'URL réelle de votre formulaire Google.'}
-            </p>
-          </div>
+        <div className="w-full">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSddXUqOtfX94Aqj6_bJB4fU8ikt6Sx-5B7he24x1V4fWin8IQ/viewform?embedded=true"
+            width="100%"
+            height="800"
+            frameBorder="0"
+            marginHeight={0}
+            marginWidth={0}
+            className="rounded-lg"
+          >
+            {t.formNote}
+          </iframe>
         </div>
       </div>
     </div>

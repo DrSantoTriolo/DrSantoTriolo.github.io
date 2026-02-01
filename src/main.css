@@ -184,3 +184,16 @@
     @apply bg-background text-foreground;
   }
 }
+/* Custom heart marker styling */
+.custom-heart-marker {
+  background: transparent;
+  border: none;
+  color: rgb(220, 38, 38);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all 0.2s ease;
+}
+
+.custom-heart-marker:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 4px 8px rgba(220, 38, 38, 0.4));
+}
