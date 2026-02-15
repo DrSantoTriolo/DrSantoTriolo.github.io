@@ -10,9 +10,10 @@ interface HeaderProps {
   onLanguageChange: (lang: Language) => void;
   currentPage: string;
   onNavigate: (page: string) => void;
+  onDiscoBallClick?: () => void;
 }
 
-export function Header({ language, onLanguageChange, currentPage, onNavigate }: HeaderProps) {
+export function Header({ language, onLanguageChange, currentPage, onNavigate, onDiscoBallClick }: HeaderProps) {
   const t = translations[language].nav;
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
@@ -34,8 +35,15 @@ export function Header({ language, onLanguageChange, currentPage, onNavigate }: 
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="container mx-auto px-6 md:px-12 h-20 flex items-center">
-        <div className="flex-1">
+      <div className="container mx-auto px-6 md:px-12 h-20 flex items-center relative">
+        <div className="flex-1 flex items-center gap-4">
+          <button
+            onClick={onDiscoBallClick}
+            className="disco-ball-button-header"
+            aria-label="Activate disco mode"
+          >
+            🪩
+          </button>
           <button
             onClick={() => onNavigate('home')}
             className="text-2xl md:text-3xl text-display text-foreground hover:text-accent transition-colors"

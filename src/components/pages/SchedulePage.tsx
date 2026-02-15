@@ -1,4 +1,4 @@
-import { Clock, Martini, ForkKnife, MusicNotes, Moon, UsersThree } from '@phosphor-icons/react';
+import { Clock, Martini, ForkKnife, MusicNotes, UsersThree } from '@phosphor-icons/react';
 import { translations, Language } from '@/lib/translations';
 
 interface SchedulePageProps {
@@ -13,8 +13,7 @@ export function SchedulePage({ language }: SchedulePageProps) {
     { icon: Clock, time: t.ceremonyTime, event: t.ceremony },
     { icon: Martini, time: t.cocktailTime, event: t.cocktail },
     { icon: ForkKnife, time: t.dinnerTime, event: t.dinner },
-    { icon: MusicNotes, time: t.dancingTime, event: t.dancing },
-    { icon: Moon, time: t.endTime, event: t.end }
+    { icon: MusicNotes, time: t.dancingTime, event: t.dancing }
   ];
 
   return (

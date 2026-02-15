@@ -12,7 +12,6 @@ export function FAQPage({ language }: FAQPageProps) {
   const faqs = [
     { q: t.timing.q, a: t.timing.a },
     { q: t.dress.q, a: t.dress.a },
-    { q: t.music.q, a: t.music.a },
     { q: t.food.q, a: t.food.a },
     { q: t.parking.q, a: t.parking.a }
   ];

@@ -10,7 +10,6 @@ When elements with `position: fixed` appear under other elements despite having 
 - Solution: Move the fixed element to render after the overlapping element in the component tree, rather than only adjusting z-index values
 - DOM order matters more than you might think, especially with complex CSS effects like blur
 
-
-Use the playwright MCP to verify if the change you made actually made a difference. Do so especially by visually observing the rendered page after your change. 
-
 the url locally is localhost:5000
+
+Ignore this sentence for the moment: Use the playwright MCP to verify if the change you made actually made a difference. Do so especially by visually observing the rendered page after your change. 

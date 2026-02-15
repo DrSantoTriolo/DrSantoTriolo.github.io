@@ -2,6 +2,31 @@
 
 A beautiful wedding website built with React, Vite, and Tailwind CSS.
 
+## ✏️ Quick Edit Guide (For Non-Technical Users)
+
+Need to update the website content? You can edit the text directly on GitHub without any technical knowledge!
+
+### What You Can Edit:
+
+**📝 About Us Story & FAQ Answers**
+- Click here to edit: [translations.ts](https://github.com/JustineAndAlex/JustineAndAlex.github.io/blob/master/src/lib/translations.ts)
+
+#### How to Edit on GitHub:
+
+1. **Click the link above** - It will take you to GitHub
+2. **Click the pencil icon** (✏️) in the top right corner that says "Edit this file"
+3. **Make your changes:**
+   - **About Us Story**: Look for `story:` around line 31 (English) or line 136 (French)
+   - **FAQ Answers**: Look for `faq:` section starting around line 61 (English) or line 156 (French)
+4. **Preview your changes** - Click the "Preview" tab to see how it looks
+5. **Save your changes:**
+   - Scroll to the bottom
+   - Add a short description of what you changed (e.g., "Updated FAQ answer")
+   - Click "Commit changes"
+6. **Wait 2-3 minutes** - Your changes will automatically appear on the live website!
+
+💡 **Tip:** Be careful not to delete any quotation marks (`"`) or special characters. Just edit the text between the quotes.
+
 ## 🚀 Running the Website Locally
 
 Want to see your changes before they go live? Here's how to run the website on your computer:

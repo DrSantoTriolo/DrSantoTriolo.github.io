@@ -338,24 +338,29 @@
 }
 
 /* Disco Ball Button */
-.disco-ball-button {
-  position: fixed;
-  top: -5px;
-  left: 20px;
-  font-size: 60px;
+.disco-ball-button-header {
+  font-size: 40px;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 99999;
   transition: all 0.3s ease;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
-.retro-theme .disco-ball-button {
+@media (min-width: 769px) {
+  .disco-ball-button-header {
+    font-size: 50px;
+  }
+}
+
+.retro-theme .disco-ball-button-header {
   animation: discoBallSpin 4s linear infinite;
 }
 
-.disco-ball-button:hover {
+.disco-ball-button-header:hover {
   transform: scale(1.2);
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
 }

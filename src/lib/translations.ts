@@ -50,9 +50,7 @@ They are getting married in the summer of 2026, after a year long delay, plannin
       dinnerTime: weddingConfig.schedule.dinner,
       dancing: "Dancing",
       dancingTime: weddingConfig.schedule.dancing,
-      end: "Event ends",
-      endTime: weddingConfig.schedule.end,
-      timingNote: "All times are subject to change except arrival time, which is set. We are also working to push the departure time to be a bit later."
+      timingNote: "All times are subject to change except arrival time, which is set."
     },
     rsvp: {
       title: "RSVP",
@@ -64,23 +62,19 @@ They are getting married in the summer of 2026, after a year long delay, plannin
       title: "Frequently asked questions",
       timing: {
         q: "What time should I arrive?",
-        a: `The ceremony begins promptly at ${weddingConfig.schedule.ceremony}. We recommend arriving 15-20 minutes early to find parking and get settled.`
+        a: "Please arrive by 3pm."
       },
       dress: {
         q: "What should I wear?",
-        a: "The dress code is black-tie. We encourage colors for women but it's not obligatory - come as you wish and feel comfortable celebrating with us!"
-      },
-      music: {
-        q: "Will there be music and dancing?",
-        a: `Absolutely! Dancing begins at ${weddingConfig.schedule.dancing} and continues until ${weddingConfig.schedule.end}. We'll have a great mix of music to keep everyone on the dance floor.`
+        a: "We're going for formal daytime attire. Men should wear a suit with a tie or bowtie—no need for a tuxedo during the day. Women, we'd love to see you in a long dress, any color you like. If you're unsure about your outfit, just text Alex or Justine—we're a small group and happy to help! We love creativity and color, so don't be afraid to stand out."
       },
       food: {
         q: "What about food and drinks?",
-        a: `A full dinner will be served at ${weddingConfig.schedule.dinner} with speeches. There will be an open bar throughout the evening for your enjoyment.`
+        a: "We'll have a cocktail hour with bites followed by a multi-course dinner. Drinks are on us all night—we'll have a selection of liquors, beers, and wines. Let us know your preferences in your RSVP and we'll do our best to have your favorites ready!"
       },
       parking: {
         q: "Is there parking available?",
-        a: `Yes, ${weddingConfig.venue.name} has ample free parking on-site for all guests.`
+        a: "Yes, there's parking on-site. Uber and taxis work out here too, though since we're in the suburbs, it's smart to book ahead or carpool when possible. We're also looking into renting a bus and will update everyone closer to the date."
       }
     },
     travel: {
@@ -151,9 +145,7 @@ They are getting married in the summer of 2026, after a year long delay, plannin
       dinnerTime: weddingConfig.schedule.dinnerFr,
       dancing: "Danse",
       dancingTime: weddingConfig.schedule.dancingFr,
-      end: "Fin de l'Événement",
-      endTime: weddingConfig.schedule.endFr,
-      timingNote: "Tous les horaires sont sujets à changement sauf l'heure d'arrivée, qui est fixe. Nous travaillons également à repousser un peu l'heure de départ."
+      timingNote: "Tous les horaires sont sujets à changement sauf l'heure d'arrivée, qui est fixe."
     },
     rsvp: {
       title: "RSVP",
@@ -165,23 +157,19 @@ They are getting married in the summer of 2026, after a year long delay, plannin
       title: "Questions Fréquentes",
       timing: {
         q: "À quelle heure dois-je arriver?",
-        a: `La cérémonie commence à ${weddingConfig.schedule.ceremonyFr} précises. Nous recommandons d'arriver 15-20 minutes à l'avance pour trouver un stationnement et vous installer.`
+        a: "Veuillez arriver pour 15h."
       },
       dress: {
         q: "Que dois-je porter?",
-        a: "Le code vestimentaire est cravate noire (tenue de soirée). Nous encourageons les couleurs pour les femmes mais ce n'est pas obligatoire - venez comme vous le souhaitez et sentez-vous à l'aise de célébrer avec nous!"
-      },
-      music: {
-        q: "Y aura-t-il de la musique et de la danse?",
-        a: `Absolument! La danse commence à ${weddingConfig.schedule.dancingFr} et se poursuit jusqu'à ${weddingConfig.schedule.endFr}. Nous aurons un excellent mélange de musique pour garder tout le monde sur la piste de danse.`
+        a: "On vise une tenue formelle de jour. Messieurs, portez un costume avec cravate ou nœud papillon—pas besoin de smoking pendant la journée. Mesdames, on aimerait vous voir dans une robe longue, de la couleur de votre choix. Si vous avez des doutes sur votre tenue, textez simplement Alex ou Justine—on est un petit groupe et ça nous fait plaisir de vous aider! On adore la créativité et les couleurs, alors n'ayez pas peur de vous démarquer."
       },
       food: {
         q: "Qu'en est-il de la nourriture et des boissons?",
-        a: `Un dîner complet sera servi à ${weddingConfig.schedule.dinnerFr} avec des discours. Il y aura un bar ouvert tout au long de la soirée pour votre plaisir.`
+        a: "On aura un cocktail avec bouchées suivi d'un repas à plusieurs services. Les consommations sont sur nous toute la soirée—on aura une sélection de spiritueux, bières et vins. Indiquez-nous vos préférences dans votre RSVP et on fera de notre mieux pour avoir vos favoris!"
       },
       parking: {
         q: "Y a-t-il un stationnement disponible?",
-        a: `Oui, le ${weddingConfig.venue.nameFr} dispose d'un grand stationnement gratuit sur place pour tous les invités.`
+        a: "Oui, il y a du stationnement sur place. Uber et les taxis fonctionnent aussi dans le coin, mais comme on est en banlieue, c'est prudent de réserver d'avance ou de faire du covoiturage si possible. On regarde aussi pour louer un autobus et on vous tiendra au courant plus près de la date."
       }
     },
     travel: {

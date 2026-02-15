@@ -80,14 +80,8 @@ function App() {
         onLanguageChange={setLanguage}
         currentPage={currentPage}
         onNavigate={setCurrentPage}
+        onDiscoBallClick={handleDiscoBallClick}
       />
-      <button 
-        onClick={handleDiscoBallClick}
-        className="disco-ball-button"
-        aria-label="Activate disco mode"
-      >
-        🪩
-      </button>
       <main className="pb-12">
         {renderPage()}
       </main>
