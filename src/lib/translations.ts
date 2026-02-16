@@ -62,21 +62,25 @@ They are getting married in the summer of 2026, after a year long delay, plannin
       title: "Frequently asked questions",
       timing: {
         q: "What time should I arrive?",
-        a: "Please arrive by 3pm."
+        a: "Please arrive by 3:00 PM"
       },
       dress: {
         q: "What should I wear?",
-        a: "We're going for formal daytime attire. Men should wear a suit with a tie or bowtie—no need for a tuxedo during the day. Women, we'd love to see you in a long dress, any color you like. If you're unsure about your outfit, just text Alex or Justine—we're a small group and happy to help! We love creativity and color, so don't be afraid to stand out."
+        a: "The attire for the evening is formal. Men should wear a suit and tie. Women should wear a dress that falls below the knees.  We love creativity and color. Please note that ceremony will take place outside with the reception and dinner indoors. Early June in Montréal is usually quite mild. 
       },
       food: {
         q: "What about food and drinks?",
-        a: "We'll have a cocktail hour with bites followed by a multi-course dinner. Drinks are on us all night—we'll have a selection of liquors, beers, and wines. Let us know your preferences in your RSVP and we'll do our best to have your favorites ready!"
+        a: "Following the ceremony there will be a cocktail hour with heavy hors-d'oeuvres. This will be followed by a multi-course dinner. Drinks are on us all night! We'll have a selection of liquors, beers, and wines. If there's something special you'd like to see behind the bar, let us know your preferences in your RSVP and we'll do our best to have your favorites ready!"
       },
       parking: {
         q: "Is there parking available?",
-        a: "Yes, there's parking on-site. Uber and taxis work out here too, though since we're in the suburbs, it's smart to book ahead or carpool when possible. We're also looking into renting a bus and will update everyone closer to the date."
+        a: "Yes, there's parking on-site. Uber and taxis work out here too, though since we're in the suburbs, it's smart to book ahead or carpool when possible. We're also looking into renting a bus and will update everyone closer to the date. In general it's about a 30 minute drive from downtown Montréal."
       }
+      lodging: {
+      q: "Where should I stay?",
+      a: "Montréal has an abundance of great hotels, and short term vacation rentals are plentiful. We reccomend staying in the city of Montreal as it's got a bit more life than Baie-D'Urfé. We recommend staying in Downtown Montreal for convenience, or the Plateau/ Mile-End for more a trendy scene.
     },
+
     travel: {
       title: "Travel information",
       gettingThere: "Getting to Montreal",
