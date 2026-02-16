@@ -84,19 +84,20 @@ They are getting married in the summer of 2026, after a year long delay, plannin
 
 
     travel: {
-      title: "Travel information",
-      gettingThere: "Getting to Montreal",
-      byAir: "By air",
-      byAirDesc: "Montreal-Pierre Elliott Trudeau International Airport (YUL) is the city's main airport. It is approximately 30 minutes to the venue by car. The airport is also approximatly 30 minutes to the city center.",
-      byCar: "By car",
-      byCarDesc: `${weddingConfig.venue.city} is located on the western tip of the Island of Montreal, easily accessible via Highway 20. The drive is about 30 minutes from the city center. There is on-site parking.",
-      byTransit: "By public transit",
-      byTransitDesc: "The venue is accessible by the number 405 bus. By bus, the venu is about an hour from the city center. We recommend checking the STM website for current schedules and routes https://www.stm.info/en/info/networks/bus/local/line-405-west.",
-      hotels: "Hotel recommendations",
-      hotelsDesc: "There are a number of hotels within a 15 minute drive of the venue. The most luxurious of these is the Château Vaudreuil. The closest hotel is the Courtyard Marriott West Island, which is roughly a 10 minute drive. For more on lodging, see the FAQ section.",
-      weather: "Weather expectations",
-      weatherDesc: "June in Montreal is beautiful! Expect pleasant temperatures around 20-25°C (68-77°F). We recommend bringing a light jacket for the evening. Please note, the ceremony will be outdoors on grass. The dinner and reception will be indoors."
-    },
+  title: "Travel information",
+  gettingThere: "Getting to Montreal",
+  byAir: "By air",
+  byAirDesc: "Montreal-Pierre Elliott Trudeau International Airport (YUL) is the city's main airport. It is approximately 30 minutes to the venue by car. The airport is also approximately 30 minutes to the city center.",
+  byCar: "By car",
+  byCarDesc: `${weddingConfig.venue.city} is located on the western tip of the Island of Montreal, easily accessible via Highway 20. The drive is about 30 minutes from the city center. There is on-site parking.`,
+  byTransit: "By public transit",
+  byTransitDesc: "The venue is accessible by the number 405 bus. By bus, the venue is about an hour from the city center. We recommend checking the STM website for current schedules and routes: https://www.stm.info/en/info/networks/bus/local/line-405-west.",
+  hotels: "Hotel recommendations",
+  hotelsDesc: "There are a number of hotels within a 15 minute drive of the venue. The most luxurious of these is the Château Vaudreuil. The closest hotel is the Courtyard Marriott West Island, which is roughly a 10 minute drive. For more on lodging, see the FAQ section.",
+  weather: "Weather expectations",
+  weatherDesc: "June in Montreal is beautiful! Expect pleasant temperatures around 20-25°C (68-77°F). We recommend bringing a light jacket for the evening. Please note, the ceremony will be outdoors on grass. The dinner and reception will be indoors."
+},
+
     venue: {
       title: "The venue",
       name: weddingConfig.venue.fullName,
@@ -196,6 +197,7 @@ They are getting married in the summer of 2026, after a year long delay, plannin
   weather: "Prévisions météo",
   weatherDesc: "Juin à Montréal est magnifique! Attendez-vous à des températures agréables autour de 20–25°C (68–77°F). Nous recommandons d'apporter une veste légère pour la soirée. À noter : la cérémonie aura lieu à l'extérieur sur du gazon. Le souper et la réception seront à l'intérieur."
 },
+
     venue: {
       title: "Le Lieu",
       name: weddingConfig.venue.fullNameFr,
