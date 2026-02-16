@@ -87,15 +87,15 @@ They are getting married in the summer of 2026, after a year long delay, plannin
       title: "Travel information",
       gettingThere: "Getting to Montreal",
       byAir: "By air",
-      byAirDesc: "Montreal-Pierre Elliott Trudeau International Airport (YUL) is the main airport, approximately 30 minutes from the venue by car.",
+      byAirDesc: "Montreal-Pierre Elliott Trudeau International Airport (YUL) is the city's main airport. It is approximately 30 minutes to the venue by car. The airport is also approximatly 30 minutes to the city center.",
       byCar: "By car",
-      byCarDesc: `${weddingConfig.venue.city} is located on the western tip of the Island of Montreal, easily accessible via Highway 20.`,
+      byCarDesc: `${weddingConfig.venue.city} is located on the western tip of the Island of Montreal, easily accessible via Highway 20. The drive is about 30 minutes from the city center. There is on-site parking.",
       byTransit: "By public transit",
-      byTransitDesc: "The venue is accessible by STM bus routes. We recommend checking the STM website for current schedules and routes.",
+      byTransitDesc: "The venue is accessible by the number 405 bus. By bus, the venu is about an hour from the city center. We recommend checking the STM website for current schedules and routes https://www.stm.info/en/info/networks/bus/local/line-405-west.",
       hotels: "Hotel recommendations",
-      hotelsDesc: "Coming soon! We're compiling a list of recommended hotels near the venue.",
+      hotelsDesc: "There are a number of hotels within a 15 minute drive of the venue. The most luxurious of these is the Château Vaudreuil. The closest hotel is the Courtyard Marriott West Island, which is roughly a 10 minute drive. For more on lodging, see the FAQ section.",
       weather: "Weather expectations",
-      weatherDesc: "June in Montreal is beautiful! Expect pleasant temperatures around 20-25°C (68-77°F). We recommend bringing a light jacket for the evening."
+      weatherDesc: "June in Montreal is beautiful! Expect pleasant temperatures around 20-25°C (68-77°F). We recommend bringing a light jacket for the evening. Please note, the ceremony will be outdoors on grass. The dinner and reception will be indoors."
     },
     venue: {
       title: "The venue",
@@ -183,19 +183,19 @@ They are getting married in the summer of 2026, after a year long delay, plannin
   }
 },
     travel: {
-      title: "Informations de Voyage",
-      gettingThere: "Se Rendre à Montréal",
-      byAir: "Par Avion",
-      byAirDesc: "L'aéroport international Pierre-Elliott-Trudeau de Montréal (YUL) est l'aéroport principal, à environ 30 minutes du lieu en voiture.",
-      byCar: "En Voiture",
-      byCarDesc: `${weddingConfig.venue.city} est située à l'extrémité ouest de l'île de Montréal, facilement accessible par l'autoroute 20.`,
-      byTransit: "Par Transport en Commun",
-      byTransitDesc: "Le lieu est accessible par les lignes d'autobus de la STM. Nous recommandons de consulter le site web de la STM pour les horaires et itinéraires actuels.",
-      hotels: "Recommandations d'Hôtels",
-      hotelsDesc: "À venir bientôt! Nous préparons une liste d'hôtels recommandés près du lieu.",
-      weather: "Prévisions Météo",
-      weatherDesc: "Juin à Montréal est magnifique! Attendez-vous à des températures agréables autour de 20-25°C. Nous recommandons d'apporter une veste légère pour la soirée."
-    },
+  title: "Informations de Voyage",
+  gettingThere: "Se rendre à Montréal",
+  byAir: "Par avion",
+  byAirDesc: "L'aéroport international Montréal–Pierre-Elliott-Trudeau (YUL) est l'aéroport principal de la ville. Il faut environ 30 minutes en voiture pour se rendre au lieu. L'aéroport se trouve aussi à environ 30 minutes du centre-ville.",
+  byCar: "En voiture",
+  byCarDesc: `${weddingConfig.venue.city} est située à l'extrémité ouest de l'île de Montréal, facilement accessible via l'autoroute 20. Le trajet depuis le centre-ville dure environ 30 minutes. Il y a du stationnement sur place.`,
+  byTransit: "En transport en commun",
+  byTransitDesc: "Le lieu est accessible en autobus (ligne 405). En autobus, il faut environ une heure depuis le centre-ville. Nous recommandons de consulter le site de la STM pour les horaires et itinéraires à jour : https://www.stm.info/en/info/networks/bus/local/line-405-west.",
+  hotels: "Recommandations d'hôtels",
+  hotelsDesc: "Il y a plusieurs hôtels à moins de 15 minutes en voiture du lieu. Le plus luxueux est le Château Vaudreuil. L'hôtel le plus près est le Courtyard Marriott West Island, à environ 10 minutes en voiture. Pour plus d'information sur l'hébergement, voir la section FAQ.",
+  weather: "Prévisions météo",
+  weatherDesc: "Juin à Montréal est magnifique! Attendez-vous à des températures agréables autour de 20–25°C (68–77°F). Nous recommandons d'apporter une veste légère pour la soirée. À noter : la cérémonie aura lieu à l'extérieur sur du gazon. Le souper et la réception seront à l'intérieur."
+},
     venue: {
       title: "Le Lieu",
       name: weddingConfig.venue.fullNameFr,
