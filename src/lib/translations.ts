@@ -160,23 +160,28 @@ They are getting married in the summer of 2026, after a year long delay, plannin
       formNote: "Chargement du formulaire RSVP..."
     },
     faq: {
-      title: "Questions Fréquentes",
-      timing: {
-        q: "À quelle heure dois-je arriver?",
-        a: "Veuillez arriver pour 15h."
-      },
-      dress: {
-        q: "Que dois-je porter?",
-        a: "On vise une tenue formelle de jour. Messieurs, portez un costume avec cravate ou nœud papillon—pas besoin de smoking pendant la journée. Mesdames, on aimerait vous voir dans une robe longue, de la couleur de votre choix. Si vous avez des doutes sur votre tenue, textez simplement Alex ou Justine—on est un petit groupe et ça nous fait plaisir de vous aider! On adore la créativité et les couleurs, alors n'ayez pas peur de vous démarquer."
-      },
-      food: {
-        q: "Qu'en est-il de la nourriture et des boissons?",
-        a: "On aura un cocktail avec bouchées suivi d'un repas à plusieurs services. Les consommations sont sur nous toute la soirée—on aura une sélection de spiritueux, bières et vins. Indiquez-nous vos préférences dans votre RSVP et on fera de notre mieux pour avoir vos favoris!"
-      },
-      parking: {
-        q: "Y a-t-il un stationnement disponible?",
-        a: "Oui, il y a du stationnement sur place. Uber et les taxis fonctionnent aussi dans le coin, mais comme on est en banlieue, c'est prudent de réserver d'avance ou de faire du covoiturage si possible. On regarde aussi pour louer un autobus et on vous tiendra au courant plus près de la date."
-      }
+  title: "Questions Fréquentes",
+  timing: {
+    q: "À quelle heure dois-je arriver?",
+    a: "Veuillez arriver pour 15h."
+  },
+  dress: {
+    q: "Que dois-je porter?",
+    a: "On vise une tenue formelle de jour. Messieurs, portez un costume avec cravate ou nœud papillon—pas besoin de smoking pendant la journée. Mesdames, on aimerait vous voir dans une robe longue, de la couleur de votre choix. Si vous avez des doutes sur votre tenue, textez simplement Alex ou Justine—on est un petit groupe et ça nous fait plaisir de vous aider! On adore la créativité et les couleurs, alors n'ayez pas peur de vous démarquer."
+  },
+  food: {
+    q: "Qu'en est-il de la nourriture et des boissons?",
+    a: "On aura un cocktail avec bouchées suivi d'un repas à plusieurs services. Les consommations sont sur nous toute la soirée—on aura une sélection de spiritueux, bières et vins. Indiquez-nous vos préférences dans votre RSVP et on fera de notre mieux pour avoir vos favoris!"
+  },
+  parking: {
+    q: "Y a-t-il un stationnement disponible?",
+    a: "Oui, il y a du stationnement sur place. Uber et les taxis fonctionnent aussi dans le coin, mais comme on est en banlieue, c'est prudent de réserver d'avance ou de faire du covoiturage si possible. On regarde aussi pour louer un autobus et on vous tiendra au courant plus près de la date."
+  },
+  lodging: {
+    q: "Où devrais-je loger ?",
+    a: "Montréal offre un grand choix d’hôtels, et les locations à court terme sont faciles à trouver. Nous recommandons de loger à Montréal plutôt qu’à Baie-D’Urfé. Le centre-ville est le plus pratique, et le Plateau / Mile-End est idéal pour une ambiance plus animée."
+  }
+},
     },
     travel: {
       title: "Informations de Voyage",
