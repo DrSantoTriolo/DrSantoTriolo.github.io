@@ -28,14 +28,13 @@ export const translations = {
     },
     about: {
       title: "Our story",
-      story: `Alex and Justine had their first date at Dieu du Ciel in Montréal on February 22, 2020, two weeks before the world shut down. Excellent timing, in retrospect. Instead of ghosting or panicking, they did the reasonable thing and quarantined together, rotating between apartments, cooking elaborate meals to simulate restaurants, and accidentally turning Alex into a hockey fan. (Go Habs Go.)
+      story: `Alex and Justine met in Montreal late in February 2020. Just as their relationship was beginning, the world was ending. Two weeks after they met, the global pandemic would close down the city, forcing them navigate a new world together.  But, As Miles Cameron wrote, “all the best romances bloom in the midst of a good siege.” Those early days were spent either in the kitchen, sharing their love of cooking, or in front of the T.V. watching Hab’s historic 2021 run for Stanley Cup, which they sadly lost due to some uncharacteristic errors early in Game 3, when the Habs allowed two goals in the first 3:30 of the game; and then shortly after Josh Anderson failed to clear the puck along the boards leaving an opening for the Lightning’s Rutta to score an absolute snipe in the top left corner, even if Price stopped bottle rockets all night 
 
-The next few years were a blur of road trips, family introductions, holidays, and stays in Florida, Norfolk, Washington, Outerbanks, and Montréal. There were cottages, mushroom foraging, weddings, Thanksgiving traditions, and one oven fire that forced us to migrate the turkey onto a BBQ. Everyone survived.
+If the first few years were spent grounded, the next few were spent on the road, traveling back and forth between Virginia, Florida, Maryland, and the Outerbanks. There were cottages and mushroom foraging, weddings and oyster roasts, holiday traditions kept and made, one oven fire (no one’s fault), several grill fires (which Alex says were no more his fault than oxygen is a fire’s fault), and many many hockey games.  In March 2023, they moved into a little apartment in Little Italy. The same week, Alex proposed, (with the ring on a Habs hockey puck). 
 
 In March 2023, they moved into an apartment in Little Italy. Four days later, at a party with friends and family, Alex proposed, using a Habs hockey puck, because of course. Since then, there have been more trips, a new nephew, birthdays, holidays, and a continued tradition of celebrating anniversaries by remembering that first perfectly inconvenient date.
 
-They are getting married in the summer of 2026, after a year long delay, planning a small, intimate wedding in Montréal with their favorite people, good wine, and very good food. The rest is still being figured out, but this part feels pretty settled. For the next few years, Alex and Justine hope to travel some more, and to potentially invite a small kitten in their household.`,
-      contact: "Contact",
+Throughout this entire time, they have blessed to mark the passing of each day in the richness of love and joy with family and friends. Justine calls it ‘the fun times’, Alex calls it ‘the only memories he’s ever wanted to make.’       contact: "Contact",
       email: weddingConfig.couple.email
     },
     schedule: {
