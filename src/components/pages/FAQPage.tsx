@@ -9,13 +9,14 @@ interface FAQPageProps {
 export function FAQPage({ language }: FAQPageProps) {
   const t = translations[language].faq;
 
-  const faqs = [
-    { q: t.timing.q, a: t.timing.a },
-    { q: t.dress.q, a: t.dress.a },
-    { q: t.food.q, a: t.food.a },
-    { q: t.parking.q, a: t.parking.a }
-    { q: t.lodging.q, a: t.lodging.a }
-  ];
+const faqs = [
+  { q: t.timing.q, a: t.timing.a },
+  { q: t.dress.q, a: t.dress.a },
+  { q: t.food.q, a: t.food.a },
+  { q: t.parking.q, a: t.parking.a },
+  { q: t.lodging.q, a: t.lodging.a },
+];
+
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-24 md:py-32">
