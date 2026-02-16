@@ -182,7 +182,6 @@ They are getting married in the summer of 2026, after a year long delay, plannin
     a: "Montréal offre un grand choix d’hôtels, et les locations à court terme sont faciles à trouver. Nous recommandons de loger à Montréal plutôt qu’à Baie-D’Urfé. Le centre-ville est le plus pratique, et le Plateau / Mile-End est idéal pour une ambiance plus animée."
   }
 },
-    },
     travel: {
       title: "Informations de Voyage",
       gettingThere: "Se Rendre à Montréal",
