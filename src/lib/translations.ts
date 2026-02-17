@@ -51,7 +51,7 @@ schedule: {
   // Friday
   welcomeDinnerTitle: "Welcome dinner",
   welcomeDinnerTime: "Friday evening",
-  welcomeDinnerDesc: "If you’re coming in from out of town, we’d love to host you for a casual meal Friday night.",
+  welcomeDinnerDesc: "For those coming in from out of town, we will reach out to you with details about a casual dinner Friday night.",
 
   // Saturday (your existing labels)
   arrival: "Arrival",
@@ -182,7 +182,7 @@ Nous vous invitons à vous joindre à nous — famille et amis, anciens comme no
   welcomeDinnerTitle: "Souper d’accueil",
   welcomeDinnerTime: "Vendredi soir",
   welcomeDinnerDesc:
-    "Si vous venez de l’extérieur, on serait vraiment heureux de vous recevoir vendredi soir pour un souper décontracté.",
+    "Pour ceux venant de l'extérieur de la ville, nous vous contacterons avec les détails pour un souper décontracté vendredi soir.",
 
   // Saturday (your existing labels)
   arrival: "Arrivée",
