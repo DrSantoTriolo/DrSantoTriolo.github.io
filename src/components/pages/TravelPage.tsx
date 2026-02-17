@@ -12,17 +12,23 @@ export function TravelPage({ language }: TravelPageProps) {
     {
       icon: Airplane,
       title: t.byAir,
-      content: t.byAirDesc
+      content: t.byAirDesc,
+      link: null,
+      linkText: null
     },
     {
       icon: Car,
       title: t.byCar,
-      content: t.byCarDesc
+      content: t.byCarDesc,
+      link: null,
+      linkText: null
     },
     {
       icon: Bus,
       title: t.byTransit,
-      content: t.byTransitDesc
+      content: t.byTransitDesc,
+      link: t.byTransitLink,
+      linkText: t.byTransitLinkText
     }
   ];
 
@@ -51,6 +57,16 @@ export function TravelPage({ language }: TravelPageProps) {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {section.content}
                 </p>
+                {section.link && (
+                  <a
+                    href={section.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-3 text-sm text-accent hover:underline"
+                  >
+                    {section.linkText}
+                  </a>
+                )}
               </div>
             );
           })}
