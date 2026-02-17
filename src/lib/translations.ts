@@ -134,19 +134,19 @@ We invite you to join us, family and friends old and new, to celebrate our first
       married: "Nous Sommes Mariés!",
       quickLinks: "Liens Rapides"
     },
-    about: {
-      title: "Notre Histoire",
-      story: `Alex et Justine se sont rencontrés à Montréal à la fin février 2020. Au moment même où leur histoire commençait, le monde semblait s’arrêter. Deux semaines après leur rencontre, la pandémie mondiale a fermé la ville, les forçant à apprendre à naviguer ensemble dans un tout nouveau monde. Mais, comme l’a écrit Miles Cameron : « Les plus belles histoires d’amour fleurissent au cœur d’un bon siège. » Ces premiers jours se sont passés soit dans la cuisine, à partager leur amour de la cuisine, soit devant la télé à regarder le parcours historique du Canadien lors des séries de 2021 vers la Coupe Stanley — qu’ils ont malheureusement perdue à cause de quelques erreurs inhabituelles au début du match 3, quand le CH a accordé deux buts dans les trois premières minutes trente après que Josh Anderson n’ait pas réussi à sortir la rondelle le long de la bande. La suite appartient à l’histoire.
-      
-     
-      Si les premières années se sont vécues plutôt à la maison, les suivantes se sont passées sur la route, à faire des allers-retours entre la Virginie, la Floride, le Maryland et les Outer Banks. Il y a eu des séjours au chalet et de la cueillette de champignons, des mariages et des festins d’huîtres, des traditions du temps des Fêtes préservées et d’autres créées, un feu de four (la faute de personne), quelques feux de barbecue (qu’Alex soutient n’étaient pas plus de sa faute que l’oxygène n’est responsable du feu), et énormément de parties de hockey. En mars 2023, ils ont emménagé dans un petit appartement dans la Petite Italie. Cette même semaine, Alex a fait sa demande en mariage (avec la bague déposée sur une rondelle du Canadien).
+about: {
+  title: "Notre Histoire",
+  story: `Alex et Justine se sont rencontrés à Montréal à la fin février 2020. Au moment même où leur histoire commençait, le monde semblait s’arrêter. Deux semaines après leur rencontre, la pandémie mondiale a fermé la ville, les forçant à apprendre à naviguer ensemble dans un tout nouveau monde. Mais, comme l’a écrit Miles Cameron : « Les plus belles histoires d’amour fleurissent au cœur d’un bon siège. » Ces premiers jours se sont passés soit dans la cuisine, à partager leur amour de la cuisine, soit devant la télé à regarder le parcours historique du Canadien lors des séries de 2021 vers la Coupe Stanley — qu’ils ont malheureusement perdue à cause de quelques erreurs inhabituelles au début du match 3, quand le CH a accordé deux buts dans les trois premières minutes trente après que Josh Anderson n’ait pas réussi à sortir la rondelle le long de la bande. La suite appartient à l’histoire.
 
-      Pendant tout ce temps, ils ont eu la chance de souligner chaque jour dans la richesse de l’amour et de la joie, entourés de leur famille et de leurs amis. Justine appelle ça « les beaux moments » ; Alex appelle ça « les seuls souvenirs qu’il ait jamais voulu créer ».
+Si les premières années se sont vécues plutôt à la maison, les suivantes se sont passées sur la route, à faire des allers-retours entre la Virginie, la Floride, le Maryland et les Outer Banks. Il y a eu des séjours au chalet et de la cueillette de champignons, des mariages et des festins d’huîtres, des traditions du temps des Fêtes préservées et d’autres créées, un feu de four (la faute de personne), quelques feux de barbecue (qu’Alex soutient n’étaient pas plus de sa faute que l’oxygène n’est responsable du feu), et énormément de parties de hockey. En mars 2023, ils ont emménagé dans un petit appartement dans la Petite Italie. Cette même semaine, Alex a fait sa demande en mariage (avec la bague déposée sur une rondelle du Canadien).
+
+Pendant tout ce temps, ils ont eu la chance de souligner chaque jour dans la richesse de l’amour et de la joie, entourés de leur famille et de leurs amis. Justine appelle ça « les beaux moments » ; Alex appelle ça « les seuls souvenirs qu’il ait jamais voulu créer ».
 
 Nous vous invitons, famille et amis d’hier et d’aujourd’hui, à venir célébrer nos six premières années ensemble — et toutes celles à venir.`,
-      contact: "Contact",
-      email: weddingConfig.couple.email
-    },
+  contact: "Contact",
+  email: weddingConfig.couple.email
+},
+
     schedule: {
       title: "Horaire du Mariage",
       arrival: "Arrivée",
