@@ -114,7 +114,7 @@ schedule: {
   byTransitLink: "https://www.stm.info/en/info/networks/bus/local/line-405-west",
   byTransitLinkText: "View STM Bus Route 405",
   hotels: "Hotel recommendations",
-  hotelsDesc: "We recommend staying closer to the city center since it's more lively and has better options for exploring Montréal. There are no hotel blocks, so feel free to book wherever suits you best! Villeray has fewer hotels but plenty of Airbnb options, and it's close to the Sunday brunch. For more on lodging, see the FAQ section.",
+  hotelsDesc: "We recommend staying closer to the city center since it's more lively and has better options for exploring Montréal. There are no hotel blocks, so feel free to book wherever suits you best! Downtown, the Mile-End, and the Plateau are all great neighborhoods to book a hotel or Airbnb. Villeray has fewer hotels but plenty of Airbnb options, and it's close to the Sunday brunch. For more on lodging, see the FAQ section.",
   weather: "Weather expectations",
   weatherDesc: "June in Montreal is beautiful! Expect pleasant temperatures around 20-25°C (68-77°F). We recommend bringing a light jacket for the evening. Please note, the ceremony will be outdoors on grass. The dinner and reception will be indoors."
 },
@@ -244,7 +244,7 @@ Nous vous invitons à vous joindre à nous — famille et amis, anciens comme no
   byTransitLink: "https://www.stm.info/en/info/networks/bus/local/line-405-west",
   byTransitLinkText: "Voir la ligne 405 de la STM",
   hotels: "Recommandations d'hôtels",
-  hotelsDesc: "Nous recommandons de loger plus près du centre-ville, c'est plus animé et idéal pour explorer Montréal. Il n'y a pas de bloc de chambres réservé, alors sentez-vous libre de réserver où bon vous semble! Villeray compte moins d'hôtels, mais offre plusieurs Airbnb, et c'est tout près du brunch du dimanche. Pour plus d'information sur l'hébergement, voir la section FAQ.",
+  hotelsDesc: "Nous recommandons de loger plus près du centre-ville, c'est plus animé et idéal pour explorer Montréal. Il n'y a pas de bloc de chambres réservé, alors sentez-vous libre de réserver où bon vous semble! Le centre-ville, le Mile-End et le Plateau sont tous d'excellents quartiers pour réserver un hôtel ou un Airbnb. Villeray compte moins d'hôtels, mais offre plusieurs Airbnb, et c'est tout près du brunch du dimanche. Pour plus d'information sur l'hébergement, voir la section FAQ.",
   weather: "Prévisions météo",
   weatherDesc: "Juin à Montréal est magnifique! Attendez-vous à des températures agréables autour de 20–25°C (68–77°F). Nous recommandons d'apporter une veste légère pour la soirée. À noter : la cérémonie aura lieu à l'extérieur sur du gazon. Le souper et la réception seront à l'intérieur."
 },

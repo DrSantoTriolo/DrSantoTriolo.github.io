@@ -78,7 +78,7 @@ export function TravelPage({ language }: TravelPageProps) {
             <h3 className="text-sm uppercase tracking-[0.2em] mb-3 text-foreground font-medium">
               {t.hotels}
             </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed italic">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               {t.hotelsDesc}
             </p>
           </div>
