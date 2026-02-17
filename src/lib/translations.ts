@@ -38,20 +38,39 @@ We invite you to join us, family and friends old and new, to celebrate our first
       contact: "Contact",
       email: weddingConfig.couple.email
     },
-    schedule: {
-      title: "Wedding day schedule",
-      arrival: "Arrival",
-      arrivalTime: weddingConfig.schedule.arrival,
-      ceremony: "Ceremony",
-      ceremonyTime: weddingConfig.schedule.ceremony,
-      cocktail: "Cocktail hour",
-      cocktailTime: weddingConfig.schedule.cocktail,
-      dinner: "Dinner & speeches",
-      dinnerTime: weddingConfig.schedule.dinner,
-      dancing: "Dancing",
-      dancingTime: weddingConfig.schedule.dancing,
-      timingNote: "All times are subject to change except arrival time, which is set."
-    },
+schedule: {
+  title: "Weekend schedule", // (or keep "Wedding day schedule" if you prefer)
+  timingNote: "All times are subject to change except arrival time, which is set.",
+
+  days: {
+    friday: "Friday",
+    saturday: "Saturday",
+    sunday: "Sunday",
+  },
+
+  // Friday
+  welcomeDinnerTitle: "Welcome dinner",
+  welcomeDinnerTime: "Friday evening",
+  welcomeDinnerDesc: "If you’re coming in from out of town, we’d love to host you for a casual meal Friday night.",
+
+  // Saturday (your existing labels)
+  arrival: "Arrival",
+  arrivalTime: weddingConfig.schedule.arrival,
+  ceremony: "Ceremony",
+  ceremonyTime: weddingConfig.schedule.ceremony,
+  cocktail: "Cocktail hour",
+  cocktailTime: weddingConfig.schedule.cocktail,
+  dinner: "Dinner & speeches",
+  dinnerTime: weddingConfig.schedule.dinner,
+  dancing: "Dancing",
+  dancingTime: weddingConfig.schedule.dancing,
+
+  // Sunday
+  sundayPicnicTitle: "Coffee, Croissants, and Mimosa Picnic",
+  sundayPicnicTime: "11:00 AM",
+  sundayPicnicDesc: "Late Sunday morning we will have having a lazy picnic at Parc Jarry with croissants, coffee, and Mimosas. A perfect way to wrap up the weekend!"
+},
+
     rsvp: {
       title: "RSVP",
       subtitle: `Please respond by ${weddingConfig.rsvp.deadline.displayEn}`,
@@ -148,19 +167,40 @@ Nous vous invitons, famille et amis d’hier et d’aujourd’hui, à venir cél
 },
 
     schedule: {
-      title: "Horaire du Mariage",
-      arrival: "Arrivée",
-      arrivalTime: weddingConfig.schedule.arrivalFr,
-      ceremony: "Cérémonie",
-      ceremonyTime: weddingConfig.schedule.ceremonyFr,
-      cocktail: "Cocktail",
-      cocktailTime: weddingConfig.schedule.cocktailFr,
-      dinner: "Dîner et Discours",
-      dinnerTime: weddingConfig.schedule.dinnerFr,
-      dancing: "Danse",
-      dancingTime: weddingConfig.schedule.dancingFr,
-      timingNote: "Tous les horaires sont sujets à changement sauf l'heure d'arrivée, qui est fixe."
-    },
+  title: "Horaire du week-end",
+  timingNote: "Tous les horaires sont sujets à changement sauf l'heure d'arrivée, qui est fixe.",
+
+  days: {
+    friday: "Vendredi",
+    saturday: "Samedi",
+    sunday: "Dimanche",
+  },
+
+  // Friday
+  welcomeDinnerTitle: "Souper d’accueil",
+  welcomeDinnerTime: "Vendredi soir",
+  welcomeDinnerDesc:
+    "Si vous venez de l’extérieur, on serait vraiment heureux de vous recevoir vendredi soir pour un souper décontracté.",
+
+  // Saturday (your existing labels)
+  arrival: "Arrivée",
+  arrivalTime: weddingConfig.schedule.arrivalFr,
+  ceremony: "Cérémonie",
+  ceremonyTime: weddingConfig.schedule.ceremonyFr,
+  cocktail: "Cocktail",
+  cocktailTime: weddingConfig.schedule.cocktailFr,
+  dinner: "Dîner et Discours",
+  dinnerTime: weddingConfig.schedule.dinnerFr,
+  dancing: "Danse",
+  dancingTime: weddingConfig.schedule.dancingFr,
+
+  // Sunday
+  sundayPicnicTitle: "Pique-nique café, croissants et mimosas",
+  sundayPicnicTime: "11 h",
+  sundayPicnicDesc:
+    "En fin de matinée dimanche, on se retrouve pour un pique-nique relax au parc Jarry avec croissants, café et mimosas — une belle façon de terminer le week-end!"
+},
+
     rsvp: {
       title: "RSVP",
       subtitle: `Veuillez répondre avant le ${weddingConfig.rsvp.deadline.displayFr}`,
