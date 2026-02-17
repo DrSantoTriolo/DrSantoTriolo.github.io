@@ -68,7 +68,7 @@ schedule: {
   // Sunday
   sundayPicnicTitle: "Coffee, Croissants, and Mimosa Picnic",
   sundayPicnicTime: "11:00 AM",
-  sundayPicnicDesc: "Late Sunday morning we will have having a lazy picnic at Parc Jarry with croissants, coffee, and Mimosas. A perfect way to wrap up the weekend!"
+  sundayPicnicDesc: "Late Sunday morning we will have a lazy picnic at Parc Jarry with croissants, coffee, and mimosas. A perfect way to wrap up the weekend!"
 },
 
     rsvp: {
