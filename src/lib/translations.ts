@@ -74,7 +74,7 @@ schedule: {
     rsvp: {
       title: "RSVP",
       subtitle: `Please respond by ${weddingConfig.rsvp.deadline.displayEn}`,
-      description: "We can't wait to celebrate with you! Please fill out the form below to let us know if you'll be joining us.",
+      description: "We can't wait to celebrate with you! Please fill out the form below to let us know if you'll be joining us. One RSVP per guest, please.",
       formNote: "Loading RSVP form..."
     },
     faq: {
@@ -206,7 +206,7 @@ Nous vous invitons à vous joindre à nous — famille et amis, anciens comme no
     rsvp: {
       title: "RSVP",
       subtitle: `Veuillez répondre avant le ${weddingConfig.rsvp.deadline.displayFr}`,
-      description: "Nous avons hâte de célébrer avec vous! Veuillez remplir le formulaire ci-dessous pour nous faire savoir si vous serez des nôtres.",
+      description: "Nous avons hâte de célébrer avec vous! Veuillez remplir le formulaire ci-dessous pour nous faire savoir si vous serez des nôtres. Un RSVP par invité, s'il vous plaît.",
       formNote: "Chargement du formulaire RSVP..."
     },
     faq: {
