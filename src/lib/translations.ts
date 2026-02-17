@@ -34,7 +34,7 @@ If the first few years were spent grounded, the next few were spent on the road,
 
 Throughout this entire time, they have been blessed to mark the passing of each day in the richness of love and joy with family and friends. Justine calls it 'the fun times', Alex calls it 'the only memories he's ever wanted to make.'
 
-We invite you to join us, family and friends old and new, to celebrate our first six years together—and all the years to come.`,
+We invite you to join us, family and friends both old and new, to celebrate our first six years together—and all the years to come.`,
       contact: "Contact",
       email: weddingConfig.couple.email
     },
@@ -161,7 +161,7 @@ Si les premières années se sont vécues plutôt à la maison, les suivantes se
 
 Pendant tout ce temps, ils ont eu la chance de souligner chaque jour dans la richesse de l’amour et de la joie, entourés de leur famille et de leurs amis. Justine appelle ça « les Fun Times » ; Alex appelle ça « les seuls souvenirs qu’il ait jamais voulu créer ».
 
-Nous vous invitons, famille et amis d’hier et d’aujourd’hui, à venir célébrer nos six premières années ensemble — et toutes celles à venir.`,
+Nous vous invitons, famille et amis, d’hier comme d’aujourd’hui, à venir célébrer nos six premières années ensemble — et toutes celles à venir.`,
   contact: "Contact",
   email: weddingConfig.couple.email
 },
