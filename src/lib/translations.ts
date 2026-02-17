@@ -215,7 +215,7 @@ Nous vous invitons, famille et amis, d’hier comme d’aujourd’hui, à venir 
   },
   dress: {
     q: "Que dois-je porter?",
-    a: "On vise une tenue formelle de jour. Messieurs, portez un costume avec cravate ou nœud papillon—pas besoin de smoking pendant la journée. Mesdames, on aimerait vous voir dans une robe longue, de la couleur de votre choix. Si vous avez des doutes sur votre tenue, textez simplement Alex ou Justine—on est un petit groupe et ça nous fait plaisir de vous aider! On adore la créativité et les couleurs, alors n'ayez pas peur de vous démarquer."
+    a: "La tenue pour la soirée est formelle. Messieurs, portez un costume et une cravate. Mesdames, portez une robe sous le genou. On adore la créativité et la couleur. À noter : la cérémonie aura lieu à l’extérieur, et la réception ainsi que le souper seront à l’intérieur. Début juin, à Montréal, il fait généralement assez doux."
   },
   food: {
     q: "Qu'en est-il de la nourriture et des boissons?",
