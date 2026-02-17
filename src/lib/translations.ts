@@ -97,7 +97,7 @@ schedule: {
   },
   lodging: {
     q: "Where should I stay?",
-    a: "Montréal has an abundance of great hotels, and short-term vacation rentals are plentiful. We recommend staying in the city of Montréal as it's got a bit more life than Baie-D'Urfé. Downtown Montréal is most convenient, and the Plateau / Mile-End is great for a trendier scene."
+    a: "Montréal has an abundance of great hotels, and short-term vacation rentals are plentiful. We recommend staying in the city of Montréal as it's got a bit more life than Baie-D'Urfé. Downtown Montréal is most convenient, and the Plateau / Mile-End is great for a trendier scene. Villeray has fewer hotels but plenty of Airbnb options, and it's close to the Sunday brunch."
   }
 },
 
@@ -133,30 +133,30 @@ schedule: {
   fr: {
     nav: {
       home: "Accueil",
-      about: "À Propos",
+      about: "À propos",
       schedule: "Horaire",
       rsvp: "RSVP",
       faq: "FAQ",
       travel: "Voyager",
       venue: "Lieu",
-      saveTheDate: "Réservez la Date"
+      saveTheDate: "Réservez la date"
     },
     home: {
-      title: "Nous Nous Marions!",
+      title: "Nous nous marions!",
       names: weddingConfig.couple.names,
       date: weddingConfig.date.displayFr,
       location: weddingConfig.venue.nameFr,
       locationDetail: `${weddingConfig.venue.city}, ${weddingConfig.venue.province}`,
-      countdownTitle: "Compte à Rebours",
+      countdownTitle: "Compte à rebours",
       days: "Jours",
       hours: "Heures",
       minutes: "Minutes",
       seconds: "Secondes",
-      married: "Nous Sommes Mariés!",
-      quickLinks: "Liens Rapides"
+      married: "Nous sommes mariés!",
+      quickLinks: "Liens rapides"
     },
 about: {
-  title: "Notre Histoire",
+  title: "Notre histoire",
   story: `Alex et Justine se sont rencontrés à Montréal à la fin février 2020. Au moment même où leur histoire commençait, le monde semblait s’arrêter. Deux semaines après leur rencontre, la pandémie mondiale a fermé la ville, les forçant à apprendre à naviguer ensemble dans un tout nouveau monde. Mais, comme l’a écrit Miles Cameron : « Les plus belles histoires d’amour fleurissent au cœur d’un bon siège. » Ces premiers jours se sont passés soit dans la cuisine, à partager leur amour de la cuisine, soit devant la télé à regarder le parcours historique du Canadien lors des séries de 2021 vers la Coupe Stanley — qu’ils ont malheureusement perdue à cause de quelques erreurs inhabituelles au début du match 3, quand le CH a accordé deux buts dans les trois premières minutes trente après que Josh Anderson n’ait pas réussi à sortir la rondelle le long de la bande. La suite appartient à l’histoire.
 
 Si les premières années se sont vécues plutôt à la maison, les suivantes se sont passées sur la route, à faire des allers-retours entre la Virginie, la Floride, le Maryland et les Outer Banks. Il y a eu des séjours au chalet et de la cueillette de champignons, des mariages et des festins d’huîtres, des traditions du temps des Fêtes préservées et d’autres créées, un feu de four (la faute de personne), quelques feux de barbecue (pas la faute d’Alex), et énormément de parties de hockey. En mars 2023, ils ont emménagé dans un petit appartement dans la Petite Italie. Cette même semaine, Alex a fait sa demande en mariage (avec la bague déposée sur une rondelle du Canadien).
@@ -191,7 +191,7 @@ Nous vous invitons, famille et amis, d’hier comme d’aujourd’hui, à venir 
   ceremonyTime: weddingConfig.schedule.ceremonyFr,
   cocktail: "Cocktail",
   cocktailTime: weddingConfig.schedule.cocktailFr,
-  dinner: "Dîner et Discours",
+  dinner: "Dîner et discours",
   dinnerTime: weddingConfig.schedule.dinnerFr,
   dancing: "Danse",
   dancingTime: weddingConfig.schedule.dancingFr,
@@ -210,14 +210,14 @@ Nous vous invitons, famille et amis, d’hier comme d’aujourd’hui, à venir 
       formNote: "Chargement du formulaire RSVP..."
     },
     faq: {
-  title: "Questions Fréquentes",
+  title: "Questions fréquentes",
   timing: {
     q: "À quelle heure dois-je arriver?",
     a: "Veuillez arriver pour 15h."
   },
   dress: {
     q: "Que dois-je porter?",
-    a: "La tenue pour la soirée est formelle. Messieurs, portez un costume et une cravate. Mesdames, portez une robe sous le genou. On adore la créativité et la couleur. À noter : la cérémonie aura lieu à l’extérieur, et la réception ainsi que le souper seront à l’intérieur. Début juin, à Montréal, il fait généralement assez doux."
+    a: "La tenue pour la soirée est formelle : messieurs, portez un costume et une cravate; mesdames, une robe sous le genou. La créativité et la couleur sont les bienvenues. À noter que la cérémonie aura lieu à l'extérieur, tandis que la réception et le souper se dérouleront à l'intérieur. Début juin, à Montréal, la température est généralement assez douce."
   },
   food: {
     q: "Qu'en est-il de la nourriture et des boissons?",
@@ -229,11 +229,11 @@ Nous vous invitons, famille et amis, d’hier comme d’aujourd’hui, à venir 
   },
   lodging: {
     q: "Où devrais-je loger ?",
-    a: "Montréal offre un grand choix d’hôtels, et les locations à court terme sont faciles à trouver. Nous recommandons de loger à Montréal plutôt qu’à Baie-D’Urfé. Le centre-ville est le plus pratique, et le Plateau / Mile-End est idéal pour une ambiance plus animée."
+    a: "Montréal offre un grand choix d'hôtels, et les locations à court terme sont faciles à trouver. Nous recommandons de loger à Montréal plutôt qu'à Baie-D'Urfé. Le centre-ville est le plus pratique, et le Plateau / Mile-End est idéal pour une ambiance plus animée. Villeray compte moins d'hôtels, mais offre plusieurs Airbnb, et c'est tout près du brunch du dimanche."
   }
 },
     travel: {
-  title: "Informations de Voyage",
+  title: "Informations de voyage",
   gettingThere: "Se rendre à Montréal",
   byAir: "Par avion",
   byAirDesc: "L'aéroport international Montréal–Pierre-Elliott-Trudeau (YUL) est l'aéroport principal de la ville. Il faut environ 30 minutes en voiture pour se rendre au lieu. L'aéroport se trouve aussi à environ 30 minutes du centre-ville.",
@@ -250,13 +250,13 @@ Nous vous invitons, famille et amis, d’hier comme d’aujourd’hui, à venir 
 },
 
     venue: {
-      title: "Le Lieu",
+      title: "Le lieu",
       name: weddingConfig.venue.fullNameFr,
       address: weddingConfig.venue.address,
       description: `Le ${weddingConfig.venue.fullNameFr} est un lieu charmant niché dans la pittoresque ville de ${weddingConfig.venue.city}, surplombant le magnifique lac Saint-Louis. Le centre offre un cadre chaleureux et élégant parfait pour célébrer notre jour spécial avec la famille et les amis.`
     },
     saveTheDate: {
-      title: "Réservez la Date",
+      title: "Réservez la date",
       description: "Notre annonce 'réservez la date' envoyée aux amis et à la famille."
     }
   }
