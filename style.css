@@ -1,0 +1,330 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 30px; 
+    font-family: Georgia, serif;
+    font-size: 150%; 
+    background-color: #e9e2d5; /* ✅ Lowercase 'body' fixed */
+}
+
+header {
+        
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px; 
+}
+
+/* Restricts the title width so the navigation menu has room to sit in a single row */
+header h1 {
+  max-width: 350px; 
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Shrinks the PhD and ABAP letters and knocks them down nicely */
+header .credentials {
+  font-size: 0.7em; 
+  display: inline-block;
+  font-weight: normal;
+}
+
+/* Ensures your nav links stay in a single horizontal row */
+nav {
+  display: flex;
+  gap: 15px; 
+  white-space: nowrap; 
+}
+
+nav a {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.hero {
+  display: flex;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.hero img {
+ width: unset !important;
+ height: auto !important;
+}
+
+.hero .right {
+   display: inline-block;
+   padding-right: 40px;
+}
+
+.feature {
+  display: flex;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+/* Clear lingering browser constraints */
+.hero img, .feature img, .feature > img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* ==========================================================================
+   1. SHARED BASE STYLES & TRANSPARENCY CONTROL
+   ========================================================================== */
+.photo-frame {
+    position: relative; 
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.photo-frame::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("images/background.jpg");
+    background-repeat: repeat;
+    opacity: 0.5; 
+    z-index: -1; 
+}
+
+.photo-frame img {
+    display: block;
+    width: 100%;           
+    height: auto;          
+    position: relative;    
+    z-index: 2;            
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25); 
+}
+
+/* ==========================================================================
+   2. CUSTOM TOP HERO PIC (Frame pushed far to the Bottom/Right)
+   ========================================================================== */
+.hero .photo-frame {
+    width: 300px;          
+    padding: 35px;         
+}
+
+.hero .photo-frame img {
+    top: -60px;            
+    left: -60px;           
+}
+
+/* ==========================================================================
+   3. CUSTOM BOTTOM FEATURE PIC (Frame pushed far to the Bottom/Left)
+   ========================================================================== */
+.feature .photo-frame {
+    width: 340px;          
+    padding: 20px;         
+    flex-shrink: 0;        
+}
+
+.feature .photo-frame img {
+    top: -50px;            
+    left: 50px;            
+}
+
+/* ==========================================================================
+   4. CURRICULUM VITAE STYLES
+   ========================================================================== */
+#cv {
+    max-width: 900px;
+    margin: 60px auto;
+    font-family: Georgia, serif;
+    font-size: 21px; 
+    line-height: 1.5;
+}
+
+.cv-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#cv h3 {
+    text-decoration: underline;
+    font-size: 24px; 
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.cv-item {
+    display: flex;
+    margin-bottom: 18px;
+}
+
+.cv-date {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.cv-text {
+    flex: 1;
+}
+
+.tropical-divider {
+    display: block !important;
+    clear: both !important;
+    width: 100% !important;
+    height: 60px !important;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    background-image: url("/santotriolo.github.io/images/divider.jpg") !important; 
+    background-repeat: repeat-x !important;
+    background-position: center !important;
+    background-size: auto 100% !important;
+}
+
+/* ==========================================================================
+   5. MARGIN, COLUMN WRAPPING & BUTTON CENTERING ADJUSTMENTS
+   ========================================================================== */
+.hero > div:first-child {
+  padding-left: 40px; 
+}
+
+/* ✅ Cleaned and consolidated: This aligns your text block column and limits width */
+.feature .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding-left: 20px;   
+    padding-right: 60px;  
+    box-sizing: border-box;
+}
+
+/* ✅ Centers the button link precisely within your right text column */
+.explore-btn {
+    align-self: center;       
+    margin-top: 30px;         
+    font-size: 1.6rem;         
+    padding: 12px 28px;       
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #d1cbbf; 
+    color: #333;
+    border-radius: 20px;      
+    transition: transform 0.2s ease;
+    width: max-content;       
+}
+
+.explore-btn:hover {
+    transform: scale(1.05);
+}
+/* ==========================================================================
+   6. NEW BOOK FEATURE ROW LAYOUT (FIXED)
+   ========================================================================== */
+.book-feature {
+    display: flex;         /* Forces the text column and image to sit side-by-side */
+    gap: 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    align-items: center;   /* Perfectly centers the columns vertically */
+}
+
+/* Controls the text block on the left side */
+.book-text-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stacks paragraph, then button underneath */
+    justify-content: center;
+    padding-left: 40px;     /* Aligns with your hero design padding */
+    padding-right: 20px;  
+    box-sizing: border-box;
+}
+
+.book-text-column p {
+    font-family: Georgia, serif;
+    font-size: 1.15rem;   
+    line-height: 1.5;
+    color: #333333;
+    margin: 0;
+}
+
+/* Positions the button inside the text column bounds */
+.book-btn {
+    align-self: center;     /* Centers button cleanly under the text row */
+    margin-top: 30px;         
+}
+
+/* Forces the frame container on the right to align with your theme layouts */
+.book-feature .book-frame {
+    width: 340px;         
+    padding: 20px;        
+    flex-shrink: 0;       
+}
+
+/* Controls the custom offset displacement on the image */
+.book-feature .book-frame img {
+    top: -30px;           
+    left: -30px;          
+}
+
+
+.feature-text {
+    /* Aligns text cleanly to the left and removes the irregular word gaps */
+    text-align: left !important; 
+    
+    /* Matches the exact font scale between both text blocks */
+    font-size: 1.15rem !important; 
+    
+    /* Provides professional line height for readable paragraphs */
+    line-height: 1.6 !important; 
+    
+    /* Standardizes the text color to a crisp, deep charcoal */
+    color: #1a1a1a !important;
+} 
+/* ==========================================================================
+   7. GLOBAL SECTION FONTS AND TEXT SIZING (FIXED HEADLINE)
+   ========================================================================== */
+/* Targets ONLY the paragraph descriptions in both sections to match clean sizing */
+.right p, 
+.book-text-column p {
+    text-align: left !important;
+    font-size: 1.15rem !important;  /* Keeps description body matching your crisp font scale */
+    line-height: 1.6 !important;   
+    color: #1a1a1a !important;     
+}
+
+/* Restores your section titles to match your top hero title styling naturally */
+.right h2, 
+.book-text-column h2 {
+    text-align: left !important;
+    font-size: 1.5rem !important;   /* Matches the clean weight of your top header */
+    font-weight: bold !important;
+    line-height: 1.3 !important;
+    color: #000000 !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+}
+
+/* ==========================================================================
+   8. SIDE-BY-SIDE BUTTON ROW ALIGNMENT
+   ========================================================================== */
+/* Wraps the two buttons into a perfectly centered horizontal row */
+.button-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important; 
+    align-items: center !important;
+    gap: 20px !important;               
+    margin-top: 30px !important;        
+    width: 100% !important;
+}
+
+/* Overrides the individual centering rules so they align to the row instead */
+.button-row .explore-btn {
+    align-self: auto !important; 
+    margin-top: 0 !important;   
+}
+
+/* Gives the "Other Lectures" button a subtle unique style if you want it to look secondary */
+.secondary-btn {
+    background-color: #c4bdae !important; 
+}
